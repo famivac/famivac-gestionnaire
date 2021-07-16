@@ -134,7 +134,7 @@
       <artifactId>jakarta.jakartaee-api</artifactId>
       <groupId>jakarta.platform</groupId>
       <scope>provided</scope>
-      <version>8.0.0</version>
+      <version>9.1.0</version>
     </dependency>
     <dependency>
       <artifactId>javamelody-core</artifactId>
