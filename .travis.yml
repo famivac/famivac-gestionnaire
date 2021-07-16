@@ -1,17 +1,16 @@
 language: java
 
 jdk:
-- oraclejdk11
+  - oraclejdk11
 
-before_install:
-- openssl aes-256-cbc -K $encrypted_20c4e0acc5aa_key -iv $encrypted_20c4e0acc5aa_iv
-  -in deploy/deploy.key.enc -out deploy/deploy.key -d
-- chmod +x deploy/deploy.sh
-
-sudo: false
 cache:
   directories:
     - $HOME/.m2
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_20c4e0acc5aa_key -iv $encrypted_20c4e0acc5aa_iv
+    -in deploy/deploy.key.enc -out deploy/deploy.key -d
+  - chmod +x deploy/deploy.sh
 
 deploy:
   skip_cleanup: true

@@ -157,7 +157,7 @@
       <version>3.3.7</version>
     </dependency>
     <dependency>
-      <artifactId>spring-security-core</artifactId>
+      <artifactId>spring-security-crypto</artifactId>
       <groupId>org.springframework.security</groupId>
       <version>5.5.0</version>
     </dependency>
