@@ -142,11 +142,6 @@
       <version>10.0.0</version>
     </dependency>
     <dependency>
-      <artifactId>jsf-maven-util</artifactId>
-      <groupId>de.chkal.jsf</groupId>
-      <version>1.1</version>
-    </dependency>
-    <dependency>
       <artifactId>bootstrap</artifactId>
       <groupId>org.webjars</groupId>
       <version>3.4.1</version>
@@ -254,14 +249,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <skipUnitTests>false</skipUnitTests>
   </properties>
-
-  <repositories>
-    <repository>
-      <id>jsf-maven-util-repo</id>
-      <name>jsf-maven-util Repository</name>
-      <url>http://chkal.github.com/jsf-maven-util/repository/</url>
-    </repository>
-  </repositories>
 
   <scm>
     <connection>scm:git:ssh://git@github.com/famivac/famivac-gestionnaire.git</connection>
