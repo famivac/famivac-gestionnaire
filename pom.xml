@@ -6,6 +6,11 @@
 
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.3.1</version>
+      </plugin>
       <!-- Tests -->
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -244,8 +249,8 @@
     <additionalparam>-Xdoclint:none</additionalparam>
     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>16</maven.compiler.source>
+    <maven.compiler.target>16</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <skipUnitTests>false</skipUnitTests>
   </properties>
