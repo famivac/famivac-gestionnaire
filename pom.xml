@@ -6,6 +6,11 @@
 
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.3.1</version>
+      </plugin>
       <!-- Tests -->
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
