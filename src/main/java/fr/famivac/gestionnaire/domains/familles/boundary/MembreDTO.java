@@ -3,6 +3,7 @@ package fr.famivac.gestionnaire.domains.familles.boundary;
 import fr.famivac.gestionnaire.commons.entity.Commune;
 import fr.famivac.gestionnaire.commons.entity.Coordonnees;
 import java.util.Date;
+import java.util.Objects;
 
 public class MembreDTO {
 
@@ -118,6 +119,10 @@ public class MembreDTO {
   }
 
   public void setCoordonnees(Coordonnees coordonnees) {
-    this.coordonnees = coordonnees;
+    if (Objects.isNull(coordonnees)) {
+      this.coordonnees = new Coordonnees();
+    } else {
+      this.coordonnees = coordonnees;
+    }
   }
 }
