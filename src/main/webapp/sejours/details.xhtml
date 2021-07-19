@@ -30,20 +30,14 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <p:commandButton
-                                            styleClass="btn-default"
-                                            icon="ui-icon-closethick"
                                             rendered="#{not sejoursDetailsBean.statut.equals('ANNULE')}"
                                             onclick="PF('dialogAnnulerSejour').show();"
                                             value="Annuler séjour"/>&nbsp;
                                     <p:commandButton
-                                            styleClass="btn-default"
-                                            icon="ui-icon-stop"
                                             rendered="#{not (sejoursDetailsBean.statut.equals('TERMINE') or sejoursDetailsBean.statut.equals('TERMINE_PREMATUREMENT') or sejoursDetailsBean.statut.equals('ANNULE'))}"
                                             onclick="PF('dialogTerminerSejour').show();"
                                             value="Terminer séjour"/>
                                     <p:commandButton
-                                            styleClass="btn-default"
-                                            icon="ui-icon-arrowrefresh-1-e"
                                             actionListener="#{sejoursDetailsBean.reactiverSejour()}"
                                             rendered="#{sejoursDetailsBean.statut.equals('ANNULE') or sejoursDetailsBean.statut.equals('TERMINE_PREMATUREMENT')}"
                                             value="Réactiver séjour"
@@ -293,10 +287,9 @@
                                     <div class="form-group">
                                         <div class="col-md-11">
                                             <p:commandButton
-                                                    styleClass="btn-default pull-right"
+                                                    styleClass="pull-right"
                                                     value="Sauver"
                                                     update=":informationsForm :form_bilan :actionsForm"
-                                                    icon="ui-icon-circle-check"
                                                     actionListener="#{sejoursDetailsBean.update()}"/>
                                         </div>
                                     </div>
@@ -550,9 +543,8 @@
                                                 <div class="form-group">
                                                     <div class="col-md-11">
                                                         <p:commandButton
-                                                                styleClass="btn-default pull-right"
+                                                                styleClass="pull-right"
                                                                 value="Sauver"
-                                                                icon="ui-icon-circle-check"
                                                                 actionListener="#{sejoursDetailsBean.update()}"/>
                                                     </div>
                                                 </div>
@@ -581,7 +573,6 @@
                                                         <div class="col-md-4">
                                                             <p:commandButton
                                                                     value="Ajouter"
-                                                                    icon="ui-icon-plus"
                                                                     actionListener="#{sejoursDetailsBean.ajouterAccompagnateurAller()}"
                                                                     update=":tabs:datatableAccAller @form"/>
                                                         </div>
@@ -609,33 +600,31 @@
                                                         <p:column width="100">
                                                             <p:button
                                                                     outcome="/accompagnateurs/details.xhtml"
-                                                                    styleClass="btn-default"
-                                                                    icon="ui-icon-pencil">
+                                                                    icon="pi pi-pencil">
                                                                 <f:param name="id"
                                                                          value="#{bean.id}"></f:param>
                                                             </p:button>
-                                                            <h:form styleClass="pull-right">
+                                                            <h:form style="display: inline;">
                                                                 <p:commandButton
-                                                                        styleClass="btn-default"
-                                                                        icon="ui-icon-trash"
+                                                                        icon="pi pi-trash"
                                                                         actionListener="#{sejoursDetailsBean.retirerAccompagnateurAller(bean)}"
                                                                         update=":tabs:datatableAccAller">
                                                                     <p:confirm
                                                                             header="Confirmation"
                                                                             message="Êtes vous sûr de vouloir de retirer cet accompagnateur du séjour ?"
-                                                                            icon="ui-icon-alert"/>
+                                                                    />
                                                                 </p:commandButton>
                                                                 <p:confirmDialog global="true">
                                                                     <p:commandButton
                                                                             value="Oui"
                                                                             type="button"
                                                                             styleClass="ui-confirmdialog-yes pull-right"
-                                                                            icon="ui-icon-check"/>
+                                                                    />
                                                                     <p:commandButton
                                                                             value="Non"
                                                                             type="button"
                                                                             styleClass="ui-confirmdialog-no pull-right"
-                                                                            icon="ui-icon-close"/>
+                                                                    />
                                                                 </p:confirmDialog>
                                                             </h:form>
                                                         </p:column>
@@ -649,7 +638,7 @@
                                             <h:form styleClass="form-horizontal" role="form">
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_date_voyage"
+                                                            for="input_date_voyage_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Date voyage"/>
                                                     <div class="col-md-8">
@@ -657,7 +646,7 @@
                                                                 locale="fr"
                                                                 pattern="dd/MM/yyyy"
                                                                 mask="true"
-                                                                id="input_date_voyage"
+                                                                id="input_date_voyage_1"
                                                                 navigator="true"
                                                                 yearRange="c-10:c+10"
                                                                 value="#{sejoursDetailsBean.sejour.retour.dateVoyage}"/>
@@ -666,11 +655,11 @@
                                                 <div class="form-group">
                                                     <p:outputLabel
                                                             styleClass="col-sm-3 control-label"
-                                                            for="input_heure_depart"
+                                                            for="input_heure_depart_1"
                                                             value="Heure départ"/>
                                                     <div class="col-md-8">
                                                         <p:calendar
-                                                                id="input_heure_depart"
+                                                                id="input_heure_depart_1"
                                                                 value="#{sejoursDetailsBean.sejour.retour.heureDepart}"
                                                                 pattern="HH:mm"
                                                                 timeOnly="true"
@@ -679,12 +668,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_lieu_depart"
+                                                            for="input_lieu_depart_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Lieu départ"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_lieu_depart"
+                                                                id="input_lieu_depart_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.lieuDepart}"/>
@@ -692,12 +681,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_personne_depart"
+                                                            for="input_personne_depart_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Personne au départ"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_personne_depart"
+                                                                id="input_personne_depart_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.nomPersonneDepart}"/>
@@ -705,12 +694,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_telephone_personne_depart"
+                                                            for="input_telephone_personne_depart_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Téléphone personne au départ"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_telephone_personne_depart"
+                                                                id="input_telephone_personne_depart_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.telephonePersonneDepart}"/>
@@ -719,11 +708,11 @@
                                                 <div class="form-group">
                                                     <p:outputLabel
                                                             styleClass="col-sm-3 control-label"
-                                                            for="input_heure_arrivee"
+                                                            for="input_heure_arrivee_1"
                                                             value="Heure arrivée"/>
                                                     <div class="col-md-8">
                                                         <p:calendar
-                                                                id="input_heure_arrivee"
+                                                                id="input_heure_arrivee_1"
                                                                 value="#{sejoursDetailsBean.sejour.retour.heureArrivee}"
                                                                 pattern="HH:mm"
                                                                 timeOnly="true"
@@ -732,12 +721,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_lieu_arrivee"
+                                                            for="input_lieu_arrivee_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Lieu arrivée"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_lieu_arrivee"
+                                                                id="input_lieu_arrivee_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.lieuArrivee}"/>
@@ -745,12 +734,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_lieu_rdv"
+                                                            for="input_lieu_rdv_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Lieu rendez-vous"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_lieu_rdv"
+                                                                id="input_lieu_rdv_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.lieuRendezVous}"/>
@@ -758,12 +747,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_personne_a_reception"
+                                                            for="input_personne_a_reception_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Personne à réception"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_personne_a_reception"
+                                                                id="input_personne_a_reception_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.nomPersonneAReception}"/>
@@ -771,12 +760,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_telephone_personne_a_reception"
+                                                            for="input_telephone_personne_a_reception_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Téléphone personne à réception"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_telephone_personne_a_reception"
+                                                                id="input_telephone_personne_a_reception_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.telephonePersonneAReception}"/>
@@ -784,12 +773,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_transport"
+                                                            for="input_transport_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Transport"/>
                                                     <div class="col-md-8">
                                                         <p:selectOneMenu
-                                                                id="input_transport"
+                                                                id="input_transport_1"
                                                                 value="#{sejoursDetailsBean.sejour.retour.transport}">
                                                             <f:selectItem itemLabel=""
                                                                           itemValue=""/>
@@ -810,12 +799,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <p:outputLabel
-                                                            for="input_numero_train"
+                                                            for="input_numero_train_1"
                                                             styleClass="col-sm-3 control-label"
                                                             value="Numéro train"/>
                                                     <div class="col-md-8">
                                                         <p:inputText
-                                                                id="input_numero_train"
+                                                                id="input_numero_train_1"
                                                                 maxlength="255"
                                                                 styleClass="form-control"
                                                                 value="#{sejoursDetailsBean.sejour.retour.numeroTrain}"/>
@@ -824,9 +813,8 @@
                                                 <div class="form-group">
                                                     <div class="col-md-11">
                                                         <p:commandButton
-                                                                styleClass="btn-default pull-right"
+                                                                styleClass="pull-right"
                                                                 value="Sauver"
-                                                                icon="ui-icon-circle-check"
                                                                 actionListener="#{sejoursDetailsBean.update()}"/>
                                                     </div>
                                                 </div>
@@ -839,7 +827,7 @@
                                                     <h:form>
                                                         <div class="col-md-6">
                                                             <p:autoComplete
-                                                                    id="input_accompagnateur"
+                                                                    id="input_accompagnateur_1"
                                                                     required="true"
                                                                     dropdown="true"
                                                                     converter="#{accompagnateurConverter}"
@@ -855,7 +843,6 @@
                                                         <div class="col-md-4">
                                                             <p:commandButton
                                                                     value="Ajouter"
-                                                                    icon="ui-icon-plus"
                                                                     actionListener="#{sejoursDetailsBean.ajouterAccompagnateurRetour()}"
                                                                     update=":tabs:datatableAccRetour @form"/>
                                                         </div>
@@ -883,33 +870,31 @@
                                                         <p:column width="100">
                                                             <p:button
                                                                     outcome="/accompagnateurs/details.xhtml"
-                                                                    styleClass="btn-default"
-                                                                    icon="ui-icon-pencil">
+                                                                    icon="pi pi-pencil">
                                                                 <f:param name="id"
                                                                          value="#{bean.id}"></f:param>
                                                             </p:button>
-                                                            <h:form styleClass="pull-right">
+                                                            <h:form style="display: inline;">
                                                                 <p:commandButton
-                                                                        styleClass="btn-default"
-                                                                        icon="ui-icon-trash"
+                                                                        icon="pi pi-trash"
                                                                         actionListener="#{sejoursDetailsBean.retirerAccompagnateurRetour(bean)}"
                                                                         update=":tabs:datatableAccRetour">
                                                                     <p:confirm
                                                                             header="Confirmation"
                                                                             message="Êtes vous sûr de vouloir de retirer cet accompagnateur du séjour ?"
-                                                                            icon="ui-icon-alert"/>
+                                                                    />
                                                                 </p:commandButton>
                                                                 <p:confirmDialog global="true">
                                                                     <p:commandButton
                                                                             value="Oui"
                                                                             type="button"
                                                                             styleClass="ui-confirmdialog-yes pull-right"
-                                                                            icon="ui-icon-check"/>
+                                                                    />
                                                                     <p:commandButton
                                                                             value="Non"
                                                                             type="button"
                                                                             styleClass="ui-confirmdialog-no pull-right"
-                                                                            icon="ui-icon-close"/>
+                                                                    />
                                                                 </p:confirmDialog>
                                                             </h:form>
                                                         </p:column>
@@ -964,15 +949,13 @@
                     <div class="form-group">
                         <div class="col-md-11">
                             <p:commandButton
-                                    styleClass="btn-default pull-right"
+                                    styleClass="pull-right"
                                     value="Sauver"
-                                    icon="ui-icon-circle-check"
                                     oncomplete="PF('dialogAnnulerSejour').hide();"
                                     update=":informationsForm :actionsForm"
                                     actionListener="#{sejoursDetailsBean.annulerSejour()}"/>
                             <p:commandButton
                                     styleClass="pull-right"
-                                    icon="ui-icon-closethick"
                                     onclick="PF('dialogAnnulerSejour').hide();"
                                     value="Annuler">
                                 <p:resetInput target="@form"/>
@@ -1018,16 +1001,14 @@
                     <div class="form-group">
                         <div class="col-md-11">
                             <p:commandButton
-                                    styleClass="btn-default pull-right"
+                                    styleClass="pull-right"
                                     value="Sauver"
-                                    icon="ui-icon-circle-check"
                                     oncomplete="PF('dialogTerminerSejour').hide();"
                                     update=":informationsForm :actionsForm"
                                     actionListener="#{sejoursDetailsBean.terminerSejour()}"/>
                             <p:commandButton
                                     styleClass="pull-right"
                                     onclick="PF('dialogTerminerSejour').hide();"
-                                    icon="ui-icon-closethick"
                                     value="Annuler">
                                 <p:resetInput target="@form"/>
                             </p:commandButton>

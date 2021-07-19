@@ -1,94 +1,102 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition template="/WEB-INF/template/layout.xhtml">
+    <ui:composition template="/WEB-INF/template/layout.xhtml">
 
-            <ui:define name="title">Ajouter</ui:define>
+        <ui:define name="title">Ajouter</ui:define>
 
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewParam name="inscripteurId" value="#{ajouterEnfantBean.inscripteurId}"></f:viewParam>
-                    <f:viewAction action="#{ajouterEnfantBean.init()}"></f:viewAction>
-                </f:metadata>
-            </ui:define>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="inscripteurId"
+                             value="#{ajouterEnfantBean.inscripteurId}"></f:viewParam>
+                <f:viewAction action="#{ajouterEnfantBean.init()}"></f:viewAction>
+            </f:metadata>
+        </ui:define>
 
-            <ui:define name="content">
+        <ui:define name="content">
 
-                <div class="container">
-                    <div class="col-md-offset-1 col-md-10">
-                        <h:form id="form" styleClass="form-horizontal" role="form">
-                            <p:focus context="form" />
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Enfant (Inscripteur : 
-                                    <h:link 
+            <div class="container">
+                <div class="col-md-offset-1 col-md-10">
+                    <h:form id="form" styleClass="form-horizontal" role="form">
+                        <p:focus context="form"/>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                Enfant (Inscripteur :
+                                <h:link
                                         target="_blank"
                                         outcome="/inscripteurs/details.xhtml"
                                         rendered="#{ajouterEnfantBean.form.inscripteur.getParticulier()}"
                                         value="#{ajouterEnfantBean.form.inscripteur.prenom} #{ajouterEnfantBean.form.inscripteur.nom}">
-                                        <f:param name="id" value="#{ajouterEnfantBean.form.inscripteur.id}"></f:param>    
-                                    </h:link>
-                                    <h:link 
+                                    <f:param name="id"
+                                             value="#{ajouterEnfantBean.form.inscripteur.id}"></f:param>
+                                </h:link>
+                                <h:link
                                         target="_blank"
                                         outcome="/inscripteurs/details.xhtml"
                                         rendered="#{ajouterEnfantBean.form.inscripteur.getTypeServiceSocialOuAutre()}"
                                         value="#{ajouterEnfantBean.form.inscripteur.organisme}">
-                                        <f:param name="id" value="#{ajouterEnfantBean.form.inscripteur.id}"></f:param>    
-                                    </h:link>
-                                    )
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <p:outputLabel for="enfant_nom" value="Nom" styleClass="col-sm-3 control-label" /> 
-                                        <div class="col-md-8">
-                                            <p:inputText
+                                    <f:param name="id"
+                                             value="#{ajouterEnfantBean.form.inscripteur.id}"></f:param>
+                                </h:link>
+                                )
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <p:outputLabel for="enfant_nom" value="Nom"
+                                                   styleClass="col-sm-3 control-label"/>
+                                    <div class="col-md-8">
+                                        <p:inputText
                                                 id="enfant_nom"
                                                 styleClass="form-control"
                                                 maxlength="255"
                                                 required="true"
                                                 value="#{ajouterEnfantBean.form.nom}"/>
-                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <p:outputLabel for="enfant_prenom" value="Prénom" styleClass="col-sm-3 control-label" /> 
-                                        <div class="col-md-8">
-                                            <p:inputText
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel for="enfant_prenom" value="Prénom"
+                                                   styleClass="col-sm-3 control-label"/>
+                                    <div class="col-md-8">
+                                        <p:inputText
                                                 id="enfant_prenom"
-                                                styleClass="form-control" 
+                                                styleClass="form-control"
                                                 maxlength="255"
                                                 required="true"
                                                 value="#{ajouterEnfantBean.form.prenom}"/>
-                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <p:outputLabel 
-                                            for="input_enfant_sexe" 
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel
+                                            for="input_enfant_sexe"
                                             styleClass="col-sm-3 control-label"
-                                            value="Sexe" />
-                                        <div class="col-md-8">
-                                            <p:selectOneMenu 
+                                            value="Sexe"/>
+                                    <div class="col-md-8">
+                                        <p:selectOneMenu
                                                 id="input_enfant_sexe"
                                                 required="true"
                                                 value="#{ajouterEnfantBean.form.sexe}">
-                                                <f:selectItem itemLabel="" itemValue="" />
-                                                <f:selectItem itemLabel="Homme" itemValue="HOMME" />
-                                                <f:selectItem itemLabel="Femme" itemValue="FEMME" />
-                                            </p:selectOneMenu>
-                                        </div>
+                                            <f:selectItem itemLabel="" itemValue=""/>
+                                            <f:selectItem itemLabel="Homme" itemValue="HOMME"/>
+                                            <f:selectItem itemLabel="Femme" itemValue="FEMME"/>
+                                        </p:selectOneMenu>
                                     </div>
-                                    <div class="form-group">
-                                        <p:outputLabel for="enfant_dateNaissance" value="Date de naissance" styleClass="col-sm-3 control-label" /> 
-                                        <div class="col-md-8">
-                                            <p:calendar 
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel for="enfant_dateNaissance"
+                                                   value="Date de naissance"
+                                                   styleClass="col-sm-3 control-label"/>
+                                    <div class="col-md-8">
+                                        <p:calendar
                                                 locale="fr"
                                                 pattern="dd/MM/yyyy"
                                                 mask="99/99/9999"
@@ -97,184 +105,210 @@
                                                 yearRange="c-100:c+0"
                                                 required="true"
                                                 value="#{ajouterEnfantBean.form.dateNaissance}"/>
-                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <p:outputLabel for="enfant_classe" value="Classe actuellement fréquentée" styleClass="col-sm-3 control-label" /> 
-                                        <div class="col-md-8">
-                                            <p:inputText
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel for="enfant_classe"
+                                                   value="Classe actuellement fréquentée"
+                                                   styleClass="col-sm-3 control-label"/>
+                                    <div class="col-md-8">
+                                        <p:inputText
                                                 id="enfant_classe"
-                                                styleClass="form-control" 
+                                                styleClass="form-control"
                                                 maxlength="255"
                                                 required="true"
                                                 value="#{ajouterEnfantBean.form.classeFrequentee}"/>
-                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <p:outputLabel 
-                                            for="input_enfant_remarque" 
-                                            value="Remarques" 
-                                            styleClass="col-sm-3 control-label" /> 
-                                        <div class="col-md-8">
-                                            <p:inputTextarea
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel
+                                            for="input_enfant_remarque"
+                                            value="Remarques"
+                                            styleClass="col-sm-3 control-label"/>
+                                    <div class="col-md-8">
+                                        <p:inputTextarea
                                                 id="input_enfant_remarque"
                                                 styleClass="form-control"
                                                 maxlength="2000"
                                                 rows="5"
                                                 value="#{ajouterEnfantBean.form.remarque}"/>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Informations complémentaires
-                                </div>
-                                <div class="panel-body">
-                                    <p:outputPanel id="panel_informations_complementaires">
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_contact_urgence" value="Contact en cas d'urgence" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                Informations complémentaires
+                            </div>
+                            <div class="panel-body">
+                                <p:outputPanel id="panel_informations_complementaires">
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_contact_urgence"
+                                                       value="Contact en cas d'urgence"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="input_contact_urgence"
-                                                    styleClass="form-control" 
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.informationsComplementairesEnfant.contactUrgence}"
                                                     required="true"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_tel_urgence" value="Téléphone en cas d'urgence" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_tel_urgence"
+                                                       value="Téléphone en cas d'urgence"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="input_tel_urgence"
-                                                    styleClass="form-control" 
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.informationsComplementairesEnfant.telephoneUrgence}"
                                                     required="true"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_attestation_cmu" value="Attestation C.M.U. ?" styleClass="col-sm-3 control-label" />
-                                            <div class="col-md-8">
-                                                <p:selectOneRadio 
-                                                    id="input_attestation_cmu" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_attestation_cmu"
+                                                       value="Attestation C.M.U. ?"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:selectOneRadio
+                                                    id="input_attestation_cmu"
                                                     value="#{ajouterEnfantBean.form.informationsComplementairesEnfant.attestationCMU}">
-                                                    <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
-                                                    <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
-                                                </p:selectOneRadio>
-                                            </div>
+                                                <f:selectItem itemLabel="Oui"
+                                                              itemValue="true"></f:selectItem>
+                                                <f:selectItem itemLabel="Non"
+                                                              itemValue="false"></f:selectItem>
+                                            </p:selectOneRadio>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_carte_vitale" value="Carte vitale ?" styleClass="col-sm-3 control-label" />
-                                            <div class="col-md-8">
-                                                <p:selectOneRadio 
-                                                    id="input_carte_vitale" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_carte_vitale"
+                                                       value="Carte vitale ?"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:selectOneRadio
+                                                    id="input_carte_vitale"
                                                     value="#{ajouterEnfantBean.form.informationsComplementairesEnfant.carteVitale}">
-                                                    <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
-                                                    <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
-                                                </p:selectOneRadio>
-                                            </div>
+                                                <f:selectItem itemLabel="Oui"
+                                                              itemValue="true"></f:selectItem>
+                                                <f:selectItem itemLabel="Non"
+                                                              itemValue="false"></f:selectItem>
+                                            </p:selectOneRadio>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_familleASE" value="Enfant placé chez une famille d'accueil" styleClass="col-sm-3 control-label" />
-                                            <div class="col-md-8">
-                                                <p:selectOneRadio 
-                                                    id="responsable_familleASE" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_familleASE"
+                                                       value="Enfant placé chez une famille d'accueil"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:selectOneRadio
+                                                    id="responsable_familleASE"
                                                     value="#{ajouterEnfantBean.form.informationsComplementairesEnfant.familleASE}">
-                                                    <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
-                                                    <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
-                                                </p:selectOneRadio>
-                                            </div>
+                                                <f:selectItem itemLabel="Oui"
+                                                              itemValue="true"></f:selectItem>
+                                                <f:selectItem itemLabel="Non"
+                                                              itemValue="false"></f:selectItem>
+                                            </p:selectOneRadio>
                                         </div>
-                                    </p:outputPanel>
-                                </div>
+                                    </div>
+                                </p:outputPanel>
                             </div>
+                        </div>
 
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Responsable légal
-                                </div>
-                                <div class="panel-body">
-                                    <p:outputPanel id="panel_responsable">
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="responsable_inscripteur" 
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                Responsable légal
+                            </div>
+                            <div class="panel-body">
+                                <p:outputPanel id="panel_responsable">
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="responsable_inscripteur"
                                                 value="L'inscripteur est-il le responsable légal ?"
-                                                styleClass="col-sm-3 control-label"/> 
-                                            <div class="col-md-8">
-                                                <p:selectOneRadio
+                                                styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:selectOneRadio
                                                     id="responsable_inscripteur"
                                                     value="#{ajouterEnfantBean.form.inscripteurEstResponsableLegal}">
-                                                    <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
-                                                    <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
-                                                    <p:ajax event="change" update="panel_responsable"></p:ajax>
-                                                </p:selectOneRadio>
-                                            </div>
+                                                <f:selectItem itemLabel="Oui"
+                                                              itemValue="true"></f:selectItem>
+                                                <f:selectItem itemLabel="Non"
+                                                              itemValue="false"></f:selectItem>
+                                                <p:ajax event="change"
+                                                        update="panel_responsable"></p:ajax>
+                                            </p:selectOneRadio>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_nom" value="Nom" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_nom" value="Nom"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="responsable_nom"
-                                                    styleClass="form-control" 
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.nom}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_prenom" value="Prénom" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_prenom" value="Prénom"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="responsable_prenom"
-                                                    styleClass="form-control" 
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.prenom}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
                                                 for="input_responsable_organisme"
                                                 value="Organisme"
-                                                styleClass="col-sm-3 control-label"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                                styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="input_responsable_organisme"
                                                     maxlength="255"
                                                     styleClass="form-control"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.organisme}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_la1" value="Ligne adresse 1" styleClass="col-sm-3 control-label" />
-                                            <div class="col-md-8">
-                                                <p:inputText 
-                                                    id="responsable_la1" 
-                                                    styleClass="form-control" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_la1" value="Ligne adresse 1"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="responsable_la1"
+                                                    styleClass="form-control"
                                                     required="true"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.adresse.ligneAdresseUne}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_la2" value="Ligne adresse 2" styleClass="col-sm-3 control-label" />
-                                            <div class="col-md-8">
-                                                <p:inputText 
-                                                    id="responsable_la2" 
-                                                    styleClass="form-control" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_la2" value="Ligne adresse 2"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="responsable_la2"
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.adresse.ligneAdresseDeux}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_commune" value="Commune" styleClass="col-sm-3 control-label" />
-                                            <div class="col-md-8">
-                                                <p:autoComplete
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_commune" value="Commune"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:autoComplete
                                                     id="responsable_commune"
                                                     required="true"
                                                     dropdown="true"
@@ -287,60 +321,63 @@
                                                     itemLabel="#{commune.label}"
                                                     itemValue="#{commune}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}">
-                                                </p:autoComplete>
-                                            </div>
+                                            </p:autoComplete>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_lienParente" value="Lien de parenté" styleClass="col-sm-3 control-label" />
-                                            <div class="col-md-8">
-                                                <p:inputText 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_lienParente"
+                                                       value="Lien de parenté"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="responsable_lienParente"
-                                                    styleClass="form-control" 
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.lienDeParente}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_tel" value="Téléphone" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_tel" value="Téléphone"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="responsable_tel"
-                                                    styleClass="form-control" 
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.coordonnees.telephone1}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="responsable_email" value="Email" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="responsable_email" value="Email"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="responsable_email"
-                                                    styleClass="form-control" 
+                                                    styleClass="form-control"
                                                     maxlength="255"
                                                     value="#{ajouterEnfantBean.form.responsableLegal.coordonnees.email}"
                                                     disabled="#{ajouterEnfantBean.inscripteurEstResponsableLegal}"/>
-                                            </div>
                                         </div>
-                                    </p:outputPanel>
-                                </div>
+                                    </div>
+                                </p:outputPanel>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-11">
-                                    <p:commandButton
-                                        styleClass="btn-primary pull-right" 
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <p:commandButton
+                                        styleClass="pull-right"
                                         value="Ajouter"
-                                        icon="ui-icon-plus"
                                         ajax="false"
                                         action="#{ajouterEnfantBean.ajouter()}"/>
-                                </div>
                             </div>
-                        </h:form>
-                    </div>
-                </div> <!-- .container -->
-            </ui:define>
-        </ui:composition>
-    </h:body>
+                        </div>
+                    </h:form>
+                </div>
+            </div> <!-- .container -->
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
 

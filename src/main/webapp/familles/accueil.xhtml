@@ -1,154 +1,154 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_projet" 
+    <ui:composition>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_projet"
                     styleClass="col-sm-4 control-label"
-                    value="Projet" />
-                <div class="col-md-7">
-                    <p:inputTextarea
-                        styleClass="form-control" 
+                    value="Projet"/>
+            <div class="col-md-7">
+                <p:inputTextarea
+                        styleClass="form-control"
                         rows="6"
                         autoResize="false"
-                        id="form_projet" 
+                        id="form_projet"
                         required="true"
                         maxlength="2000"
                         value="#{familleDetailsBean.form.projet}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
                     for="form_periodes"
                     styleClass="col-sm-4 control-label"
-                    value="Périodes" />
-                <div class="col-md-7">
-                    <p:selectManyCheckbox
+                    value="Périodes"/>
+            <div class="col-md-7">
+                <p:selectManyCheckbox
                         id="form_periodes"
                         columns="2"
                         layout="grid"
                         value="#{familleDetailsBean.form.periodesSouhaitees}">
-                        <f:selectItem itemLabel="Hiver" itemValue="HIVER" />
-                        <f:selectItem itemLabel="Printemps" itemValue="PRINTEMPS" />
-                        <f:selectItem itemLabel="Juillet" itemValue="JUILLET" />
-                        <f:selectItem itemLabel="Août" itemValue="AOUT" />
-                        <f:selectItem itemLabel="Toussaint" itemValue="TOUSSAINT" />
-                        <f:selectItem itemLabel="Noël" itemValue="NOEL" />
-                    </p:selectManyCheckbox>
-                </div>
+                    <f:selectItem itemLabel="Hiver" itemValue="HIVER"/>
+                    <f:selectItem itemLabel="Printemps" itemValue="PRINTEMPS"/>
+                    <f:selectItem itemLabel="Juillet" itemValue="JUILLET"/>
+                    <f:selectItem itemLabel="Août" itemValue="AOUT"/>
+                    <f:selectItem itemLabel="Toussaint" itemValue="TOUSSAINT"/>
+                    <f:selectItem itemLabel="Noël" itemValue="NOEL"/>
+                </p:selectManyCheckbox>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_sejours_complets" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_sejours_complets"
                     styleClass="col-sm-4 text-right"
-                    value="Séjours complets ?" />
-                <div class="col-md-7">
-                    <p:selectBooleanCheckbox
+                    value="Séjours complets ?"/>
+            <div class="col-md-7">
+                <p:selectBooleanCheckbox
                         id="input_sejours_complets"
                         value="#{familleDetailsBean.form.sejoursComplets}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_precisions" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_precisions"
                     styleClass="col-sm-4 control-label"
-                    value="Si non, précisez" />
-                <div class="col-md-7">
-                    <p:inputTextarea
-                        styleClass="form-control" 
+                    value="Si non, précisez"/>
+            <div class="col-md-7">
+                <p:inputTextarea
+                        styleClass="form-control"
                         rows="3"
                         autoResize="false"
-                        id="input_precisions" 
+                        id="input_precisions"
                         maxlength="255"
                         value="#{familleDetailsBean.form.precisionsSejoursNonComplets}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
                     for="form_tranches"
                     styleClass="col-sm-4 text-right"
-                    value="Tranches d'âges" />
-                <div class="col-md-7">
-                    <p:selectManyCheckbox
+                    value="Tranches d'âges"/>
+            <div class="col-md-7">
+                <p:selectManyCheckbox
                         id="form_tranches"
                         columns="2"
                         layout="grid"
                         value="#{familleDetailsBean.form.tranchesAges}">
-                        <f:selectItem itemLabel="moins de 6 ans" itemValue="MOINS_DE_6_ANS" />
-                        <f:selectItem itemLabel="6 à 9 ans" itemValue="DE_6_A_9_ANS" />
-                        <f:selectItem itemLabel="9 à 12 ans" itemValue="DE_9_A_12_ANS" />
-                        <f:selectItem itemLabel="plus de 12 ans" itemValue="PLUS_DE_12_ANS" />
-                        <f:selectItem itemLabel="indifférent" itemValue="INDIFFERENT" />
-                    </p:selectManyCheckbox>
-                </div>
+                    <f:selectItem itemLabel="moins de 6 ans" itemValue="MOINS_DE_6_ANS"/>
+                    <f:selectItem itemLabel="6 à 9 ans" itemValue="DE_6_A_9_ANS"/>
+                    <f:selectItem itemLabel="9 à 12 ans" itemValue="DE_9_A_12_ANS"/>
+                    <f:selectItem itemLabel="plus de 12 ans" itemValue="PLUS_DE_12_ANS"/>
+                    <f:selectItem itemLabel="indifférent" itemValue="INDIFFERENT"/>
+                </p:selectManyCheckbox>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_nombreFillesSouhaitees" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_nombreFillesSouhaitees"
                     styleClass="col-sm-4 control-label"
-                    value="Nombre filles souhaitées" />
-                <div class="col-md-2">
-                    <p:inputText
-                        styleClass="form-control" 
-                        id="form_nombreFillesSouhaitees" 
+                    value="Nombre filles souhaitées"/>
+            <div class="col-md-2">
+                <p:inputText
+                        styleClass="form-control"
+                        id="form_nombreFillesSouhaitees"
                         value="#{familleDetailsBean.form.nombreFillesSouhaitees}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_nombreGarconsSouhaites" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_nombreGarconsSouhaites"
                     styleClass="col-sm-4 control-label"
-                    value="Nombre garçons souhaités" />
-                <div class="col-md-2">
-                    <p:inputText
-                        styleClass="form-control" 
-                        id="form_nombreGarconsSouhaites" 
+                    value="Nombre garçons souhaités"/>
+            <div class="col-md-2">
+                <p:inputText
+                        styleClass="form-control"
+                        id="form_nombreGarconsSouhaites"
                         value="#{familleDetailsBean.form.nombreGarconsSouhaites}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_acceptehandicap" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_acceptehandicap"
                     styleClass="col-sm-4 text-right"
-                    value="Accepte handicap léger ?" />
-                <div class="col-md-4">
-                    <p:selectBooleanCheckbox
+                    value="Accepte handicap léger ?"/>
+            <div class="col-md-4">
+                <p:selectBooleanCheckbox
                         id="form_acceptehandicap"
                         value="#{familleDetailsBean.form.accepteHandicap}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_acceptepbsante" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_acceptepbsante"
                     styleClass="col-sm-4 text-right"
-                    value="Accepte prob. santé léger ?" />
-                <div class="col-md-4">
-                    <p:selectBooleanCheckbox
+                    value="Accepte prob. santé léger ?"/>
+            <div class="col-md-4">
+                <p:selectBooleanCheckbox
                         id="form_acceptepbsante"
                         value="#{familleDetailsBean.form.accepteMalade}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-11">
-                    <p:commandButton
+        </div>
+        <div class="form-group">
+            <div class="col-md-11">
+                <p:commandButton
                         process=":form:tabView_famille:tab_accueil"
-                        styleClass="btn-default pull-right" 
+                        styleClass="pull-right"
                         value="Sauver"
-                        icon="ui-icon-circle-check"
                         actionListener="#{familleDetailsBean.update()}"/>
-                </div>
             </div>
-        </ui:composition>
-    </h:body>
+        </div>
+    </ui:composition>
+</h:body>
 </html>
 

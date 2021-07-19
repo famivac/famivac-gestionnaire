@@ -1,64 +1,68 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition>
-            <div class="form-group">
-                <p:outputLabel 
+    <ui:composition>
+        <div class="form-group">
+            <p:outputLabel
                     styleClass="col-sm-3 text-right"
-                    value="Membre référent" />
-                <div class="col-md-8">
-                    <p:outputPanel id="panel_membre_referent">
-                        <h:outputText value="#{familleDetailsBean.form.membreReferent.prenom} "/>
-                        <h:outputText value="#{familleDetailsBean.form.membreReferent.nom}"/>
-                        &nbsp;
-                        <h:outputText value="En cours" styleClass="label label-default" rendered="#{not familleDetailsBean.form.radiee and not familleDetailsBean.form.candidature}"/>
-                        <h:outputText value="Radiée" styleClass="label label-danger" rendered="#{familleDetailsBean.form.radiee}"/>
-                        <h:outputText value="Candidature" styleClass="label label-warning" rendered="#{not familleDetailsBean.form.radiee and familleDetailsBean.form.candidature}"/>
-                    </p:outputPanel>
-                </div>
+                    value="Membre référent"/>
+            <div class="col-md-8">
+                <p:outputPanel id="panel_membre_referent">
+                    <h:outputText value="#{familleDetailsBean.form.membreReferent.prenom} "/>
+                    <h:outputText value="#{familleDetailsBean.form.membreReferent.nom}"/>
+                    &nbsp;
+                    <h:outputText value="En cours" styleClass="label label-default"
+                                  rendered="#{not familleDetailsBean.form.radiee and not familleDetailsBean.form.candidature}"/>
+                    <h:outputText value="Radiée" styleClass="label label-danger"
+                                  rendered="#{familleDetailsBean.form.radiee}"/>
+                    <h:outputText value="Candidature" styleClass="label label-warning"
+                                  rendered="#{not familleDetailsBean.form.radiee and familleDetailsBean.form.candidature}"/>
+                </p:outputPanel>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_la1" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_la1"
                     styleClass="col-sm-3 control-label"
-                    value="Ligne adresse 1" />
-                <div class="col-md-8">
-                    <p:inputText 
-                        styleClass="form-control" 
-                        id="form_la1" 
+                    value="Ligne adresse 1"/>
+            <div class="col-md-8">
+                <p:inputText
+                        styleClass="form-control"
+                        id="form_la1"
                         required="true"
                         maxlength="255"
                         value="#{familleDetailsBean.form.adresse.ligneAdresseUne}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_la2" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_la2"
                     styleClass="col-sm-3 control-label"
-                    value="Ligne adresse 2" />
-                <div class="col-md-8">
-                    <p:inputText
-                        styleClass="form-control" 
-                        id="form_la2" 
+                    value="Ligne adresse 2"/>
+            <div class="col-md-8">
+                <p:inputText
+                        styleClass="form-control"
+                        id="form_la2"
                         maxlength="255"
                         value="#{familleDetailsBean.form.adresse.ligneAdresseDeux}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_commune" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_commune"
                     styleClass="col-sm-3 control-label"
-                    value="Commune" />
-                <div class="col-md-8">
-                    <p:autoComplete
+                    value="Commune"/>
+            <div class="col-md-8">
+                <p:autoComplete
                         id="form_commune"
                         required="true"
                         dropdown="true"
@@ -70,20 +74,19 @@
                         completeMethod="#{familleDetailsBean.completeCommune}"
                         itemLabel="#{commune.ville} (#{commune.code})"
                         itemValue="#{commune}">
-                    </p:autoComplete>
-                </div>
+                </p:autoComplete>
             </div>
-            <div class="form-group">
-                <div class="col-md-11">
-                    <p:commandButton
+        </div>
+        <div class="form-group">
+            <div class="col-md-11">
+                <p:commandButton
                         process=":form:tabView_famille:tab_informations"
-                        styleClass="btn-default pull-right" 
+                        styleClass="pull-right"
                         value="Sauver"
-                        icon="ui-icon-circle-check"
                         actionListener="#{familleDetailsBean.update()}"/>
-                </div>
             </div>
-        </ui:composition>
-    </h:body>
+        </div>
+    </ui:composition>
+</h:body>
 </html>
 

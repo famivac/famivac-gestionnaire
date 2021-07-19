@@ -22,9 +22,8 @@
                     <div class="col-md-offset-1 col-md-10">
                         <p:button
                                 outcome="/familles/ajouter.xhtml"
-                                styleClass="btn-default pull-left"
-                                value="Ajouter"
-                                icon="ui-icon-plus"/>
+                                styleClass="pull-left"
+                                value="Ajouter"/>
                         <h:form id="form">
                             <p:selectManyButton
                                     value="#{famillesListeBean.periodesAccueil}"
@@ -96,54 +95,49 @@
                                 <p:column width="140">
                                     <p:button
                                             outcome="/familles/details.xhtml"
-                                            styleClass="btn-default pull-left"
-                                            icon="fa fa-pencil">
+                                            style="margin-right: 4px;"
+                                            icon="pi pi-pencil">
                                         <f:param name="id" value="#{bean.id}"></f:param>
                                     </p:button>
                                     <p:commandButton
-                                            styleClass="btn-default"
-                                            icon="fa fa-trash"
+                                            icon="pi pi-trash"
+                                            style="margin-right: 4px;"
                                             actionListener="#{famillesListeBean.supprimer(bean.id)}"
                                             update="datatable">
                                         <p:confirm
                                                 header="Confirmation"
                                                 message="Êtes vous sûr de vouloir supprimer cette famille ?"
-                                                icon="ui-icon-alert"/>
+                                        />
                                     </p:commandButton>
                                     <p:commandButton
                                             rendered="#{!bean.archivee}"
-                                            styleClass="btn-default"
-                                            icon="fa fa-archive"
+                                            icon="pi pi-folder"
                                             actionListener="#{famillesListeBean.archiver(bean.id)}"
                                             update="datatable">
                                         <p:confirm
                                                 header="Confirmation"
                                                 message="Êtes vous sûr de vouloir archiver cette famille ?"
-                                                icon="ui-icon-alert"/>
+                                        />
                                     </p:commandButton>
                                     <p:commandButton
                                             rendered="#{bean.archivee}"
-                                            styleClass="btn-default"
-                                            icon="fa fa-repeat"
                                             actionListener="#{famillesListeBean.desarchiver(bean.id)}"
                                             update="datatable :form:checkbox-archivees">
                                         <p:confirm
                                                 header="Confirmation"
                                                 message="Êtes vous sûr de vouloir désarchiver cette famille ?"
-                                                icon="ui-icon-alert"/>
+                                        />
                                     </p:commandButton>
                                     <p:confirmDialog global="true">
                                         <p:commandButton
                                                 value="Oui"
                                                 type="button"
                                                 process="@this"
-                                                styleClass="ui-confirmdialog-yes pull-right"
-                                                icon="ui-icon-check"/>
+                                                styleClass="ui-confirmdialog-yes pull-right"/>
                                         <p:commandButton
                                                 value="Non"
                                                 type="button"
-                                                styleClass="ui-confirmdialog-no pull-right"
-                                                icon="ui-icon-close"/>
+                                                styleClass="ui-confirmdialog-no pull-right"/>
                                     </p:confirmDialog>
                                 </p:column>
 

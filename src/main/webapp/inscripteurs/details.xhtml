@@ -1,152 +1,157 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition template="/WEB-INF/template/layout.xhtml">
+    <ui:composition template="/WEB-INF/template/layout.xhtml">
 
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewParam name="id" value="#{inscripteurDetailsBean.id}"></f:viewParam>
-                    <f:viewAction action="#{inscripteurDetailsBean.init()}"></f:viewAction>
-                </f:metadata>
-            </ui:define>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="id" value="#{inscripteurDetailsBean.id}"></f:viewParam>
+                <f:viewAction action="#{inscripteurDetailsBean.init()}"></f:viewAction>
+            </f:metadata>
+        </ui:define>
 
-            <ui:define name="title">Détails</ui:define>
+        <ui:define name="title">Détails</ui:define>
 
-            <ui:define name="content">
+        <ui:define name="content">
 
-                <div class="container">
+            <div class="container">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Inscripteur
-                                </div>
-                                <div class="panel-body">
-                                    <h:form styleClass="form-horizontal" role="form">
-                                        <div class="form-group">    
-                                            <p:outputLabel 
-                                                for="inscripteur_type" 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                Inscripteur
+                            </div>
+                            <div class="panel-body">
+                                <h:form styleClass="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_type"
                                                 value="Type"
-                                                styleClass="col-sm-3 control-label"/> 
-                                            <div class="col-md-8">
-                                                <p:selectOneRadio 
+                                                styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:selectOneRadio
                                                     id="inscripteur_type"
                                                     required="true"
                                                     value="#{inscripteurDetailsBean.form.type}">
-                                                    <f:selectItem itemLabel="Particulier" itemValue="PARTICULIER" />
-                                                    <f:selectItem itemLabel="Service Social" itemValue="SERVICE_SOCIAL" />
-                                                    <f:selectItem itemLabel="Maison d'enfants ou autre Collectivité" itemValue="AUTRE" />
-                                                    <p:ajax event="change" update="@form"></p:ajax>
-                                                </p:selectOneRadio>
-                                            </div>
+                                                <f:selectItem itemLabel="Particulier"
+                                                              itemValue="PARTICULIER"/>
+                                                <f:selectItem itemLabel="Service Social"
+                                                              itemValue="SERVICE_SOCIAL"/>
+                                                <f:selectItem
+                                                        itemLabel="Maison d'enfants ou autre Collectivité"
+                                                        itemValue="AUTRE"/>
+                                                <p:ajax event="change" update="@form"></p:ajax>
+                                            </p:selectOneRadio>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_nom" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_nom"
                                                 value="Nom"
                                                 styleClass="col-sm-3 control-label"
-                                                rendered="#{inscripteurDetailsBean.typeInscripteurParticulier}"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                                rendered="#{inscripteurDetailsBean.typeInscripteurParticulier}"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="inscripteur_nom"
                                                     maxlength="255"
                                                     required="true"
                                                     styleClass="form-control"
                                                     rendered="#{inscripteurDetailsBean.typeInscripteurParticulier}"
                                                     value="#{inscripteurDetailsBean.form.nom}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_prenom" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_prenom"
                                                 value="Prénom"
                                                 styleClass="col-sm-3 control-label"
-                                                rendered="#{inscripteurDetailsBean.typeInscripteurParticulier}"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                                rendered="#{inscripteurDetailsBean.typeInscripteurParticulier}"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="inscripteur_prenom"
                                                     maxlength="255"
                                                     rendered="#{inscripteurDetailsBean.typeInscripteurParticulier}"
                                                     required="true"
                                                     styleClass="form-control"
-                                                    value="#{inscripteurDetailsBean.form.prenom}" />
-                                            </div>
+                                                    value="#{inscripteurDetailsBean.form.prenom}"/>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_organisme" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_organisme"
                                                 value="Organisme"
                                                 styleClass="col-sm-3 control-label"
-                                                rendered="#{inscripteurDetailsBean.typeServiceSocialOuAutre}"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                                rendered="#{inscripteurDetailsBean.typeServiceSocialOuAutre}"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="inscripteur_organisme"
                                                     maxlength="255"
                                                     required="true"
                                                     styleClass="form-control"
                                                     rendered="#{inscripteurDetailsBean.typeServiceSocialOuAutre}"
                                                     value="#{inscripteurDetailsBean.form.organisme}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="input_inscripteur_siret" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="input_inscripteur_siret"
                                                 value="N° Siret"
                                                 styleClass="col-sm-3 control-label"
-                                                rendered="#{inscripteurDetailsBean.typeServiceSocialOuAutre}"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                                rendered="#{inscripteurDetailsBean.typeServiceSocialOuAutre}"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="input_inscripteur_siret"
                                                     maxlength="255"
                                                     styleClass="form-control"
                                                     rendered="#{inscripteurDetailsBean.typeServiceSocialOuAutre}"
                                                     value="#{inscripteurDetailsBean.form.numeroSiret}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_la1" 
-                                                value="Ligne adresse 1" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_la1"
+                                                value="Ligne adresse 1"
                                                 styleClass="col-sm-3 control-label"/>
-                                            <div class="col-md-8">
-                                                <p:inputText 
-                                                    id="inscripteur_la1" 
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="inscripteur_la1"
                                                     required="true"
                                                     styleClass="form-control"
                                                     value="#{inscripteurDetailsBean.form.adresse.ligneAdresseUne}"
                                                     maxlength="255"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_la2" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_la2"
                                                 value="Ligne adresse 2"
                                                 styleClass="col-sm-3 control-label"/>
-                                            <div class="col-md-8">
-                                                <p:inputText 
-                                                    id="inscripteur_la2" 
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="inscripteur_la2"
                                                     styleClass="form-control"
                                                     value="#{inscripteurDetailsBean.form.adresse.ligneAdresseDeux}"
                                                     maxlength="255"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_commune" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_commune"
                                                 value="Commune"
                                                 styleClass="col-sm-3 control-label"/>
-                                            <div class="col-md-8">
-                                                <p:autoComplete
+                                        <div class="col-md-8">
+                                            <p:autoComplete
                                                     id="inscripteur_commune"
                                                     required="true"
                                                     dropdown="true"
@@ -158,233 +163,237 @@
                                                     completeMethod="#{inscripteurDetailsBean.completeCommune}"
                                                     itemLabel="#{commune.label}"
                                                     itemValue="#{commune}">
-                                                </p:autoComplete>
-                                            </div>
+                                            </p:autoComplete>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_tel" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_tel"
                                                 value="Téléphone"
-                                                styleClass="col-sm-3 control-label"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                                styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="inscripteur_tel"
                                                     maxlength="255"
                                                     styleClass="form-control"
                                                     value="#{inscripteurDetailsBean.form.coordonnees.telephone1}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="inscripteur_fax" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_fax"
                                                 value="Fax"
-                                                styleClass="col-sm-3 control-label"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                                styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="inscripteur_fax"
                                                     maxlength="255"
                                                     styleClass="form-control"
                                                     value="#{inscripteurDetailsBean.form.coordonnees.fax}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel
-                                                for="inscripteur_email" 
-                                                value="Email" 
-                                                styleClass="col-sm-3 control-label"/> 
-                                            <div class="col-md-8">
-                                                <p:inputText
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="inscripteur_email"
+                                                value="Email"
+                                                styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
                                                     id="inscripteur_email"
                                                     maxlength="255"
                                                     styleClass="form-control"
                                                     value="#{inscripteurDetailsBean.form.coordonnees.email}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <p:outputLabel 
-                                                for="input_inscripteur_remarque" 
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel
+                                                for="input_inscripteur_remarque"
                                                 styleClass="col-sm-3 control-label"
-                                                value="Remarques" />
-                                            <div class="col-md-8">
-                                                <p:inputTextarea
-                                                    styleClass="form-control" 
+                                                value="Remarques"/>
+                                        <div class="col-md-8">
+                                            <p:inputTextarea
+                                                    styleClass="form-control"
                                                     rows="5"
                                                     autoResize="false"
-                                                    id="input_inscripteur_remarque" 
+                                                    id="input_inscripteur_remarque"
                                                     maxlength="2000"
                                                     value="#{inscripteurDetailsBean.form.remarque}"/>
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-md-11">
-                                                <p:commandButton
-                                                    styleClass="btn-default pull-right" 
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-11">
+                                            <p:commandButton
+                                                    styleClass="pull-right"
                                                     value="Sauver"
                                                     update="@form"
-                                                    icon="ui-icon-circle-check"
                                                     actionListener="#{inscripteurDetailsBean.update()}"/>
-                                            </div>
                                         </div>
-                                    </h:form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Personne responsable
-                                </div>
-                                <div class="panel-body">
-                                    <h:form styleClass="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_responsable_nom" value="Nom" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
-                                                    id="input_responsable_nom"
-                                                    styleClass="form-control" 
-                                                    maxlength="255"
-                                                    value="#{inscripteurDetailsBean.form.responsable.nom}"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_responsable_prenom" value="Prénom" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
-                                                    id="input_responsable_prenom"
-                                                    styleClass="form-control" 
-                                                    maxlength="255"
-                                                    value="#{inscripteurDetailsBean.form.responsable.prenom}"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_responsable_telephone1" value="Téléphone 1" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
-                                                    id="input_responsable_telephone1"
-                                                    styleClass="form-control" 
-                                                    maxlength="255"
-                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.telephone1}"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_responsable_telephone2" value="Téléphone 2" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
-                                                    id="input_responsable_telephone2"
-                                                    styleClass="form-control" 
-                                                    maxlength="255"
-                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.telephone2}"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_responsable_email" value="Email" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
-                                                    id="input_responsable_email"
-                                                    styleClass="form-control" 
-                                                    maxlength="255"
-                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.email}"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <p:outputLabel for="input_responsable_fax" value="Fax" styleClass="col-sm-3 control-label" /> 
-                                            <div class="col-md-8">
-                                                <p:inputText
-                                                    id="input_responsable_fax"
-                                                    styleClass="form-control" 
-                                                    maxlength="255"
-                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.fax}"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-11">
-                                                <p:commandButton
-                                                    styleClass="btn-default pull-right" 
-                                                    value="Sauver"
-                                                    update="@form"
-                                                    icon="ui-icon-circle-check"
-                                                    actionListener="#{inscripteurDetailsBean.update()}"/>
-                                            </div>
-                                        </div>
-                                    </h:form>
-                                </div>
+                                    </div>
+                                </h:form>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                Personne responsable
+                            </div>
+                            <div class="panel-body">
+                                <h:form styleClass="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_responsable_nom" value="Nom"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="input_responsable_nom"
+                                                    styleClass="form-control"
+                                                    maxlength="255"
+                                                    value="#{inscripteurDetailsBean.form.responsable.nom}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_responsable_prenom" value="Prénom"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="input_responsable_prenom"
+                                                    styleClass="form-control"
+                                                    maxlength="255"
+                                                    value="#{inscripteurDetailsBean.form.responsable.prenom}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_responsable_telephone1"
+                                                       value="Téléphone 1"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="input_responsable_telephone1"
+                                                    styleClass="form-control"
+                                                    maxlength="255"
+                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.telephone1}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_responsable_telephone2"
+                                                       value="Téléphone 2"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="input_responsable_telephone2"
+                                                    styleClass="form-control"
+                                                    maxlength="255"
+                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.telephone2}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_responsable_email" value="Email"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="input_responsable_email"
+                                                    styleClass="form-control"
+                                                    maxlength="255"
+                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.email}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p:outputLabel for="input_responsable_fax" value="Fax"
+                                                       styleClass="col-sm-3 control-label"/>
+                                        <div class="col-md-8">
+                                            <p:inputText
+                                                    id="input_responsable_fax"
+                                                    styleClass="form-control"
+                                                    maxlength="255"
+                                                    value="#{inscripteurDetailsBean.form.responsable.coordonnees.fax}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-11">
+                                            <p:commandButton
+                                                    styleClass="pull-right"
+                                                    value="Sauver"
+                                                    update="@form"
+                                                    actionListener="#{inscripteurDetailsBean.update()}"/>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Enfants
-                                </div>
-                                <div class="panel-body">
-                                    <p:button 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                Enfants
+                            </div>
+                            <div class="panel-body">
+                                <p:button
                                         outcome="/enfants/ajouter.xhtml"
-                                        styleClass="btn-default" 
                                         value="Ajouter"
-                                        icon="ui-icon-plus">
-                                        <f:param name="inscripteurId" value="#{inscripteurDetailsBean.form.id}"></f:param>
-                                    </p:button>
-                                    <br/>
-                                    <br/>
-                                    <p:dataTable 
+                                >
+                                    <f:param name="inscripteurId"
+                                             value="#{inscripteurDetailsBean.form.id}"></f:param>
+                                </p:button>
+                                <br/>
+                                <br/>
+                                <p:dataTable
                                         id="datatable"
-                                        var="bean" 
+                                        var="bean"
                                         value="#{inscripteurDetailsBean.form.enfants}"
                                         paginator="true"
                                         rowKey="#{bean.id}"
                                         rows="20"
                                         lazy="true">
-                                        <p:column headerText="Nom enfant">
-                                            <h:outputText value="#{bean.nom}"></h:outputText>
-                                        </p:column>
-                                        <p:column headerText="Prénom enfant">
-                                            <h:outputText value="#{bean.prenom}"></h:outputText>
-                                        </p:column>
+                                    <p:column headerText="Nom enfant">
+                                        <h:outputText value="#{bean.nom}"></h:outputText>
+                                    </p:column>
+                                    <p:column headerText="Prénom enfant">
+                                        <h:outputText value="#{bean.prenom}"></h:outputText>
+                                    </p:column>
 
-                                        <p:column width="100">
-                                            <p:button 
+                                    <p:column width="100">
+                                        <p:button
                                                 outcome="/enfants/details.xhtml"
-                                                styleClass="btn-default" 
-                                                icon="ui-icon-pencil">
-                                                <f:param name="id" value="#{bean.id}"></f:param>
-                                            </p:button>
-                                            <h:form styleClass="pull-right">
-                                                <p:commandButton 
-                                                    styleClass="btn-default"
-                                                    icon="ui-icon-trash"
+                                                icon="pi pi-pencil">
+                                            <f:param name="id" value="#{bean.id}"></f:param>
+                                        </p:button>
+                                        <h:form style="display: inline;">
+                                            <p:commandButton
+                                                    icon="pi pi-trash"
                                                     actionListener="#{inscripteurDetailsBean.supprimerEnfant(bean.id)}"
                                                     update=":datatable">
-                                                    <p:confirm 
-                                                        header="Confirmation" 
-                                                        message="Êtes vous sûr de vouloir supprimer cet enfant ?" 
-                                                        icon="ui-icon-alert" />
-                                                </p:commandButton>
-                                                <p:confirmDialog global="true">
-                                                    <p:commandButton 
-                                                        value="Oui" 
-                                                        type="button" 
-                                                        styleClass="ui-confirmdialog-yes pull-right" 
-                                                        icon="ui-icon-check" />
-                                                    <p:commandButton 
-                                                        value="Non" 
-                                                        type="button" 
-                                                        styleClass="ui-confirmdialog-no pull-right" 
-                                                        icon="ui-icon-close" />
-                                                </p:confirmDialog>
-                                            </h:form>
-                                        </p:column>
-                                    </p:dataTable>
-                                </div>
+                                                <p:confirm
+                                                        header="Confirmation"
+                                                        message="Êtes vous sûr de vouloir supprimer cet enfant ?"
+                                                />
+                                            </p:commandButton>
+                                            <p:confirmDialog global="true">
+                                                <p:commandButton
+                                                        value="Oui"
+                                                        type="button"
+                                                        styleClass="ui-confirmdialog-yes pull-right"
+                                                />
+                                                <p:commandButton
+                                                        value="Non"
+                                                        type="button"
+                                                        styleClass="ui-confirmdialog-no pull-right"
+                                                />
+                                            </p:confirmDialog>
+                                        </h:form>
+                                    </p:column>
+                                </p:dataTable>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                </div> <!-- .container -->
+            </div> <!-- .container -->
 
-            </ui:define>
-        </ui:composition>
-    </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
 

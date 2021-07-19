@@ -108,8 +108,7 @@
                                             <p:column width="100" exportable="false">
                                                 <p:button
                                                         outcome="/sejours/details.xhtml"
-                                                        styleClass="btn-default"
-                                                        icon="ui-icon-pencil">
+                                                        icon="pi pi-pencil">
                                                     <f:param name="id" value="#{bean.id}"></f:param>
                                                 </p:button>
                                             </p:column>
@@ -180,10 +179,9 @@
                                             <div class="col-md-11">
                                                 <p:commandButton
                                                         process=":form:tabView_famille:tab_autre"
-                                                        styleClass="btn-default pull-right"
+                                                        styleClass="pull-right"
                                                         update="panel_membre_referent"
                                                         value="Sauver"
-                                                        icon="ui-icon-circle-check"
                                                         actionListener="#{familleDetailsBean.update()}"/>
                                             </div>
                                         </div>

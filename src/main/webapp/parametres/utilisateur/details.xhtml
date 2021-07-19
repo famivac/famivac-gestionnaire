@@ -1,162 +1,162 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition template="/WEB-INF/template/layoutParametres.xhtml">
+    <ui:composition template="/WEB-INF/template/layoutParametres.xhtml">
 
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewParam name="login" value="#{utilisateurDetailsBean.login}"></f:viewParam>
-                    <f:viewAction action="#{utilisateurDetailsBean.init()}"></f:viewAction>
-                </f:metadata>
-            </ui:define>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewParam name="login" value="#{utilisateurDetailsBean.login}"></f:viewParam>
+                <f:viewAction action="#{utilisateurDetailsBean.init()}"></f:viewAction>
+            </f:metadata>
+        </ui:define>
 
-            <ui:define name="title">Détails</ui:define>
+        <ui:define name="title">Détails</ui:define>
 
-            <ui:define name="parametres-contenu">
+        <ui:define name="parametres-contenu">
 
-                <div class="col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h:outputText value="#{utilisateurDetailsBean.form.prenom} #{detailsUtilisateurForm.nom}"></h:outputText>
-                        </div>
-                        <div class="panel-body">
-                            <h:form id="form" styleClass="form-horizontal" role="form">
-                                <p:focus context="form"/>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_nom" 
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h:outputText
+                                value="#{utilisateurDetailsBean.form.prenom} #{detailsUtilisateurForm.nom}"></h:outputText>
+                    </div>
+                    <div class="panel-body">
+                        <h:form id="form" styleClass="form-horizontal" role="form">
+                            <p:focus context="form"/>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_nom"
                                         styleClass="col-sm-2 control-label"
-                                        value="Nom" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="form_nom" 
+                                        value="Nom"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="form_nom"
                                             placeholder="Nom"
                                             required="true"
                                             maxlength="255"
                                             value="#{utilisateurDetailsBean.form.nom}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_prenom" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_prenom"
                                         styleClass="col-sm-2 control-label"
-                                        value="Prénom" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="form_prenom" 
+                                        value="Prénom"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="form_prenom"
                                             placeholder="Prénom"
                                             required="true"
                                             maxlength="255"
                                             value="#{utilisateurDetailsBean.form.prenom}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                        <p:outputLabel 
-                                            for="form_groupe" 
-                                            styleClass="col-sm-2 control-label"
-                                            value="Groupe" />
-                                        <div class="col-md-10">
-                                            <p:autoComplete  
-                                                id="form_groupe"
-                                                dropdown="true" 
-                                                value="#{utilisateurDetailsBean.form.groupe}" 
-                                                completeMethod="#{utilisateurDetailsBean.autocomplete}"
-                                                required="true"/>
-                                        </div>
-                                    </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_email" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_groupe"
                                         styleClass="col-sm-2 control-label"
-                                        value="Email" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="form_email" 
+                                        value="Groupe"/>
+                                <div class="col-md-10">
+                                    <p:autoComplete
+                                            id="form_groupe"
+                                            dropdown="true"
+                                            value="#{utilisateurDetailsBean.form.groupe}"
+                                            completeMethod="#{utilisateurDetailsBean.autocomplete}"
+                                            required="true"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_email"
+                                        styleClass="col-sm-2 control-label"
+                                        value="Email"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="form_email"
                                             placeholder="Email"
                                             required="true"
                                             maxlength="2000"
                                             value="#{utilisateurDetailsBean.form.email}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_login" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_login"
                                         styleClass="col-sm-2 control-label"
-                                        value="Login" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="form_login" 
+                                        value="Login"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="form_login"
                                             placeholder="Login"
                                             required="true"
                                             maxlength="255"
                                             value="#{utilisateurDetailsBean.form.login}"
                                             disabled="true"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_password" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_password"
                                         styleClass="col-sm-2 control-label"
-                                        value="Password" />
-                                    <div class="col-md-10">
-                                        <p:password 
-                                            styleClass="form-control" 
-                                            id="form_password" 
+                                        value="Password"/>
+                                <div class="col-md-10">
+                                    <p:password
+                                            styleClass="form-control"
+                                            id="form_password"
                                             placeholder="Password"
                                             maxlength="255"
-                                            value="#{utilisateurDetailsBean.form.password}" />
-                                    </div>
+                                            value="#{utilisateurDetailsBean.form.password}"/>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_confirm_password" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_confirm_password"
                                         styleClass="col-sm-2 control-label"
-                                        value="Confirmer password" />
-                                    <div class="col-md-10">
-                                        <p:password 
-                                            styleClass="form-control" 
-                                            id="form_confirm_password" 
+                                        value="Confirmer password"/>
+                                <div class="col-md-10">
+                                    <p:password
+                                            styleClass="form-control"
+                                            id="form_confirm_password"
                                             placeholder="Confirmer password"
                                             maxlength="255"
                                             value="#{utilisateurDetailsBean.form.confirmPassword}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <p:button 
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <p:button
                                             outcome="/parametres/utilisateurs/liste.xhtml"
-                                            styleClass="btn-default" 
                                             value="Retour liste"
-                                            icon="ui-icon-circle-arrow-w"
-                                            />
-                                        <p:commandButton 
-                                            icon="ui-icon-circle-check"
-                                            styleClass="btn-primary pull-right"
+                                    />
+                                    <p:commandButton
+                                            styleClass="pull-right"
                                             actionListener="#{utilisateurDetailsBean.sauver()}"
                                             update="form"
-                                            value="Sauver"/>
-                                    </div>
+                                            value="Sauver"
+                                    />
                                 </div>
-                            </h:form>
-                        </div>
+                            </div>
+                        </h:form>
                     </div>
                 </div>
+            </div>
 
-            </ui:define>
-        </ui:composition>
-    </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
 
