@@ -121,6 +121,7 @@
                                     </p:commandButton>
                                     <p:commandButton
                                             rendered="#{bean.archivee}"
+                                            icon="pi pi-folder-open"
                                             actionListener="#{famillesListeBean.desarchiver(bean.id)}"
                                             update="datatable :form:checkbox-archivees">
                                         <p:confirm
