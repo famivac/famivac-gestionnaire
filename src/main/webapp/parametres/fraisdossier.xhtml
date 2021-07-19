@@ -1,158 +1,159 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition template="/WEB-INF/template/layoutParametres.xhtml">
+    <ui:composition template="/WEB-INF/template/layoutParametres.xhtml">
 
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewAction action="#{fraisDossierPageBean.init()}"></f:viewAction>
-                </f:metadata>
-            </ui:define>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewAction action="#{fraisDossierPageBean.init()}"></f:viewAction>
+            </f:metadata>
+        </ui:define>
 
-            <ui:define name="title">Frais Dossier</ui:define>
+        <ui:define name="title">Frais Dossier</ui:define>
 
-            <ui:define name="parametres-contenu">
+        <ui:define name="parametres-contenu">
 
-                <div class="col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Frais Dossier
-                        </div>
-                        <div class="panel-body">
-                            <h:form id="form_datatable">
-                                <p:dataTable 
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Frais Dossier
+                    </div>
+                    <div class="panel-body">
+                        <h:form id="form_datatable">
+                            <p:dataTable
                                     id="datatable"
-                                    var="bean" 
+                                    var="bean"
                                     value="#{fraisDossierPageBean.lazyModel}"
                                     paginator="true"
                                     rowKey="#{bean.id}"
                                     rows="20"
                                     lazy="true"
                                     editable="true">
-                                    <p:ajax event="rowEdit" listener="#{fraisDossierPageBean.onRowEdit}" />
+                                <p:ajax event="rowEdit"
+                                        listener="#{fraisDossierPageBean.onRowEdit}"/>
 
-                                    <p:column headerText="Montant">
-                                        <h:outputText value="#{bean.montant}"></h:outputText>
-                                    </p:column>
+                                <p:column headerText="Montant">
+                                    <h:outputText value="#{bean.montant}"></h:outputText>
+                                </p:column>
 
-                                    <p:column headerText="Date début validité">
-                                        <p:cellEditor>
-                                            <f:facet name="output">
-                                                <h:outputText value="#{bean.dateDebutValidite}">
-                                                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                                                </h:outputText>
-                                            </f:facet>
-                                            <f:facet name="input">
-                                                <p:calendar 
+                                <p:column headerText="Date début validité">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{bean.dateDebutValidite}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </h:outputText>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:calendar
                                                     locale="fr"
                                                     pattern="dd/MM/yyyy"
                                                     mask="99/99/9999"
-                                                    id="input_date_debut_validite"
+                                                    id="input_date_debut_validite_1"
                                                     navigator="true"
                                                     yearRange="c-10:c+10"
                                                     required="true"
                                                     value="#{bean.dateDebutValidite}"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                                    <p:column headerText="Date fin validité">
-                                        <p:cellEditor>
-                                            <f:facet name="output">
-                                                <h:outputText value="#{bean.dateFinValidite}">
-                                                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                                                </h:outputText>
-                                            </f:facet>
-                                            <f:facet name="input">
-                                                <p:calendar 
+                                <p:column headerText="Date fin validité">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{bean.dateFinValidite}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                            </h:outputText>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:calendar
                                                     locale="fr"
                                                     pattern="dd/MM/yyyy"
                                                     mask="99/99/9999"
-                                                    id="input_date_fin_validite"
+                                                    id="input_date_fin_validite_2"
                                                     navigator="true"
                                                     yearRange="c-10:c+10"
                                                     required="true"
                                                     value="#{bean.dateFinValidite}"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                                    <p:column width="70">
-                                        <p:rowEditor />
-                                    </p:column>
+                                <p:column width="70">
+                                    <p:rowEditor/>
+                                </p:column>
 
-                                    <p:column width="50">
-                                        <p:commandButton 
-                                            styleClass="btn-default"
-                                            icon="ui-icon-trash"
+                                <p:column width="50">
+                                    <p:commandButton
+                                            icon="pi pi-trash"
                                             actionListener="#{fraisDossierPageBean.supprimer(bean.id)}"
                                             update="datatable">
-                                            <p:confirm 
-                                                header="Confirmation" 
-                                                message="Êtes vous sûr de vouloir supprimer ce tarif ?" 
-                                                icon="ui-icon-alert" />
-                                        </p:commandButton>
-                                        <p:confirmDialog global="true">
-                                            <p:commandButton 
-                                                value="Oui" 
-                                                type="button" 
-                                                process="@this"
-                                                styleClass="ui-confirmdialog-yes pull-right" 
-                                                icon="ui-icon-check" />
-                                            <p:commandButton 
-                                                value="Non" 
+                                        <p:confirm
+                                                header="Confirmation"
+                                                message="Êtes vous sûr de vouloir supprimer ce tarif ?"
+                                        />
+                                    </p:commandButton>
+                                    <p:confirmDialog global="true">
+                                        <p:commandButton
+                                                value="Oui"
                                                 type="button"
-                                                styleClass="ui-confirmdialog-no pull-right" 
-                                                icon="ui-icon-close" />
-                                        </p:confirmDialog>
-                                    </p:column>
+                                                process="@this"
+                                                styleClass="ui-confirmdialog-yes pull-right"
+                                        />
+                                        <p:commandButton
+                                                value="Non"
+                                                type="button"
+                                                styleClass="ui-confirmdialog-no pull-right"
+                                        />
+                                    </p:confirmDialog>
+                                </p:column>
 
-                                </p:dataTable>
-                            </h:form>
-                        </div>
+                            </p:dataTable>
+                        </h:form>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-offset-3 col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Ajouter frais dossier
-                        </div>
-                        <div class="panel-body">
-                            <h:form id="form" styleClass="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="input_montant" 
+            <div class="col-md-offset-3 col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Ajouter frais dossier
+                    </div>
+                    <div class="panel-body">
+                        <h:form id="form" styleClass="form-horizontal" role="form">
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="input_montant"
                                         styleClass="col-sm-3 control-label"
-                                        value="Montant" />
-                                    <div class="col-md-9">
-                                        <p:inputNumber 
-                                            id="input_montant" 
-                                            value="#{fraisDossierPageBean.form.montant}" 
-                                            symbol=" EUR" 
-                                            symbolPosition="s" 
-                                            decimalSeparator="," 
-                                            thousandSeparator="." 
-                                            decimalPlaces="2">  
-                                        </p:inputNumber>
-                                    </div>
+                                        value="Montant"/>
+                                <div class="col-md-9">
+                                    <p:inputNumber
+                                            id="input_montant"
+                                            value="#{fraisDossierPageBean.form.montant}"
+                                            symbol=" EUR"
+                                            symbolPosition="s"
+                                            decimalSeparator=","
+                                            thousandSeparator="."
+                                            decimalPlaces="2">
+                                    </p:inputNumber>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="input_date_debut_validite" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="input_date_debut_validite"
                                         styleClass="col-sm-3 control-label"
-                                        value="Date début validité" />
-                                    <div class="col-md-9">
-                                        <p:calendar 
+                                        value="Date début validité"/>
+                                <div class="col-md-9">
+                                    <p:calendar
                                             locale="fr"
                                             pattern="dd/MM/yyyy"
                                             mask="99/99/9999"
@@ -161,15 +162,15 @@
                                             yearRange="c-10:c+10"
                                             required="true"
                                             value="#{fraisDossierPageBean.form.dateDebutValidite}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="input_date_fin_validite" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="input_date_fin_validite"
                                         styleClass="col-sm-3 control-label"
-                                        value="Date fin validité" />
-                                    <div class="col-md-9">
-                                        <p:calendar 
+                                        value="Date fin validité"/>
+                                <div class="col-md-9">
+                                    <p:calendar
                                             locale="fr"
                                             pattern="dd/MM/yyyy"
                                             mask="99/99/9999"
@@ -178,25 +179,24 @@
                                             yearRange="c-10:c+10"
                                             required="true"
                                             value="#{fraisDossierPageBean.form.dateFinValidite}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <p:commandButton
-                                            styleClass="btn-primary pull-right" 
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <p:commandButton
+                                            styleClass="pull-right"
                                             value="Ajouter"
-                                            icon="ui-icon-plus"
                                             update=":form_datatable @form"
                                             action="#{fraisDossierPageBean.create()}"/>
-                                    </div>
                                 </div>
-                            </h:form>
-                        </div>
+                            </div>
+                        </h:form>
                     </div>
                 </div>
+            </div>
 
-            </ui:define>
-        </ui:composition>
-    </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
 

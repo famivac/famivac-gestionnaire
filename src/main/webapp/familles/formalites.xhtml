@@ -1,142 +1,142 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition>
-            <h4>Recrutement</h4>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_nom_recruteur" 
+    <ui:composition>
+        <h4>Recrutement</h4>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_nom_recruteur"
                     styleClass="col-sm-4 control-label"
-                    value="Nom recruteur" />
-                <div class="col-md-7">
-                    <p:inputText
-                        styleClass="form-control" 
-                        id="form_nom_recruteur" 
+                    value="Nom recruteur"/>
+            <div class="col-md-7">
+                <p:inputText
+                        styleClass="form-control"
+                        id="form_nom_recruteur"
                         maxlength="255"
                         value="#{familleDetailsBean.form.nomRecruteur}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_date_recrutement" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_date_recrutement"
                     styleClass="col-sm-4 control-label"
-                    value="Date recrutement" />
-                <div class="col-md-7">
-                    <p:calendar 
+                    value="Date recrutement"/>
+            <div class="col-md-7">
+                <p:calendar
                         locale="fr"
                         pattern="dd/MM/yyyy"
                         mask="99/99/9999"
-                        id="form_date_recrutement" 
+                        id="form_date_recrutement"
                         placeholder="01/01/1990"
                         value="#{familleDetailsBean.form.dateRecrutement}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_avis_recrutement" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_avis_recrutement"
                     styleClass="col-sm-4 control-label"
-                    value="Avis recruteur" />
-                <div class="col-md-7">
-                    <p:selectOneRadio
+                    value="Avis recruteur"/>
+            <div class="col-md-7">
+                <p:selectOneRadio
                         id="form_avis_recrutement"
                         value="#{familleDetailsBean.form.avisRecrutement}">
-                        <f:selectItem itemLabel="Favorable" itemValue="FAVORABLE"></f:selectItem>
-                        <f:selectItem itemLabel="Réservé" itemValue="RESERVE"></f:selectItem>
-                        <f:selectItem itemLabel="Défavorable" itemValue="DEFAVORABLE"></f:selectItem>
-                    </p:selectOneRadio>
-                </div>
+                    <f:selectItem itemLabel="Favorable" itemValue="FAVORABLE"></f:selectItem>
+                    <f:selectItem itemLabel="Réservé" itemValue="RESERVE"></f:selectItem>
+                    <f:selectItem itemLabel="Défavorable" itemValue="DEFAVORABLE"></f:selectItem>
+                </p:selectOneRadio>
             </div>
-            <hr/>
-            <h4>DDCS</h4>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_visite_ddcs" 
+        </div>
+        <hr/>
+        <h4>DDCS</h4>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_visite_ddcs"
                     styleClass="col-sm-4 text-right"
-                    value="Visite DDCS ?" />
-                <div class="col-md-7">
-                    <p:selectBooleanCheckbox
+                    value="Visite DDCS ?"/>
+            <div class="col-md-7">
+                <p:selectBooleanCheckbox
                         id="input_visite_ddcs"
                         value="#{familleDetailsBean.form.visiteDdcs}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_date_visite_ddcs" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_date_visite_ddcs"
                     styleClass="col-sm-4 control-label"
-                    value="Date visite DDCS" />
-                <div class="col-md-7">
-                    <p:calendar 
+                    value="Date visite DDCS"/>
+            <div class="col-md-7">
+                <p:calendar
                         locale="fr"
                         pattern="dd/MM/yyyy"
                         mask="99/99/9999"
-                        id="input_date_visite_ddcs" 
+                        id="input_date_visite_ddcs"
                         placeholder="01/01/1990"
                         value="#{familleDetailsBean.form.dateVisiteDdcs}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_avis_ddcs" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_avis_ddcs"
                     styleClass="col-sm-4 control-label"
-                    value="Avis" />
-                <div class="col-md-7">
-                    <p:selectOneRadio
+                    value="Avis"/>
+            <div class="col-md-7">
+                <p:selectOneRadio
                         id="input_avis_ddcs"
                         value="#{familleDetailsBean.form.avisDdcs}">
-                        <f:selectItem itemLabel="Favorable" itemValue="FAVORABLE"></f:selectItem>
-                        <f:selectItem itemLabel="Réservé" itemValue="RESERVE"></f:selectItem>
-                        <f:selectItem itemLabel="Défavorable" itemValue="DEFAVORABLE"></f:selectItem>
-                    </p:selectOneRadio>
-                </div>
+                    <f:selectItem itemLabel="Favorable" itemValue="FAVORABLE"></f:selectItem>
+                    <f:selectItem itemLabel="Réservé" itemValue="RESERVE"></f:selectItem>
+                    <f:selectItem itemLabel="Défavorable" itemValue="DEFAVORABLE"></f:selectItem>
+                </p:selectOneRadio>
             </div>
-            <hr/>
-            <h4>Autre</h4>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_casier_judiciaire" 
+        </div>
+        <hr/>
+        <h4>Autre</h4>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_casier_judiciaire"
                     styleClass="col-sm-4 text-right"
-                    value="Extrait casier judiciaire" />
-                <div class="col-md-7">
-                    <p:selectBooleanCheckbox
+                    value="Extrait casier judiciaire"/>
+            <div class="col-md-7">
+                <p:selectBooleanCheckbox
                         id="form_casier_judiciaire"
                         value="#{familleDetailsBean.form.extraitCasierJudiciaire}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="form_date_reception_casier" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="form_date_reception_casier"
                     styleClass="col-sm-4 control-label"
-                    value="Date réception" />
-                <div class="col-md-7">
-                    <p:calendar 
+                    value="Date réception"/>
+            <div class="col-md-7">
+                <p:calendar
                         locale="fr"
                         pattern="dd/MM/yyyy"
                         mask="99/99/9999"
-                        id="form_date_reception_casier" 
+                        id="form_date_reception_casier"
                         value="#{familleDetailsBean.form.dateReceptionCasierJudiciaire}"
                         placeholder="01/01/1990"/>
-                </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-11">
-                    <p:commandButton
+        </div>
+        <div class="form-group">
+            <div class="col-md-11">
+                <p:commandButton
                         process=":form:tabView_famille:tab_formalites"
-                        styleClass="btn-default pull-right" 
+                        styleClass="pull-right"
                         value="Sauver"
-                        icon="ui-icon-circle-check"
                         actionListener="#{familleDetailsBean.update()}"/>
-                </div>
             </div>
-        </ui:composition>
-    </h:body>
+        </div>
+    </ui:composition>
+</h:body>
 </html>
 

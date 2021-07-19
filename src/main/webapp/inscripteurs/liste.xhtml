@@ -56,11 +56,10 @@
                                 </div>
                                 <div class="form-group">
                                     <p:commandButton
-                                            styleClass="btn-primary"
                                             value="Rechercher"
                                             update=":datatable"
                                             actionListener="#{inscripteursListeBean.rechercher()}"
-                                            icon="ui-icon-search"/>
+                                    />
                                 </div>
                             </h:form>
                         </div>
@@ -73,9 +72,8 @@
                         <div class="panel-body">
                             <p:button
                                     outcome="/inscripteurs/ajouter.xhtml"
-                                    styleClass="btn-default"
                                     value="Ajouter"
-                                    icon="ui-icon-plus"/>
+                            />
                             <br/>
                             <br/>
                             <p:dataTable
@@ -99,32 +97,30 @@
                                 <p:column width="100">
                                     <p:button
                                             outcome="/inscripteurs/details.xhtml"
-                                            styleClass="btn-default"
-                                            icon="ui-icon-pencil">
+                                            icon="pi pi-pencil">
                                         <f:param name="id" value="#{bean.id}"></f:param>
                                     </p:button>
-                                    <h:form styleClass="pull-right">
+                                    <h:form style="display: inline;">
                                         <p:commandButton
-                                                styleClass="btn-default"
-                                                icon="ui-icon-trash"
+                                                icon="pi pi-trash"
                                                 actionListener="#{inscripteursListeBean.supprimer(bean.id)}"
                                                 update=":datatable">
                                             <p:confirm
                                                     header="Confirmation"
                                                     message="Êtes vous sûr de vouloir supprimer cet inscripteur ? (supprimera aussi tous les enfants liés)"
-                                                    icon="ui-icon-alert"/>
+                                            />
                                         </p:commandButton>
                                         <p:confirmDialog global="true">
                                             <p:commandButton
                                                     value="Oui"
                                                     type="button"
                                                     styleClass="ui-confirmdialog-yes pull-right"
-                                                    icon="ui-icon-check"/>
+                                            />
                                             <p:commandButton
                                                     value="Non"
                                                     type="button"
                                                     styleClass="ui-confirmdialog-no pull-right"
-                                                    icon="ui-icon-close"/>
+                                            />
                                         </p:confirmDialog>
                                     </h:form>
                                 </p:column>

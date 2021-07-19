@@ -1,236 +1,237 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition template="/WEB-INF/template/layoutParametres.xhtml">
+    <ui:composition template="/WEB-INF/template/layoutParametres.xhtml">
 
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewAction action="#{utilisateursBean.init()}"></f:viewAction>
-                </f:metadata>
-            </ui:define>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewAction action="#{utilisateursBean.init()}"></f:viewAction>
+            </f:metadata>
+        </ui:define>
 
-            <ui:define name="title">Utilisateurs</ui:define>
+        <ui:define name="title">Utilisateurs</ui:define>
 
-            <ui:define name="parametres-contenu">
+        <ui:define name="parametres-contenu">
 
-                <div class="col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Utilisateurs
-                        </div>
-                        <div class="panel-body">
-                            <h:form id="form_datatable">
-                                <p:messages id="password_displayer" globalOnly="true"/>
-                                <p:dataTable 
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Utilisateurs
+                    </div>
+                    <div class="panel-body">
+                        <h:form id="form_datatable">
+                            <p:messages id="password_displayer" globalOnly="true"/>
+                            <p:dataTable
                                     id="datatable"
-                                    var="bean" 
+                                    var="bean"
                                     value="#{utilisateursBean.lazyModel}"
                                     paginator="true"
                                     rowKey="#{bean.id}"
                                     rows="20"
                                     lazy="true"
-                                    editable="true" 
+                                    editable="true"
                                     editMode="cell">
-                                    <p:ajax event="cellEdit" listener="#{utilisateursBean.onCellEdit}" />
+                                <p:ajax event="cellEdit" listener="#{utilisateursBean.onCellEdit}"/>
 
-                                    <p:column headerText="Prénom Nom">
-                                        <h:outputText value="#{bean.prenom} #{bean.nom}"></h:outputText>
-                                    </p:column>
+                                <p:column headerText="Prénom Nom">
+                                    <h:outputText value="#{bean.prenom} #{bean.nom}"></h:outputText>
+                                </p:column>
 
-                                    <p:column headerText="Login">
-                                        <h:outputText value="#{bean.login}"></h:outputText>
-                                    </p:column>
+                                <p:column headerText="Login">
+                                    <h:outputText value="#{bean.login}"></h:outputText>
+                                </p:column>
 
-                                    <p:column headerText="Groupe">
-                                        <p:cellEditor>
+                                <p:column headerText="Groupe">
+                                    <p:cellEditor>
 
-                                            <f:facet name="output"><h:outputText value="#{bean.groupesLabel}"></h:outputText></f:facet>
-                                            <f:facet name="input">
-                                                <p:autoComplete  
-                                                    id="form_groupe"
+                                        <f:facet name="output"><h:outputText
+                                                value="#{bean.groupesLabel}"></h:outputText></f:facet>
+                                        <f:facet name="input">
+                                            <p:autoComplete
+                                                    id="form_groupe_1"
                                                     dropdown="true"
                                                     multiple="true"
                                                     var="groupe"
-                                                    value="#{bean.groupes}" 
+                                                    value="#{bean.groupes}"
                                                     completeMethod="#{utilisateursBean.completeGroupe}"
                                                     converter="#{groupeConverter}"
                                                     itemLabel="#{groupe.libelle}"
                                                     itemValue="#{groupe}"
                                                     required="true"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
 
-                                    <p:column width="150">
+                                <p:column width="150">
 
-                                        <p:commandButton 
-                                            styleClass="btn-default"
-                                            icon="ui-icon-unlocked"
+                                    <p:commandButton
+                                            icon="pi pi-lock"
                                             update="@form"
                                             process="@this"
+                                            style="margin-right: 4px;"
                                             title="Verrouiller"
                                             actionListener="#{utilisateursBean.lock(bean)}"
-                                            rendered="#{bean.enabled}"/>
-                                        <p:commandButton 
-                                            styleClass="btn-default"
-                                            icon="ui-icon-locked"
+                                            rendered="#{bean.enabled}"
+                                    />
+                                    <p:commandButton
+                                            icon="pi pi-unlock"
                                             update="@form"
                                             process="@this"
+                                            style="margin-right: 4px;"
                                             title="Déverouiller"
                                             actionListener="#{utilisateursBean.unlock(bean)}"
                                             rendered="#{not bean.enabled}"/>
-                                        <p:commandButton 
-                                            styleClass="btn-default"
-                                            icon="ui-icon-arrowrefresh-1-e"
+                                    <p:commandButton
+                                            icon="pi pi-refresh"
                                             title="Réinitialiser mot de passe"
                                             process="@this"
+                                            style="margin-right: 4px;"
                                             actionListener="#{utilisateursBean.reinitialiserMotDePasse(bean)}"
                                             update="@form"/>
-                                        <p:commandButton 
-                                            styleClass="btn-default"
-                                            icon="ui-icon-trash"
+                                    <p:commandButton
+                                            icon="pi pi-trash"
                                             title="Supprimer"
                                             process="@this"
                                             actionListener="#{utilisateursBean.delete(bean)}"
                                             update="@form">
-                                            <p:confirm 
-                                                header="Confirmation" 
-                                                message="Êtes vous sûr de vouloir supprimer cet utilisateur ?" 
-                                                icon="ui-icon-alert" />
-                                        </p:commandButton>
-                                        <p:confirmDialog global="true">
-                                            <p:commandButton 
-                                                value="Oui" 
-                                                type="button" 
-                                                styleClass="ui-confirmdialog-yes pull-right" 
-                                                icon="ui-icon-check" />
-                                            <p:commandButton 
-                                                value="Non" 
-                                                type="button" 
-                                                styleClass="ui-confirmdialog-no pull-right" 
-                                                icon="ui-icon-close" />
-                                        </p:confirmDialog>
-                                    </p:column>
+                                        <p:confirm
+                                                header="Confirmation"
+                                                message="Êtes vous sûr de vouloir supprimer cet utilisateur ?"
+                                        />
+                                    </p:commandButton>
+                                    <p:confirmDialog global="true">
+                                        <p:commandButton
+                                                value="Oui"
+                                                type="button"
+                                                styleClass="ui-confirmdialog-yes pull-right"
+                                        />
+                                        <p:commandButton
+                                                value="Non"
+                                                type="button"
+                                                styleClass="ui-confirmdialog-no pull-right"
+                                        />
+                                    </p:confirmDialog>
+                                </p:column>
 
-                                </p:dataTable>
-                            </h:form>
-                        </div>
+                            </p:dataTable>
+                        </h:form>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-offset-3 col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Ajouter utilisateur
-                        </div>
-                        <div class="panel-body">
-                            <h:form id="form" styleClass="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_nom" 
+            <div class="col-md-offset-3 col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Ajouter utilisateur
+                    </div>
+                    <div class="panel-body">
+                        <h:form id="form" styleClass="form-horizontal" role="form">
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_nom"
                                         styleClass="col-sm-2 control-label"
-                                        value="Nom" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="form_nom" 
+                                        value="Nom"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="form_nom"
                                             placeholder="Nom"
                                             required="true"
                                             maxlength="255"
                                             value="#{utilisateursBean.form.nom}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_prenom" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_prenom"
                                         styleClass="col-sm-2 control-label"
-                                        value="Prénom" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="form_prenom" 
+                                        value="Prénom"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="form_prenom"
                                             placeholder="Prénom"
                                             required="true"
                                             maxlength="255"
                                             value="#{utilisateursBean.form.prenom}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_groupe" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_groupe"
                                         styleClass="col-sm-2 control-label"
-                                        value="Groupe" />
-                                    <div class="col-md-10">
-                                        <p:autoComplete  
+                                        value="Groupe"/>
+                                <div class="col-md-10">
+                                    <p:autoComplete
                                             id="form_groupe"
                                             dropdown="true"
                                             multiple="true"
                                             var="groupe"
-                                            value="#{utilisateursBean.form.groupes}" 
+                                            value="#{utilisateursBean.form.groupes}"
                                             completeMethod="#{utilisateursBean.completeGroupe}"
                                             converter="#{groupeConverter}"
                                             itemLabel="#{groupe.libelle}"
                                             itemValue="#{groupe}"
                                             required="true"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="input_login" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="input_login"
                                         styleClass="col-sm-2 control-label"
-                                        value="Login" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="input_login" 
+                                        value="Login"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="input_login"
                                             placeholder="Login"
                                             required="true"
                                             maxlength="255"
                                             value="#{utilisateursBean.form.login}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p:outputLabel 
-                                        for="form_email" 
+                            </div>
+                            <div class="form-group">
+                                <p:outputLabel
+                                        for="form_email"
                                         styleClass="col-sm-2 control-label"
-                                        value="Email" />
-                                    <div class="col-md-10">
-                                        <p:inputText 
-                                            styleClass="form-control" 
-                                            id="form_email" 
+                                        value="Email"/>
+                                <div class="col-md-10">
+                                    <p:inputText
+                                            styleClass="form-control"
+                                            id="form_email"
                                             placeholder="Email"
                                             required="true"
                                             maxlength="2000"
                                             value="#{utilisateursBean.form.email}"/>
-                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <p:commandButton
-                                            styleClass="btn-primary pull-right" 
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <p:commandButton
+                                            styleClass="pull-right"
                                             value="Ajouter"
-                                            icon="ui-icon-plus"
                                             update=":form_datatable @form"
                                             action="#{utilisateursBean.add()}"/>
-                                    </div>
                                 </div>
-                            </h:form>
-                        </div>
+                            </div>
+                        </h:form>
                     </div>
                 </div>
+            </div>
 
 
-            </ui:define>
-        </ui:composition>
-    </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
 

@@ -1,166 +1,167 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition>
+    <ui:composition>
 
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_maison_individuelle" 
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_maison_individuelle"
                     styleClass="col-sm-3 control-label"
-                    value="Type" />
-                <div class="col-md-8">
-                    <p:selectOneRadio 
+                    value="Type"/>
+            <div class="col-md-8">
+                <p:selectOneRadio
                         id="input_maison_individuelle"
                         value="#{familleDetailsBean.form.informationsHabitation.typeHabitation}">
-                        <f:selectItem itemLabel="Maison individuelle, pavillon" itemValue="MAISON_INDIVIDUELLE" />
-                        <f:selectItem itemLabel="Appartement" itemValue="APPARTEMENT" />
-                        <f:selectItem itemLabel="Ferme" itemValue="FERME" />
-                    </p:selectOneRadio>
-                </div>
+                    <f:selectItem itemLabel="Maison individuelle, pavillon"
+                                  itemValue="MAISON_INDIVIDUELLE"/>
+                    <f:selectItem itemLabel="Appartement" itemValue="APPARTEMENT"/>
+                    <f:selectItem itemLabel="Ferme" itemValue="FERME"/>
+                </p:selectOneRadio>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_situation" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_situation"
                     styleClass="col-sm-3 control-label"
-                    value="Type" />
-                <div class="col-md-8">
-                    <p:selectOneRadio 
+                    value="Type"/>
+            <div class="col-md-8">
+                <p:selectOneRadio
                         id="input_situation"
                         value="#{familleDetailsBean.form.informationsHabitation.situationHabitation}">
-                        <f:selectItem itemLabel="Ville" itemValue="VILLE" />
-                        <f:selectItem itemLabel="Village" itemValue="VILLAGE" />
-                        <f:selectItem itemLabel="Hameau" itemValue="HAMEAU" />
-                        <f:selectItem itemLabel="Isolé" itemValue="ISOLE" />
-                    </p:selectOneRadio>
-                </div>
+                    <f:selectItem itemLabel="Ville" itemValue="VILLE"/>
+                    <f:selectItem itemLabel="Village" itemValue="VILLAGE"/>
+                    <f:selectItem itemLabel="Hameau" itemValue="HAMEAU"/>
+                    <f:selectItem itemLabel="Isolé" itemValue="ISOLE"/>
+                </p:selectOneRadio>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_ville_proche" 
-                    value="Ville la plus proche" 
-                    styleClass="col-sm-3 control-label" /> 
-                <div class="col-md-8">
-                    <p:inputText
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_ville_proche"
+                    value="Ville la plus proche"
+                    styleClass="col-sm-3 control-label"/>
+            <div class="col-md-8">
+                <p:inputText
                         id="input_ville_proche"
-                        styleClass="form-control" 
+                        styleClass="form-control"
                         maxlength="255"
                         value="#{familleDetailsBean.form.informationsHabitation.villeLaPlusProche}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_jardin_espace_jeu" 
-                    value="Jardin ou espace de jeux" 
-                    styleClass="col-sm-3 control-label" />
-                <div class="col-md-8">
-                    <p:selectOneRadio 
-                        id="input_jardin_espace_jeu" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_jardin_espace_jeu"
+                    value="Jardin ou espace de jeux"
+                    styleClass="col-sm-3 control-label"/>
+            <div class="col-md-8">
+                <p:selectOneRadio
+                        id="input_jardin_espace_jeu"
                         value="#{familleDetailsBean.form.informationsHabitation.jardinEspaceJeu}">
-                        <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
-                        <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
-                    </p:selectOneRadio>
-                </div>
+                    <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
+                    <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
+                </p:selectOneRadio>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_piscine" 
-                    value="Piscine hors-sol ou piscine" 
-                    styleClass="col-sm-3 control-label" />
-                <div class="col-md-8">
-                    <p:selectOneRadio 
-                        id="input_piscine" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_piscine"
+                    value="Piscine hors-sol ou piscine"
+                    styleClass="col-sm-3 control-label"/>
+            <div class="col-md-8">
+                <p:selectOneRadio
+                        id="input_piscine"
                         value="#{familleDetailsBean.form.informationsHabitation.piscine}">
-                        <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
-                        <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
-                    </p:selectOneRadio>
-                </div>
+                    <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
+                    <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
+                </p:selectOneRadio>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_piscine_securisee" 
-                    value="Piscine sécurisée" 
-                    styleClass="col-sm-3 control-label" />
-                <div class="col-md-8">
-                    <p:selectOneRadio 
-                        id="input_piscine_securisee" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_piscine_securisee"
+                    value="Piscine sécurisée"
+                    styleClass="col-sm-3 control-label"/>
+            <div class="col-md-8">
+                <p:selectOneRadio
+                        id="input_piscine_securisee"
                         value="#{familleDetailsBean.form.informationsHabitation.piscineSecurisee}">
-                        <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
-                        <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
-                    </p:selectOneRadio>
-                </div>
+                    <f:selectItem itemLabel="Oui" itemValue="true"></f:selectItem>
+                    <f:selectItem itemLabel="Non" itemValue="false"></f:selectItem>
+                </p:selectOneRadio>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_nombre_chiens" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_nombre_chiens"
                     styleClass="col-sm-3 control-label"
-                    value="Nombre chiens" />
-                <div class="col-md-3">
-                    <p:inputText
-                        styleClass="form-control" 
-                        id="input_nombre_chiens" 
+                    value="Nombre chiens"/>
+            <div class="col-md-3">
+                <p:inputText
+                        styleClass="form-control"
+                        id="input_nombre_chiens"
                         value="#{familleDetailsBean.form.informationsHabitation.nombreChiens}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_nombre_chats" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_nombre_chats"
                     styleClass="col-sm-3 control-label"
-                    value="Nombre chats" />
-                <div class="col-md-3">
-                    <p:inputText
-                        styleClass="form-control" 
-                        id="input_nombre_chats" 
+                    value="Nombre chats"/>
+            <div class="col-md-3">
+                <p:inputText
+                        styleClass="form-control"
+                        id="input_nombre_chats"
                         value="#{familleDetailsBean.form.informationsHabitation.nombreChats}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_autres_animaux" 
-                    value="Autres animaux" 
-                    styleClass="col-sm-3 control-label" /> 
-                <div class="col-md-8">
-                    <p:inputText
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_autres_animaux"
+                    value="Autres animaux"
+                    styleClass="col-sm-3 control-label"/>
+            <div class="col-md-8">
+                <p:inputText
                         id="input_autres_animaux"
-                        styleClass="form-control" 
+                        styleClass="form-control"
                         maxlength="1000"
                         value="#{familleDetailsBean.form.informationsHabitation.autresAnimaux}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <p:outputLabel 
-                    for="input_points_vigilance" 
-                    value="Points de vigilance" 
-                    styleClass="col-sm-3 control-label" /> 
-                <div class="col-md-8">
-                    <p:inputTextarea
-                        styleClass="form-control" 
+        </div>
+        <div class="form-group">
+            <p:outputLabel
+                    for="input_points_vigilance"
+                    value="Points de vigilance"
+                    styleClass="col-sm-3 control-label"/>
+            <div class="col-md-8">
+                <p:inputTextarea
+                        styleClass="form-control"
                         rows="5"
                         autoResize="false"
-                        id="input_points_vigilance" 
+                        id="input_points_vigilance"
                         maxlength="1000"
                         value="#{familleDetailsBean.form.informationsHabitation.pointVigilance}"/>
-                </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-11">
-                    <p:commandButton
+        </div>
+        <div class="form-group">
+            <div class="col-md-11">
+                <p:commandButton
                         process=":form:tabView_famille:tab_informations_habitation"
-                        styleClass="btn-default pull-right" 
+                        styleClass="pull-right"
                         value="Sauver"
-                        icon="ui-icon-circle-check"
                         actionListener="#{familleDetailsBean.update()}"/>
-                </div>
             </div>
-        </ui:composition>
-    </h:body>
+        </div>
+    </ui:composition>
+</h:body>
 </html>
 

@@ -1,89 +1,89 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition>
-            <p:dataTable
+    <ui:composition>
+        <p:dataTable
                 id="datatable_chambre"
                 value="#{familleDetailsBean.chambres}"
                 var="chambre"
                 rowIndexVar="index">
 
-                <p:column headerText="Chambre">
-                    <h:outputText value="Chambre #{index + 1}"></h:outputText>
-                </p:column>
-                <p:column headerText="Nombre lits">
-                    <h:outputText value="#{chambre.nombreLits}"></h:outputText>
-                </p:column>
-                <p:column width="300">
-                    <p:commandButton 
-                        styleClass="btn-default"
-                        icon="ui-icon-trash"
+            <p:column headerText="Chambre">
+                <h:outputText value="Chambre #{index + 1}"></h:outputText>
+            </p:column>
+            <p:column headerText="Nombre lits">
+                <h:outputText value="#{chambre.nombreLits}"></h:outputText>
+            </p:column>
+            <p:column width="300">
+                <p:commandButton
+                        icon="pi pi-trash"
                         process="@this"
                         value="Supprimer chambre"
                         actionListener="#{familleDetailsBean.supprimerChambre(chambre)}"
                         update=":form:tabView_famille">
-                        <p:confirm 
-                            header="Confirmation" 
-                            message="Êtes vous sûr de vouloir supprimer cette chambre ?" 
-                            icon="ui-icon-alert" />
-                    </p:commandButton>
-                    <p:confirmDialog global="true">
-                        <p:commandButton 
-                            value="Oui" 
-                            type="button" 
-                            styleClass="ui-confirmdialog-yes pull-right" 
-                            icon="ui-icon-check" />
-                        <p:commandButton 
-                            value="Non" 
-                            type="button" 
-                            styleClass="ui-confirmdialog-no pull-right" 
-                            icon="ui-icon-close" />
-                    </p:confirmDialog>
-                </p:column>
+                    <p:confirm
+                            header="Confirmation"
+                            message="Êtes vous sûr de vouloir supprimer cette chambre ?"
+                    />
+                </p:commandButton>
+                <p:confirmDialog global="true">
+                    <p:commandButton
+                            value="Oui"
+                            type="button"
+                            styleClass="ui-confirmdialog-yes pull-right"
+                    />
+                    <p:commandButton
+                            value="Non"
+                            type="button"
+                            styleClass="ui-confirmdialog-no pull-right"
+                    />
+                </p:confirmDialog>
+            </p:column>
 
-            </p:dataTable>
-            <br/>
-            <p:outputLabel 
-                for="form_nbLits" 
+        </p:dataTable>
+        <br/>
+        <p:outputLabel
+                for="form_nbLits"
                 styleClass="col-sm-5 control-label"
-                value="Renseigner nombre de lits" />
-            <div class="col-md-3">
-                <p:inputText
-                    styleClass="form-control" 
-                    id="form_nbLits" 
+                value="Renseigner nombre de lits"/>
+        <div class="col-md-3">
+            <p:inputText
+                    styleClass="form-control"
+                    id="form_nbLits"
                     required="true"
                     value="#{familleDetailsBean.nouvelleChambre.nombreLits}"/>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4">
-                    <p:commandButton
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <p:commandButton
                         process=":form:tabView_famille:tab_chambres"
-                        styleClass="btn-default" 
                         value="Ajouter chambre"
                         update=":form:tabView_famille"
-                        icon="ui-icon-plus"
                         actionListener="#{familleDetailsBean.ajouterChambre}"/>
-                </div>
             </div>
-            <br/>
-            <div class="col-md-4">
-                <h:outputText value="Nombre total de chambres :"></h:outputText>
-                <span class="badge"><h:outputText value="#{familleDetailsBean.chambres.size()}"></h:outputText></span>
-            </div>
-            <div class="col-md-4">
-                <h:outputText value="Nombre total de lits :"></h:outputText>
-                <span class="badge"><h:outputText value="#{familleDetailsBean.nombreTotalLits}"></h:outputText></span>
-            </div>
-            <br/>
-        </ui:composition>
-    </h:body>
+        </div>
+        <br/>
+        <div class="col-md-4">
+            <h:outputText value="Nombre total de chambres :"></h:outputText>
+            <span class="badge"><h:outputText
+                    value="#{familleDetailsBean.chambres.size()}"></h:outputText></span>
+        </div>
+        <div class="col-md-4">
+            <h:outputText value="Nombre total de lits :"></h:outputText>
+            <span class="badge"><h:outputText
+                    value="#{familleDetailsBean.nombreTotalLits}"></h:outputText></span>
+        </div>
+        <br/>
+    </ui:composition>
+</h:body>
 </html>
 

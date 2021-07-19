@@ -45,11 +45,10 @@
                                 </div>
                                 <div class="form-group">
                                     <p:commandButton
-                                            styleClass="btn-primary"
                                             value="Rechercher"
                                             update=":datatable"
                                             actionListener="#{enfantsListeBean.rechercher()}"
-                                            icon="ui-icon-search"/>
+                                    />
                                 </div>
                             </h:form>
                         </div>
@@ -81,14 +80,13 @@
                                 <p:column width="100">
                                     <p:button
                                             outcome="/enfants/details.xhtml"
-                                            styleClass="btn-default"
-                                            icon="ui-icon-pencil">
+                                            style="margin-right: 4px;"
+                                            icon="pi pi-pencil">
                                         <f:param name="id" value="#{bean.id}"></f:param>
                                     </p:button>
-                                    <h:form styleClass="pull-right">
+                                    <h:form style="display: inline;">
                                         <p:commandButton
-                                                styleClass="btn-default"
-                                                icon="ui-icon-trash"
+                                                icon="pi pi-trash"
                                                 actionListener="#{enfantsListeBean.supprimer(bean.id)}"
                                                 update=":datatable">
                                             <p:confirm
@@ -102,12 +100,12 @@
                                                     type="button"
                                                     process="@this"
                                                     styleClass="ui-confirmdialog-yes pull-right"
-                                                    icon="ui-icon-check"/>
+                                            />
                                             <p:commandButton
                                                     value="Non"
                                                     type="button"
                                                     styleClass="ui-confirmdialog-no pull-right"
-                                                    icon="ui-icon-close"/>
+                                            />
                                         </p:confirmDialog>
                                     </h:form>
                                 </p:column>
