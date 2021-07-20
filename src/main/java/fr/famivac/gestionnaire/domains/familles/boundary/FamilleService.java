@@ -3,7 +3,6 @@ package fr.famivac.gestionnaire.domains.familles.boundary;
 import fr.famivac.gestionnaire.commons.entity.Adresse;
 import fr.famivac.gestionnaire.commons.entity.Commune;
 import fr.famivac.gestionnaire.commons.entity.Sexe;
-import fr.famivac.gestionnaire.commons.utils.AlphanumComparator;
 import fr.famivac.gestionnaire.domains.familles.entity.Chambre;
 import fr.famivac.gestionnaire.domains.familles.entity.Famille;
 import fr.famivac.gestionnaire.domains.familles.entity.FamilleRepository;
@@ -81,28 +80,11 @@ public class FamilleService {
     if (periodesAccueil != null) {
       periodes =
           periodesAccueil.stream()
-              .map(
-                  periode -> {
-                    return PeriodeAccueil.valueOf(periode);
-                  })
+              .map(periode -> PeriodeAccueil.valueOf(periode))
               .collect(Collectors.toSet());
     }
-    AlphanumComparator comparator = new AlphanumComparator();
-    List<Famille> beans = repository.retrieve(nomReferent, prenomReferent, periodes, archivee);
-    List<FamilleDTO> dtos =
-        beans.stream()
-            .map((Famille f) -> new FamilleDTO(f))
-            .sorted(
-                (f1, f2) -> {
-                  int resultNomReferent =
-                      comparator.compare(f1.getNomReferent(), f2.getNomReferent());
-                  if (resultNomReferent != 0) {
-                    return resultNomReferent;
-                  }
-                  return comparator.compare(f1.getPrenomReferent(), f2.getPrenomReferent());
-                })
-            .collect(Collectors.toList());
-    return dtos;
+    List<Famille> familles = repository.retrieve(nomReferent, prenomReferent, periodes, archivee);
+    return familles.stream().map((Famille f) -> new FamilleDTO(f)).collect(Collectors.toList());
   }
 
   public void update(Famille entity) {
