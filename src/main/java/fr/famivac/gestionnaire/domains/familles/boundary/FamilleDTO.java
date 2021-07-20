@@ -2,6 +2,8 @@ package fr.famivac.gestionnaire.domains.familles.boundary;
 
 import fr.famivac.gestionnaire.domains.familles.entity.Famille;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
 
 /** @author paoesco */
 public class FamilleDTO implements Serializable {
@@ -33,6 +35,24 @@ public class FamilleDTO implements Serializable {
     radiee = entity.getRadiee();
     candidature = entity.getCandidature();
     archivee = entity.getArchivee();
+  }
+
+  public FamilleDTO(
+      Long id,
+      String nomReferent,
+      String prenomReferent,
+      String telephoneReferent,
+      String emailReferent,
+      Date dateRadiation,
+      Boolean candidature,
+      Boolean archivee) {
+    this.id = id;
+    this.nomReferent = nomReferent;
+    this.prenomReferent = prenomReferent;
+    this.telephoneReferent = telephoneReferent;
+    this.emailReferent = emailReferent;
+    radiee = Objects.nonNull(dateRadiation);
+    this.archivee = archivee;
   }
 
   public Long getId() {

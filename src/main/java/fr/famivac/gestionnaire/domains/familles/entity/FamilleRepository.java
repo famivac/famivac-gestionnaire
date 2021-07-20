@@ -1,5 +1,6 @@
 package fr.famivac.gestionnaire.domains.familles.entity;
 
+import fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO;
 import java.util.List;
 import java.util.Set;
 import javax.enterprise.context.ApplicationScoped;
@@ -13,7 +14,7 @@ public class FamilleRepository {
 
   @Inject private EntityManager entityManager;
 
-  public List<Famille> retrieve(
+  public List<FamilleDTO> retrieve(
       String nomReferent,
       String prenomReferent,
       Set<PeriodeAccueil> periodesAccueil,
@@ -59,19 +60,22 @@ public class FamilleRepository {
 
     Query familleQuery =
         entityManager.createQuery("""
-        SELECT f 
+        SELECT new fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO(
+          f.id,
+          m.nom,
+          m.prenom,
+          m.coordonnees.telephone1,
+          m.coordonnees.email,
+          f.dateRadiation,
+          f.candidature,
+          f.archivee
+        )
         FROM Famille f 
-        JOIN FETCH f.membres m
-        JOIN FETCH f.tranchesAges
-        JOIN FETCH f.periodesSouhaitees
-        JOIN FETCH f.informationsHabitation
-        JOIN FETCH f.informationsVehicule
-        JOIN FETCH m.communeDeNaissance
-        JOIN FETCH f.adresse.commune
+        JOIN f.membres m
         WHERE f.id in :id
         AND m.referent = true
         ORDER BY m.nom, m.prenom
-    """, Famille.class);
+    """, FamilleDTO.class);
     familleQuery.setParameter("id", ids);
 
     return familleQuery.getResultList();

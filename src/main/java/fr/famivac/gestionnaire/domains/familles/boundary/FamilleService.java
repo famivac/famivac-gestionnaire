@@ -94,8 +94,7 @@ public class FamilleService {
               .map(periode -> PeriodeAccueil.valueOf(periode))
               .collect(Collectors.toSet());
     }
-    List<Famille> familles = repository.retrieve(nomReferent, prenomReferent, periodes, archivee);
-    return familles.stream().map((Famille f) -> new FamilleDTO(f)).collect(Collectors.toList());
+    return repository.retrieve(nomReferent, prenomReferent, periodes, archivee);
   }
 
   public void update(Famille entity) {
