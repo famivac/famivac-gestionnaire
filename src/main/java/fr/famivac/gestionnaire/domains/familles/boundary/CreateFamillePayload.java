@@ -2,7 +2,7 @@ package fr.famivac.gestionnaire.domains.familles.boundary;
 
 import fr.famivac.gestionnaire.commons.entity.Adresse;
 
-public class CreateFamilleRequestDTO {
+public class CreateFamillePayload {
 
   private Adresse adresse;
 
@@ -12,7 +12,7 @@ public class CreateFamilleRequestDTO {
 
   private Boolean candidature;
 
-  public CreateFamilleRequestDTO() {
+  public CreateFamillePayload() {
     adresse = new Adresse();
     membrePrincipal = new MembreDTO();
   }

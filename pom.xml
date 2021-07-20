@@ -56,6 +56,10 @@
               <version>1.2.3.Final</version>
             </feature-pack>
           </feature-packs>
+          <jvmArguments>
+            -Djboss.http.port=5000
+            -Djavamelody.datasources=java:jboss/datasources/PostgreSQLDS
+          </jvmArguments>
           <layers>
             <layer>jsf</layer>
             <layer>ejb-lite</layer>

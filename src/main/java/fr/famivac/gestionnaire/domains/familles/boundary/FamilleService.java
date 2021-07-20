@@ -10,12 +10,15 @@ import fr.famivac.gestionnaire.domains.familles.entity.InformationsHabitation;
 import fr.famivac.gestionnaire.domains.familles.entity.InformationsVehicule;
 import fr.famivac.gestionnaire.domains.familles.entity.MembreFamille;
 import fr.famivac.gestionnaire.domains.familles.entity.PeriodeAccueil;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import net.bull.javamelody.MonitoringInterceptor;
 
@@ -27,7 +30,7 @@ public class FamilleService {
 
   @Inject private FamilleRepository repository;
 
-  public Long create(CreateFamilleRequestDTO payload) {
+  public Long create(CreateFamillePayload payload) {
     Commune communeFamille = null;
     if (payload.getAdresse().getCommune() != null) {
       communeFamille =
@@ -40,7 +43,10 @@ public class FamilleService {
             payload.getAdresse().getLigneAdresseUne(),
             payload.getAdresse().getLigneAdresseDeux(),
             communeFamille);
-    Famille entity = new Famille(adresse, payload.getProjet(), payload.getCandidature());
+    Famille entity = new Famille();
+    entity.setAdresse(adresse);
+    entity.setProjet(payload.getProjet());
+    entity.setCandidature(payload.getCandidature());
     Commune communeMembre = payload.getMembrePrincipal().getCommuneDeNaissance();
     MembreFamille membre =
         new MembreFamille(
@@ -59,7 +65,12 @@ public class FamilleService {
   }
 
   public Famille get(Long id) {
-    Famille famille = entityManager.find(Famille.class, id);
+    EntityGraph entityGraph = entityManager.createEntityGraph(Famille.class);
+    entityGraph.addAttributeNodes("chambres", "membres");
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("javax.persistence.fetchgraph", entityGraph);
+    Famille famille = entityManager.find(Famille.class, id, properties);
+
     // Migration
     if (famille.getInformationsHabitation().getId() == null) {
       InformationsHabitation informationsHabitation = new InformationsHabitation(famille);
@@ -74,7 +85,7 @@ public class FamilleService {
     return famille;
   }
 
-  public List<FamilleDTO> search(
+  public List<FamilleResult> search(
       String nomReferent, String prenomReferent, List<String> periodesAccueil, boolean archivee) {
     Set<PeriodeAccueil> periodes = null;
     if (periodesAccueil != null) {
@@ -83,8 +94,20 @@ public class FamilleService {
               .map(periode -> PeriodeAccueil.valueOf(periode))
               .collect(Collectors.toSet());
     }
-    List<Famille> familles = repository.retrieve(nomReferent, prenomReferent, periodes, archivee);
-    return familles.stream().map((Famille f) -> new FamilleDTO(f)).collect(Collectors.toList());
+    return repository.retrieve(nomReferent, prenomReferent, periodes, archivee).stream()
+        .map(
+            familleListView ->
+                FamilleResult.builder()
+                    .id(familleListView.getId())
+                    .nomReferent(familleListView.getNomReferent())
+                    .prenomReferent(familleListView.getPrenomReferent())
+                    .telephoneReferent(familleListView.getTelephoneReferent())
+                    .emailReferent(familleListView.getEmailReferent())
+                    .radiee(familleListView.getRadiee())
+                    .candidature(familleListView.getCandidature())
+                    .archivee(familleListView.getArchivee())
+                    .build())
+        .collect(Collectors.toList());
   }
 
   public void update(Famille entity) {

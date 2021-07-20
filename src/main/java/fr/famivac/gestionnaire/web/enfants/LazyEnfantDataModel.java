@@ -1,6 +1,6 @@
 package fr.famivac.gestionnaire.web.enfants;
 
-import fr.famivac.gestionnaire.domains.enfants.control.EnfantDTO;
+import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantDTO;
 import fr.famivac.gestionnaire.web.utils.LazySorter;
 import java.util.ArrayList;
 import java.util.Comparator;

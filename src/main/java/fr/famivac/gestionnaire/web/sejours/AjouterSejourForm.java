@@ -1,7 +1,7 @@
 package fr.famivac.gestionnaire.web.sejours;
 
-import fr.famivac.gestionnaire.domains.enfants.control.EnfantDTO;
-import fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO;
+import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantDTO;
+import fr.famivac.gestionnaire.domains.familles.boundary.FamilleResult;
 import fr.famivac.gestionnaire.domains.sejours.entity.PeriodeJournee;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /** @author paoesco */
 public class AjouterSejourForm {
 
-  @NotNull private FamilleDTO famille;
+  @NotNull private FamilleResult famille;
 
   private EnfantDTO enfant;
 
@@ -25,11 +25,11 @@ public class AjouterSejourForm {
     periodeJourneeFin = PeriodeJournee.APRES_MIDI.name();
   }
 
-  public FamilleDTO getFamille() {
+  public FamilleResult getFamille() {
     return famille;
   }
 
-  public void setFamille(FamilleDTO famille) {
+  public void setFamille(FamilleResult famille) {
     this.famille = famille;
   }
 

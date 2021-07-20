@@ -1,6 +1,8 @@
 package fr.famivac.gestionnaire.domains.enfants.entity;
 
+import fr.famivac.gestionnaire.domains.enfants.entity.views.EnfantListView;
 import java.util.List;
+import java.util.Objects;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -16,23 +18,20 @@ public class EnfantRepository {
     @Inject
     private EntityManager entityManager;
 
-    public List<Enfant> retrieve(String nomEnfant, String prenomEnfant) {
-        StringBuilder sQuery = new StringBuilder(" select e from Enfant e ");
-        if (nomEnfant != null && !nomEnfant.isEmpty()) {
-            sQuery.append(" and lower(e.nom) like :nomEnfant ");
-        }
-        if (prenomEnfant != null && !prenomEnfant.isEmpty()) {
-            sQuery.append(" and lower(e.prenom) like :prenomEnfant ");
-        }
-        sQuery.append(" order by e.nom, e.prenom ");
-
-        Query query = entityManager.createQuery(sQuery.toString().replaceFirst("and", "where"), Enfant.class);
-        if (nomEnfant != null && !nomEnfant.isEmpty()) {
-            query.setParameter("nomEnfant", "%" + nomEnfant.toLowerCase() + "%");
-        }
-        if (prenomEnfant != null && !prenomEnfant.isEmpty()) {
-            query.setParameter("prenomEnfant", "%" + prenomEnfant.toLowerCase() + "%");
-        }
+    public List<EnfantListView> search(String nomEnfant, String prenomEnfant) {
+        Query query = entityManager.createQuery("""
+            select new fr.famivac.gestionnaire.domains.enfants.entity.views.EnfantListView(
+                e.id,
+                e.nom,
+                e.prenom
+            )
+            from Enfant e
+            where lower(e.nom) like :nom
+            and lower(e.prenom) like :prenom 
+            order by e.nom
+        """, EnfantListView.class);
+        query.setParameter("nom", "%" + (Objects.isNull(nomEnfant) ? "" : nomEnfant.toLowerCase() + "%"));
+        query.setParameter("prenom", "%" + (Objects.isNull(prenomEnfant) ? "" : prenomEnfant.toLowerCase() + "%"));
         return query.getResultList();
     }
 

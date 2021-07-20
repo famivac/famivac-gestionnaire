@@ -1,8 +1,8 @@
 package fr.famivac.gestionnaire.web.sejours;
 
-import fr.famivac.gestionnaire.domains.enfants.control.EnfantDTO;
-import fr.famivac.gestionnaire.domains.enfants.control.EnfantService;
-import fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO;
+import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantDTO;
+import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantService;
+import fr.famivac.gestionnaire.domains.familles.boundary.FamilleResult;
 import fr.famivac.gestionnaire.domains.familles.boundary.FamilleService;
 import fr.famivac.gestionnaire.domains.parametres.control.ForfaitJournalierService;
 import fr.famivac.gestionnaire.domains.parametres.control.FraisDossierService;
@@ -79,7 +79,7 @@ public class AjouterSejourBean implements Serializable {
         + "&faces-redirect=true";
   }
 
-  public List<FamilleDTO> completeFamille(String query) {
+  public List<FamilleResult> completeFamille(String query) {
     if (query == null || query.isEmpty()) {
       return familleService.search("%", "%", null, false);
     }
@@ -88,9 +88,9 @@ public class AjouterSejourBean implements Serializable {
 
   public List<EnfantDTO> completeEnfant(String query) {
     if (query == null || query.isEmpty()) {
-      return enfantService.retrieve("%", "%");
+      return enfantService.search("%", "%");
     }
-    return enfantService.retrieve(query, "%");
+    return enfantService.search(query, "%");
   }
 
   public AjouterSejourForm getForm() {
