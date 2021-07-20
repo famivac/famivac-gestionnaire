@@ -1,10 +1,10 @@
 package fr.famivac.gestionnaire.web.enfants;
 
-import fr.famivac.gestionnaire.domains.parametres.CommuneService;
-import fr.famivac.gestionnaire.domains.enfants.control.EnfantService;
+import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantService;
 import fr.famivac.gestionnaire.domains.enfants.entity.Enfant;
 import fr.famivac.gestionnaire.domains.enfants.entity.FamilleAccueil;
 import fr.famivac.gestionnaire.domains.enfants.entity.TypeInscripteur;
+import fr.famivac.gestionnaire.domains.parametres.CommuneService;
 import fr.famivac.gestionnaire.web.communes.CompleteCommune;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
@@ -13,87 +13,84 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-/**
- * @author paoesco
- */
+/** @author paoesco */
 @Named
 @ViewScoped
 public class EnfantDetailsBean implements Serializable, CompleteCommune {
 
-	private static final long serialVersionUID = -3744243098082552244L;
+  private static final long serialVersionUID = -3744243098082552244L;
 
-	private Long id;
+  private Long id;
 
-    private Enfant form;
+  private Enfant form;
 
-    private FamilleAccueil formFamilleAccueil;
+  private FamilleAccueil formFamilleAccueil;
 
-    @Inject
-    private CommuneService communeService;
+  @Inject private CommuneService communeService;
 
-    @Inject
-    private EnfantService enfantService;
+  @Inject private EnfantService enfantService;
 
-    public void init() {
-        form = enfantService.retrieve(id);
-        if (form.getFamilleAccueil() == null) {
-            formFamilleAccueil = new FamilleAccueil();
-        } else {
-            formFamilleAccueil = form.getFamilleAccueil();
-        }
+  public void init() {
+    form = enfantService.retrieve(id);
+    if (form.getFamilleAccueil() == null) {
+      formFamilleAccueil = new FamilleAccueil();
+    } else {
+      formFamilleAccueil = form.getFamilleAccueil();
     }
+  }
 
-    public void update() {
-        enfantService.update(form);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informations sauvées", ""));
-    }
+  public void update() {
+    enfantService.update(form);
+    FacesContext.getCurrentInstance()
+        .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informations sauvées", ""));
+  }
 
-    public void updateFamilleAccueil() {
-        form.setFamilleAccueil(formFamilleAccueil);
-        enfantService.update(form);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informations sauvées", ""));
-    }
+  public void updateFamilleAccueil() {
+    form.setFamilleAccueil(formFamilleAccueil);
+    enfantService.update(form);
+    FacesContext.getCurrentInstance()
+        .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informations sauvées", ""));
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public Enfant getForm() {
-        return form;
-    }
+  public Enfant getForm() {
+    return form;
+  }
 
-    public void setForm(Enfant form) {
-        this.form = form;
-    }
+  public void setForm(Enfant form) {
+    this.form = form;
+  }
 
-    @Override
-    public CommuneService getCommuneService() {
-        return communeService;
-    }
+  @Override
+  public CommuneService getCommuneService() {
+    return communeService;
+  }
 
-    public Boolean getTypeInscripteurParticulier() {
-        return TypeInscripteur.PARTICULIER.equals(form.getInscripteur().getType());
-    }
+  public Boolean getTypeInscripteurParticulier() {
+    return TypeInscripteur.PARTICULIER.equals(form.getInscripteur().getType());
+  }
 
-    public Boolean getTypeServiceSocialOuAutre() {
-        return TypeInscripteur.SERVICE_SOCIAL.equals(form.getInscripteur().getType())
-                || TypeInscripteur.AUTRE.equals(form.getInscripteur().getType());
-    }
+  public Boolean getTypeServiceSocialOuAutre() {
+    return TypeInscripteur.SERVICE_SOCIAL.equals(form.getInscripteur().getType())
+        || TypeInscripteur.AUTRE.equals(form.getInscripteur().getType());
+  }
 
-    public Boolean getInscripteurEstResponsableLegal() {
-        return form.getInscripteurEstResponsableLegal();
-    }
+  public Boolean getInscripteurEstResponsableLegal() {
+    return form.getInscripteurEstResponsableLegal();
+  }
 
-    public FamilleAccueil getFormFamilleAccueil() {
-        return formFamilleAccueil;
-    }
+  public FamilleAccueil getFormFamilleAccueil() {
+    return formFamilleAccueil;
+  }
 
-    public void setFormFamilleAccueil(FamilleAccueil formFamilleAccueil) {
-        this.formFamilleAccueil = formFamilleAccueil;
-    }
-
+  public void setFormFamilleAccueil(FamilleAccueil formFamilleAccueil) {
+    this.formFamilleAccueil = formFamilleAccueil;
+  }
 }

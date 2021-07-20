@@ -1,7 +1,7 @@
 package fr.famivac.gestionnaire.web.sejours;
 
-import fr.famivac.gestionnaire.domains.enfants.control.EnfantDTO;
-import fr.famivac.gestionnaire.domains.enfants.control.EnfantService;
+import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantDTO;
+import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantService;
 import fr.famivac.gestionnaire.domains.familles.boundary.FamilleResult;
 import fr.famivac.gestionnaire.domains.familles.boundary.FamilleService;
 import fr.famivac.gestionnaire.domains.parametres.control.ForfaitJournalierService;

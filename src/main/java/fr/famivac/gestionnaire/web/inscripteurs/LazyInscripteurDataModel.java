@@ -1,6 +1,6 @@
 package fr.famivac.gestionnaire.web.inscripteurs;
 
-import fr.famivac.gestionnaire.domains.enfants.control.RetrieveInscripteursResponseDTO;
+import fr.famivac.gestionnaire.domains.enfants.boundary.RetrieveInscripteursResponseDTO;
 import fr.famivac.gestionnaire.web.utils.LazySorter;
 import java.util.ArrayList;
 import java.util.Comparator;
