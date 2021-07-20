@@ -72,7 +72,7 @@ public class FamilleDetailsBean implements Serializable, CompleteCommune {
           }
           return m1.getId().compareTo(m2.getId());
         });
-    chambres = form.getChambres();
+    chambres = form.getChambres().stream().toList();
     nouvelleChambre = new Chambre(0, form);
     sejours = sejourRepository.sejoursFamille(id);
   }
