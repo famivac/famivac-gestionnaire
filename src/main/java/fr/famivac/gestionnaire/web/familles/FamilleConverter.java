@@ -1,6 +1,6 @@
 package fr.famivac.gestionnaire.web.familles;
 
-import fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO;
+import fr.famivac.gestionnaire.domains.familles.boundary.FamilleResult;
 import fr.famivac.gestionnaire.domains.familles.boundary.FamilleService;
 import fr.famivac.gestionnaire.domains.familles.entity.Famille;
 import javax.enterprise.context.ApplicationScoped;
@@ -14,7 +14,7 @@ import javax.inject.Named;
 @Named
 @ApplicationScoped
 @FacesConverter("familleConverter")
-public class FamilleConverter implements Converter<FamilleDTO> {
+public class FamilleConverter implements Converter<FamilleResult> {
 
   private final FamilleService service;
 
@@ -24,19 +24,19 @@ public class FamilleConverter implements Converter<FamilleDTO> {
   }
 
   @Override
-  public FamilleDTO getAsObject(FacesContext context, UIComponent component, String value) {
+  public FamilleResult getAsObject(FacesContext context, UIComponent component, String value) {
     if (value == null || value.isEmpty()) {
       return null;
     }
     Famille bean = service.get(Long.valueOf(value));
-    return new FamilleDTO(bean);
+    return new FamilleResult(bean);
   }
 
   @Override
-  public String getAsString(FacesContext context, UIComponent component, FamilleDTO value) {
+  public String getAsString(FacesContext context, UIComponent component, FamilleResult value) {
     if (value == null) {
       return null;
     }
-    return ((FamilleDTO) value).getId().toString();
+    return value.getId().toString();
   }
 }

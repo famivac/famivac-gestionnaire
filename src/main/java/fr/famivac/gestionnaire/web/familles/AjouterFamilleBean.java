@@ -1,6 +1,6 @@
 package fr.famivac.gestionnaire.web.familles;
 
-import fr.famivac.gestionnaire.domains.familles.boundary.CreateFamilleRequestDTO;
+import fr.famivac.gestionnaire.domains.familles.boundary.CreateFamillePayload;
 import fr.famivac.gestionnaire.domains.familles.boundary.FamilleService;
 import fr.famivac.gestionnaire.domains.parametres.CommuneService;
 import fr.famivac.gestionnaire.web.communes.CompleteCommune;
@@ -17,7 +17,7 @@ public class AjouterFamilleBean implements Serializable, CompleteCommune {
   private static final long serialVersionUID = -8761462578741880134L;
   private final FamilleService familleService;
   private final CommuneService communeService;
-  private CreateFamilleRequestDTO form;
+  private CreateFamillePayload form;
 
   @Inject
   public AjouterFamilleBean(FamilleService familleService, CommuneService communeService) {
@@ -26,7 +26,7 @@ public class AjouterFamilleBean implements Serializable, CompleteCommune {
   }
 
   public void init() {
-    form = new CreateFamilleRequestDTO();
+    form = new CreateFamillePayload();
   }
 
   public String ajouter() {
@@ -34,11 +34,11 @@ public class AjouterFamilleBean implements Serializable, CompleteCommune {
     return "/familles/details.xhtml?id=" + familleId + "&faces-redirect=true";
   }
 
-  public CreateFamilleRequestDTO getForm() {
+  public CreateFamillePayload getForm() {
     return form;
   }
 
-  public void setForm(CreateFamilleRequestDTO form) {
+  public void setForm(CreateFamillePayload form) {
     this.form = form;
   }
 

@@ -1,6 +1,6 @@
 package fr.famivac.gestionnaire.web.familles;
 
-import fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO;
+import fr.famivac.gestionnaire.domains.familles.boundary.FamilleResult;
 import fr.famivac.gestionnaire.web.utils.LazyFilter;
 import fr.famivac.gestionnaire.web.utils.LazySorter;
 import java.util.ArrayList;
@@ -13,17 +13,17 @@ import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;
 
-public class LazyFamilleDataModel extends LazyDataModel<FamilleDTO> {
+public class LazyFamilleDataModel extends LazyDataModel<FamilleResult> {
 
-  private final List<FamilleDTO> datasource;
+  private final List<FamilleResult> datasource;
 
-  public LazyFamilleDataModel(List<FamilleDTO> datasource) {
+  public LazyFamilleDataModel(List<FamilleResult> datasource) {
     this.datasource = new ArrayList<>(datasource);
   }
 
   @Override
-  public FamilleDTO getRowData(String rowKey) {
-    for (FamilleDTO bean : datasource) {
+  public FamilleResult getRowData(String rowKey) {
+    for (FamilleResult bean : datasource) {
       if (Long.valueOf(rowKey).equals(bean.getId())) {
         return bean;
       }
@@ -32,17 +32,17 @@ public class LazyFamilleDataModel extends LazyDataModel<FamilleDTO> {
   }
 
   @Override
-  public String getRowKey(FamilleDTO bean) {
+  public String getRowKey(FamilleResult bean) {
     return bean.getId().toString();
   }
 
   @Override
-  public List<FamilleDTO> load(
+  public List<FamilleResult> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
     var filter = new LazyFilter<>(filterBy.values());
-    List<Comparator<FamilleDTO>> comparators =
+    List<Comparator<FamilleResult>> comparators =
         sortBy.values().stream()
-            .map(o -> new LazySorter<>(FamilleDTO.class, o.getField(), o.getOrder()))
+            .map(o -> new LazySorter<>(FamilleResult.class, o.getField(), o.getOrder()))
             .collect(Collectors.toList());
     var comparator = ComparatorUtils.chainedComparator(comparators);
     var rowCount = datasource.stream().filter(filter).count();

@@ -1,6 +1,6 @@
 package fr.famivac.gestionnaire.domains.familles.entity;
 
-import fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO;
+import fr.famivac.gestionnaire.domains.familles.entity.views.FamilleListView;
 import java.util.List;
 import java.util.Set;
 import javax.enterprise.context.ApplicationScoped;
@@ -14,7 +14,7 @@ public class FamilleRepository {
 
   @Inject private EntityManager entityManager;
 
-  public List<FamilleDTO> retrieve(
+  public List<FamilleListView> retrieve(
       String nomReferent,
       String prenomReferent,
       Set<PeriodeAccueil> periodesAccueil,
@@ -60,7 +60,7 @@ public class FamilleRepository {
 
     Query familleQuery =
         entityManager.createQuery("""
-        SELECT new fr.famivac.gestionnaire.domains.familles.boundary.FamilleDTO(
+        SELECT new fr.famivac.gestionnaire.domains.familles.entity.views.FamilleListView(
           f.id,
           m.nom,
           m.prenom,
@@ -75,7 +75,7 @@ public class FamilleRepository {
         WHERE f.id in :id
         AND m.referent = true
         ORDER BY m.nom, m.prenom
-    """, FamilleDTO.class);
+    """, FamilleListView.class);
     familleQuery.setParameter("id", ids);
 
     return familleQuery.getResultList();

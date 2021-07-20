@@ -30,7 +30,7 @@ public class FamilleService {
 
   @Inject private FamilleRepository repository;
 
-  public Long create(CreateFamilleRequestDTO payload) {
+  public Long create(CreateFamillePayload payload) {
     Commune communeFamille = null;
     if (payload.getAdresse().getCommune() != null) {
       communeFamille =
@@ -85,7 +85,7 @@ public class FamilleService {
     return famille;
   }
 
-  public List<FamilleDTO> search(
+  public List<FamilleResult> search(
       String nomReferent, String prenomReferent, List<String> periodesAccueil, boolean archivee) {
     Set<PeriodeAccueil> periodes = null;
     if (periodesAccueil != null) {
@@ -94,7 +94,20 @@ public class FamilleService {
               .map(periode -> PeriodeAccueil.valueOf(periode))
               .collect(Collectors.toSet());
     }
-    return repository.retrieve(nomReferent, prenomReferent, periodes, archivee);
+    return repository.retrieve(nomReferent, prenomReferent, periodes, archivee).stream()
+        .map(
+            familleListView ->
+                FamilleResult.builder()
+                    .id(familleListView.getId())
+                    .nomReferent(familleListView.getNomReferent())
+                    .prenomReferent(familleListView.getPrenomReferent())
+                    .telephoneReferent(familleListView.getTelephoneReferent())
+                    .emailReferent(familleListView.getEmailReferent())
+                    .radiee(familleListView.getRadiee())
+                    .candidature(familleListView.getCandidature())
+                    .archivee(familleListView.getArchivee())
+                    .build())
+        .collect(Collectors.toList());
   }
 
   public void update(Famille entity) {
