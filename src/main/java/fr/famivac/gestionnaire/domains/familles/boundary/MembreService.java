@@ -9,10 +9,8 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
-import javax.ws.rs.PathParam;
 import net.bull.javamelody.MonitoringInterceptor;
 
-/** @author paoesco */
 @Stateless
 @Interceptors({MonitoringInterceptor.class})
 public class MembreService {
@@ -20,7 +18,7 @@ public class MembreService {
   @Inject Event<UpdateFamilleEvent> updateFamilleEvent;
   @Inject private EntityManager entityManager;
 
-  public MembreDTO retrieve(@PathParam("id") Long id) {
+  public MembreDTO retrieve(Long id) {
     MembreFamille entity = entityManager.find(MembreFamille.class, id);
     MembreDTO dto = new MembreDTO();
     dto.setId(entity.getId());
