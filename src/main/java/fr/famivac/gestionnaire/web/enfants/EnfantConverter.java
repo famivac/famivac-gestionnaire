@@ -24,7 +24,7 @@ public class EnfantConverter implements Converter<EnfantDTO> {
     if (value == null || value.isEmpty()) {
       return null;
     }
-    Enfant bean = service.retrieve(Long.valueOf(value));
+    Enfant bean = service.search(Long.valueOf(value));
     return new EnfantDTO(bean);
   }
 

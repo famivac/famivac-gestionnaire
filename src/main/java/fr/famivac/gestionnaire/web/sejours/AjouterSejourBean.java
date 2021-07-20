@@ -88,9 +88,9 @@ public class AjouterSejourBean implements Serializable {
 
   public List<EnfantDTO> completeEnfant(String query) {
     if (query == null || query.isEmpty()) {
-      return enfantService.retrieve("%", "%");
+      return enfantService.search("%", "%");
     }
-    return enfantService.retrieve(query, "%");
+    return enfantService.search(query, "%");
   }
 
   public AjouterSejourForm getForm() {

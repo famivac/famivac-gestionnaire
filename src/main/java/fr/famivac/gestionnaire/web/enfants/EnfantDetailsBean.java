@@ -31,7 +31,7 @@ public class EnfantDetailsBean implements Serializable, CompleteCommune {
   @Inject private EnfantService enfantService;
 
   public void init() {
-    form = enfantService.retrieve(id);
+    form = enfantService.search(id);
     if (form.getFamilleAccueil() == null) {
       formFamilleAccueil = new FamilleAccueil();
     } else {

@@ -30,8 +30,7 @@ public class EnfantsListeBean implements Serializable {
   public void rechercher() {
     lazyModel =
         new LazyEnfantDataModel(
-            enfantService.retrieve(
-                rechercherForm.getNomEnfant(), rechercherForm.getPrenomEnfant()));
+            enfantService.search(rechercherForm.getNomEnfant(), rechercherForm.getPrenomEnfant()));
   }
 
   public void supprimer(Long id) {

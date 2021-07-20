@@ -11,7 +11,6 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
-import javax.ws.rs.PathParam;
 import net.bull.javamelody.MonitoringInterceptor;
 
 /** @author paoesco */
@@ -31,7 +30,7 @@ public class EnfantService {
     return enfant.getId();
   }
 
-  public Enfant retrieve(Long id) {
+  public Enfant search(Long id) {
     return entityManager.find(Enfant.class, id);
   }
 
@@ -40,7 +39,6 @@ public class EnfantService {
     if (enfant.getInscripteurEstResponsableLegal()) {
       enfant.getResponsableLegal().setAdresse(enfant.getInscripteur().getAdresse());
       enfant.getResponsableLegal().setCoordonnees(enfant.getInscripteur().getCoordonnees());
-      // enfant.getResponsableLegal().setLienDeParente();
       enfant.getResponsableLegal().setNom(enfant.getInscripteur().getNom());
       enfant.getResponsableLegal().setOrganisme(enfant.getInscripteur().getOrganisme());
       enfant.getResponsableLegal().setPrenom(enfant.getInscripteur().getPrenom());
@@ -56,17 +54,19 @@ public class EnfantService {
     updateEnfantEvent.fire(event);
   }
 
-  public List<EnfantDTO> retrieve(String nomEnfant, String prenomEnfant) {
-    List<Enfant> entities = enfantRepository.retrieve(nomEnfant, prenomEnfant);
-    return entities.stream()
+  public List<EnfantDTO> search(String nomEnfant, String prenomEnfant) {
+    return enfantRepository.search(nomEnfant, prenomEnfant).stream()
         .map(
-            (Enfant entity) -> {
-              return new EnfantDTO(entity);
-            })
+            enfantListView ->
+                EnfantDTO.builder()
+                    .id(enfantListView.getId())
+                    .nomEnfant(enfantListView.getNom())
+                    .prenomEnfant(enfantListView.getPrenom())
+                    .build())
         .collect(Collectors.toList());
   }
 
-  public void delete(@PathParam("id") Long id) {
+  public void delete(Long id) {
     Enfant entity = entityManager.find(Enfant.class, id);
     if (entity == null) {
       throw new IllegalArgumentException("L'enfant n'existe pas");
