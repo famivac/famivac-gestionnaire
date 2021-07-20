@@ -1,6 +1,5 @@
 package fr.famivac.gestionnaire.domains.familles.entity;
 
-import fr.famivac.gestionnaire.domains.familles.entity.views.FamilleToImportDTO;
 import java.util.List;
 import java.util.Set;
 import javax.enterprise.context.ApplicationScoped;
@@ -60,9 +59,15 @@ public class FamilleRepository {
 
     Query familleQuery =
         entityManager.createQuery("""
-        SELECt f 
+        SELECT f 
         FROM Famille f 
-        JOIN f.membres m
+        JOIN FETCH f.membres m
+        JOIN FETCH f.tranchesAges
+        JOIN FETCH f.periodesSouhaitees
+        JOIN FETCH f.informationsHabitation
+        JOIN FETCH f.informationsVehicule
+        JOIN FETCH m.communeDeNaissance
+        JOIN FETCH f.adresse.commune
         WHERE f.id in :id
         AND m.referent = true
         ORDER BY m.nom, m.prenom
@@ -79,23 +84,4 @@ public class FamilleRepository {
     return (long) q.getSingleResult();
   }
 
-  //    private String stripAccents(String s) {
-  //        s = Normalizer.normalize(s, Normalizer.Form.NFD);
-  //        s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-  //        return s;
-  //    }
-  public List<FamilleToImportDTO> getFamillesToImport() {
-    return entityManager
-        .createQuery(
-            "SELECT NEW fr.famivac.gestionnaire.familles.entity.views.FamilleToImportDTO(f.id, mr.nom, mr.prenom, mr.coordonnees.email) "
-                + " FROM Famille f INNER JOIN f.membres mr "
-                + " WHERE mr.referent IS TRUE "
-                + " AND f.dateRadiation IS NULL "
-                + " AND f.candidature IS FALSE "
-                + " AND f.archivee = false "
-                + " AND mr.coordonnees.email IS NOT NULL "
-                + " AND TRIM(mr.coordonnees.email) != '' ",
-            FamilleToImportDTO.class)
-        .getResultList();
-  }
 }
