@@ -168,7 +168,7 @@
     <dependency>
       <artifactId>spring-security-crypto</artifactId>
       <groupId>org.springframework.security</groupId>
-      <version>5.5.0</version>
+      <version>5.6.1</version>
     </dependency>
     <dependency>
       <artifactId>lombok</artifactId>
