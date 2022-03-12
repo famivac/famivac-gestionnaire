@@ -148,7 +148,7 @@
     <dependency>
       <artifactId>primefaces</artifactId>
       <groupId>org.primefaces</groupId>
-      <version>10.0.0</version>
+      <version>11.0.0</version>
     </dependency>
     <dependency>
       <artifactId>bootstrap</artifactId>
@@ -168,7 +168,7 @@
     <dependency>
       <artifactId>spring-security-crypto</artifactId>
       <groupId>org.springframework.security</groupId>
-      <version>5.5.0</version>
+      <version>5.6.2</version>
     </dependency>
     <dependency>
       <artifactId>lombok</artifactId>
