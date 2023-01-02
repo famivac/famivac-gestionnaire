@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -72,7 +73,7 @@ public class FamilleDetailsBean implements Serializable, CompleteCommune {
           }
           return m1.getId().compareTo(m2.getId());
         });
-    chambres = form.getChambres().stream().toList();
+    chambres = form.getChambres().stream().collect(Collectors.toList());
     nouvelleChambre = new Chambre(0, form);
     sejours = sejourRepository.sejoursFamille(id);
   }
