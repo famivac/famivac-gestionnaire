@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  postgres:
+    image: postgres:11.6-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: gestionnaire
+      POSTGRES_PASSWORD: gestionnaire
+      POSTGRES_DB: gestionnaire
+    ports:
+      - "54322:5432"

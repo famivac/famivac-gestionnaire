@@ -8,11 +8,14 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @ApplicationScoped
 public class FamilleRepository {
 
-  @Inject private EntityManager entityManager;
+  @Inject
+  private EntityManager entityManager;
 
   public List<FamilleListView> retrieve(
       String nomReferent,
@@ -59,23 +62,23 @@ public class FamilleRepository {
     List<Long> ids = idQuery.getResultList();
 
     Query familleQuery =
-        entityManager.createQuery("""
-        SELECT new fr.famivac.gestionnaire.domains.familles.entity.views.FamilleListView(
-          f.id,
-          m.nom,
-          m.prenom,
-          m.coordonnees.telephone1,
-          m.coordonnees.email,
-          f.dateRadiation,
-          f.candidature,
-          f.archivee
-        )
-        FROM Famille f 
-        JOIN f.membres m
-        WHERE f.id in :id
-        AND m.referent = true
-        ORDER BY m.nom, m.prenom
-    """, FamilleListView.class);
+        entityManager.createQuery(
+            "SELECT new fr.famivac.gestionnaire.domains.familles.entity.views.FamilleListView(" +
+                " f.id," +
+                " m.nom," +
+                " m.prenom," +
+                " m.coordonnees.telephone1," +
+                " m.coordonnees.email," +
+                " f.dateRadiation," +
+                " f.candidature," +
+                " f.archivee" +
+                " )" +
+                " FROM Famille f" +
+                " JOIN f.membres m" +
+                " WHERE f.id in :id" +
+                " AND m.referent = true" +
+                " ORDER BY m.nom, m.prenom"
+            , FamilleListView.class);
     familleQuery.setParameter("id", ids);
 
     return familleQuery.getResultList();
