@@ -209,7 +209,7 @@
         </exclusion>
       </exclusions>
       <groupId>com.lowagie</groupId>
-      <version>2.1.7</version>
+      <version>4.2.0</version>
     </dependency>
     <!-- End Data Exporter -->
     <dependency>
