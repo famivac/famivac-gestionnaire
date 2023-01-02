@@ -47,13 +47,13 @@
           </cli-sessions>
           <feature-packs>
             <feature-pack>
-              <location>wildfly@maven(org.jboss.universe:community-universe)
+              <location>wildfly@maven(org.jboss.universe:community-universe)#24.0.0.Final
               </location>
             </feature-pack>
             <feature-pack>
               <artifactId>wildfly-datasources-galleon-pack</artifactId>
               <groupId>org.wildfly</groupId>
-              <version>1.2.3.Final</version>
+              <version>3.0.1.Final</version>
             </feature-pack>
           </feature-packs>
           <jvmArguments>
@@ -85,7 +85,7 @@
           </execution>
         </executions>
         <groupId>org.wildfly.plugins</groupId>
-        <version>4.0.2.Final</version>
+        <version>8.1.0.Final</version>
       </plugin>
       <!-- Coveralls -->
       <plugin>
@@ -253,8 +253,8 @@
     <additionalparam>-Xdoclint:none</additionalparam>
     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <maven.compiler.source>16</maven.compiler.source>
-    <maven.compiler.target>16</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <skipUnitTests>false</skipUnitTests>
   </properties>
