@@ -126,12 +126,13 @@
     <welcome-file>faces/index.xhtml</welcome-file>
   </welcome-file-list>
 
+  <!-- Payara specific -->
   <data-source>
     <name>java:app/PostgreSQLDS</name>
     <class-name>org.postgresql.ds.PGSimpleDataSource</class-name>
-    <url>jdbc:postgresql://${ENV=POSTGRESQL_SERVICE_HOST}:${ENV=POSTGRESQL_SERVICE_PORT}/${ENV=POSTGRESQL_DATABASE}</url>
-    <user>${ENV=POSTGRESQL_USER}</user>
-    <password>${ENV=POSTGRESQL_PASSWORD}</password>
+    <url>jdbc:postgresql://${ENV=POSTGRESQL_SERVICE_HOST:localhost}:${ENV=POSTGRESQL_SERVICE_PORT:54322}/${ENV=POSTGRESQL_DATABASE:gestionnaire}</url>
+    <user>${ENV=POSTGRESQL_USER:gestionnaire}</user>
+    <password>${ENV=POSTGRESQL_PASSWORD:gestionnaire}</password>
   </data-source>
 
 
