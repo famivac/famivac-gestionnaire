@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  version="3.1"
+  version="4.0"
   xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 
   <context-param>
     <param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -32,15 +33,16 @@
 
   <context-param>
     <param-name>liquibase.datasource</param-name>
-    <param-value>java:/jboss/datasources/PostgreSQLDS</param-value>
+    <param-value>java:app/PostgreSQLDS</param-value>
   </context-param>
   <context-param>
     <param-name>liquibase.onerror.fail</param-name>
     <param-value>true</param-value>
   </context-param>
+
   <filter>
-    <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
     <filter-name>monitoring</filter-name>
+    <filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>monitoring</filter-name>
@@ -58,37 +60,37 @@
   </mime-mapping>
   <security-constraint>
     <web-resource-collection>
+      <web-resource-name>Login page</web-resource-name>
       <url-pattern>/faces/login.xhtml</url-pattern>
       <url-pattern>/faces/javax.faces.resource/*</url-pattern>
-      <web-resource-name>Login page</web-resource-name>
     </web-resource-collection>
   </security-constraint>
   <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Application pages</web-resource-name>
+      <url-pattern>/faces/*</url-pattern>
+    </web-resource-collection>
     <auth-constraint>
       <role-name>ROLE_GESTIONNAIRE</role-name>
     </auth-constraint>
-    <web-resource-collection>
-      <url-pattern>/faces/*</url-pattern>
-      <web-resource-name>Application pages</web-resource-name>
-    </web-resource-collection>
   </security-constraint>
   <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Admin pages</web-resource-name>
+      <url-pattern>/faces/parametres/*</url-pattern>
+    </web-resource-collection>
     <auth-constraint>
       <role-name>ROLE_ADMIN</role-name>
     </auth-constraint>
-    <web-resource-collection>
-      <url-pattern>/faces/parametres/*</url-pattern>
-      <web-resource-name>Admin pages</web-resource-name>
-    </web-resource-collection>
   </security-constraint>
   <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Monitoring pages</web-resource-name>
+      <url-pattern>/monitoring/*</url-pattern>
+    </web-resource-collection>
     <auth-constraint>
       <role-name>ROLE_MONITORING</role-name>
     </auth-constraint>
-    <web-resource-collection>
-      <url-pattern>/monitoring/*</url-pattern>
-      <web-resource-name>Monitoring pages</web-resource-name>
-    </web-resource-collection>
   </security-constraint>
   <security-role>
     <role-name>ROLE_GESTIONNAIRE</role-name>
@@ -104,9 +106,9 @@
   </security-role>
 
   <servlet>
-    <load-on-startup>1</load-on-startup>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
 
   <servlet-mapping>
@@ -123,5 +125,16 @@
   <welcome-file-list>
     <welcome-file>faces/index.xhtml</welcome-file>
   </welcome-file-list>
+
+  <data-source>
+    <name>java:app/PostgreSQLDS</name>
+    <class-name>org.postgresql.ds.PGSimpleDataSource</class-name>
+    <server-name>{ENV=POSTGRESQL_SERVICE_HOST}</server-name>
+    <port-number>{ENV=POSTGRESQL_SERVICE_PORT}</port-number>
+    <database-name>{ENV=POSTGRESQL_DATABASE}</database-name>
+    <user>{ENV=POSTGRESQL_USER}</user>
+    <password>{ENV=POSTGRESQL_PASSWORD}</password>
+  </data-source>
+
 
 </web-app>

@@ -37,7 +37,7 @@ public class Inscripteur implements Serializable {
     private Long id;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "inscripteur")
-    private final Set<Enfant> enfants;
+    private Set<Enfant> enfants;
 
     @Enumerated(EnumType.STRING)
     private TypeInscripteur type;

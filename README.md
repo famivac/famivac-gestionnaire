@@ -14,7 +14,7 @@ Famivac - Gestionnaire
 Startup line
 
 ```shell
-POSTGRESQL_SERVICE_HOST=localhost POSTGRESQL_PASSWORD=gestionnaire POSTGRESQL_DATABASE=gestionnaire POSTGRESQL_SERVICE_PORT=54322 POSTGRESQL_USER=gestionnaire java -Djavamelody.datasources=javamelody.datasources -Djboss.http.port=5000 -jar target/gestionnaire-2.0.0-bootable.jar
+POSTGRESQL_SERVICE_HOST=localhost POSTGRESQL_PASSWORD=gestionnaire POSTGRESQL_DATABASE=gestionnaire POSTGRESQL_SERVICE_PORT=54322 POSTGRESQL_USER=gestionnaire java -Djavamelody.datasources=javamelody.datasources -jar target/gestionnaire-2.0.0-microbundle.jar --port 8080 --noHazelcast
 ```
 
 # Deploy

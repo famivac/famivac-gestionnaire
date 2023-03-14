@@ -1,1 +1,1 @@
-web: java -Djavamelody.storage-directory=/storage/javamelody -Djavamelody.datasources=java:jboss/datasources/PostgreSQLDS -Djboss.bind.address=0.0.0.0 -Djboss.http.port=$PORT -jar ./target/gestionnaire-2.0.0-bootable.jar
+web: java -Djavamelody.storage-directory=/storage/javamelody -Djavamelody.datasources=java:app/PostgreSQLDS -jar target/gestionnaire-2.0.0-microbundle.jar --port $PORT --noHazelcast
