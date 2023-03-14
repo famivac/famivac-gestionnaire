@@ -37,9 +37,15 @@
       <plugin>
         <artifactId>payara-micro-maven-plugin</artifactId>
         <configuration>
+          <javaCommandLineOptions>
+            <option>
+              <key>-Djavamelody.datasources</key>
+              <value>java:app/PostgreSQLDS</value>
+            </option>
+          </javaCommandLineOptions>
           <commandLineOptions>
             <option>
-              <key>--noHazelcast</key>
+              <key>--nocluster</key>
             </option>
           </commandLineOptions>
           <payaraVersion>5.2022.5</payaraVersion>

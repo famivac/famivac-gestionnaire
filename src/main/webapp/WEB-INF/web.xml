@@ -129,11 +129,9 @@
   <data-source>
     <name>java:app/PostgreSQLDS</name>
     <class-name>org.postgresql.ds.PGSimpleDataSource</class-name>
-    <server-name>{ENV=POSTGRESQL_SERVICE_HOST}</server-name>
-    <port-number>{ENV=POSTGRESQL_SERVICE_PORT}</port-number>
-    <database-name>{ENV=POSTGRESQL_DATABASE}</database-name>
-    <user>{ENV=POSTGRESQL_USER}</user>
-    <password>{ENV=POSTGRESQL_PASSWORD}</password>
+    <url>jdbc:postgresql://${ENV=POSTGRESQL_SERVICE_HOST}:${ENV=POSTGRESQL_SERVICE_PORT}/${ENV=POSTGRESQL_DATABASE}</url>
+    <user>${ENV=POSTGRESQL_USER}</user>
+    <password>${ENV=POSTGRESQL_PASSWORD}</password>
   </data-source>
 
 
