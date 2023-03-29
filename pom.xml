@@ -122,7 +122,7 @@
     <dependency>
       <artifactId>javamelody-core</artifactId>
       <groupId>net.bull.javamelody</groupId>
-      <version>1.88.0</version>
+      <version>1.91.0</version>
     </dependency>
     <dependency>
       <artifactId>primefaces</artifactId>
