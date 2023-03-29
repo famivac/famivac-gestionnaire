@@ -31,7 +31,7 @@ public class Groupe implements Serializable {
     private String libelle;
 
     @ManyToMany(mappedBy = "groupes")
-    private final Set<Utilisateur> utilisateurs;
+    private Set<Utilisateur> utilisateurs;
 
     protected Groupe() {
         utilisateurs = new HashSet<>();

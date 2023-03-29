@@ -42,9 +42,9 @@ public class FamilleRepository {
       sIdsQuery.append(" and lower(m.prenom) like :prenomReferent ");
     }
     if (periodesAccueil != null && !periodesAccueil.isEmpty()) {
-      sIdsQuery.append(" and periode in :periodesAccueil ");
+      sIdsQuery.append(" and f.periode in :periodesAccueil ");
     }
-    sIdsQuery.append(" and archivee = :archivee ");
+    sIdsQuery.append(" and f.archivee = :archivee ");
 
     // PARAMETERS
     Query idQuery = entityManager.createQuery(sIdsQuery.toString(), Long.class);

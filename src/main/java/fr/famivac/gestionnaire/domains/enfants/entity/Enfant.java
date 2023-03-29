@@ -48,7 +48,7 @@ public class Enfant implements Serializable {
     private ResponsableLegal responsableLegal;
 
     @Embedded
-    private final InformationsComplementairesEnfant informationsComplementairesEnfant;
+    private InformationsComplementairesEnfant informationsComplementairesEnfant;
 
     @OneToOne(cascade = CascadeType.ALL)
     private FamilleAccueil familleAccueil;
