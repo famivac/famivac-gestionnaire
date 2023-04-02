@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import liquibase.pro.packaged.O;
 import org.apache.commons.collections4.ComparatorUtils;
 import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
@@ -40,6 +41,12 @@ public class LazyVoyagesDataModel extends LazyDataModel<VoyageDTO> {
   }
 
   @Override
+  public int count(Map<String, FilterMeta> filterBy) {
+    var filter = new LazyFilter<>(filterBy.values());
+    return (int) datasource.stream().filter(filter).count();
+  }
+
+  @Override
   public List<VoyageDTO> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
     var filter = new LazyFilter<>(filterBy.values());
@@ -48,9 +55,6 @@ public class LazyVoyagesDataModel extends LazyDataModel<VoyageDTO> {
             .map(o -> new LazySorter<>(VoyageDTO.class, o.getField(), o.getOrder()))
             .collect(Collectors.toList());
     var comparator = ComparatorUtils.chainedComparator(comparators);
-
-    var rowCount = datasource.stream().filter(filter).count();
-    setRowCount((int) rowCount);
 
     return datasource.stream()
         .filter(filter)

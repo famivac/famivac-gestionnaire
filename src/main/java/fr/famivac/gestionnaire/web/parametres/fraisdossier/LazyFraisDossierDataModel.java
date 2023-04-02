@@ -33,9 +33,13 @@ public class LazyFraisDossierDataModel extends LazyDataModel<FraisDossier> {
   }
 
   @Override
+  public int count(Map<String, FilterMeta> map) {
+    return datasource.size();
+  }
+
+  @Override
   public List<FraisDossier> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-    setRowCount(datasource.size());
     return datasource.stream().skip(first).limit(pageSize).collect(Collectors.toList());
   }
 

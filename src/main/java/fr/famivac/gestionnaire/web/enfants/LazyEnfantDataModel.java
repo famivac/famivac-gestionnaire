@@ -36,6 +36,11 @@ public class LazyEnfantDataModel extends LazyDataModel<EnfantDTO> {
   }
 
   @Override
+  public int count(Map<String, FilterMeta> map) {
+    return datasource.size();
+  }
+
+  @Override
   public List<EnfantDTO> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
     List<Comparator<EnfantDTO>> comparators =
@@ -44,7 +49,6 @@ public class LazyEnfantDataModel extends LazyDataModel<EnfantDTO> {
             .collect(Collectors.toList());
     var comparator = ComparatorUtils.chainedComparator(comparators);
 
-    setRowCount(datasource.size());
     return datasource.stream()
         .sorted(comparator)
         .skip(first)

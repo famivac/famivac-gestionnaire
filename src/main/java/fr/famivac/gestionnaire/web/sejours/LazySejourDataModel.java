@@ -36,6 +36,11 @@ public class LazySejourDataModel extends LazyDataModel<SejourDTO> {
   }
 
   @Override
+  public int count(Map<String, FilterMeta> map) {
+    return datasource.size();
+  }
+
+  @Override
   public List<SejourDTO> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
     List<Comparator<SejourDTO>> comparators =
@@ -44,7 +49,6 @@ public class LazySejourDataModel extends LazyDataModel<SejourDTO> {
             .collect(Collectors.toList());
     var comparator = ComparatorUtils.chainedComparator(comparators);
 
-    setRowCount(datasource.size());
     return datasource.stream()
         .sorted(comparator)
         .skip(first)

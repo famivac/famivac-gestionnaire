@@ -34,9 +34,13 @@ public class LazyFraisVoyageDataModel extends LazyDataModel<FraisVoyage> {
   }
 
   @Override
+  public int count(Map<String, FilterMeta> map) {
+    return datasource.size();
+  }
+
+  @Override
   public List<FraisVoyage> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-    setRowCount(datasource.size());
     return datasource.stream().skip(first).limit(pageSize).collect(Collectors.toList());
   }
 

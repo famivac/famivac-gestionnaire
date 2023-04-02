@@ -39,9 +39,13 @@ public class LazyCommuneDataModel extends LazyDataModel<Commune> {
   }
 
   @Override
+  public int count(Map<String, FilterMeta> map) {
+    return datasource.size();
+  }
+
+  @Override
   public List<Commune> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-    setRowCount(datasource.size());
     return datasource.stream()
         .sorted((Commune o1, Commune o2) -> alphanumComparator.compare(o1.getCode(), o2.getCode()))
         .skip(first)

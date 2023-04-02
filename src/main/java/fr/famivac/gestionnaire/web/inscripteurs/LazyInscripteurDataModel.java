@@ -36,6 +36,11 @@ public class LazyInscripteurDataModel extends LazyDataModel<RetrieveInscripteurs
   }
 
   @Override
+  public int count(Map<String, FilterMeta> map) {
+    return datasource.size();
+  }
+
+  @Override
   public List<RetrieveInscripteursResponseDTO> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
     List<Comparator<RetrieveInscripteursResponseDTO>> comparators =
@@ -47,7 +52,6 @@ public class LazyInscripteurDataModel extends LazyDataModel<RetrieveInscripteurs
             .collect(Collectors.toList());
     var comparator = ComparatorUtils.chainedComparator(comparators);
 
-    setRowCount(datasource.size());
     return datasource.stream()
         .sorted(comparator)
         .skip(first)

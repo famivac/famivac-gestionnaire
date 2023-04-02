@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.apache.commons.collections4.ComparatorUtils;
 import org.primefaces.model.FilterMeta;
@@ -37,6 +38,12 @@ public class LazyFamilleDataModel extends LazyDataModel<FamilleResult> {
   }
 
   @Override
+  public int count(Map<String, FilterMeta> filterBy) {
+    var filter = new LazyFilter<>(filterBy.values());
+    return (int) datasource.stream().filter(filter).count();
+  }
+
+  @Override
   public List<FamilleResult> load(
       int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
     var filter = new LazyFilter<>(filterBy.values());
@@ -45,9 +52,6 @@ public class LazyFamilleDataModel extends LazyDataModel<FamilleResult> {
             .map(o -> new LazySorter<>(FamilleResult.class, o.getField(), o.getOrder()))
             .collect(Collectors.toList());
     var comparator = ComparatorUtils.chainedComparator(comparators);
-    var rowCount = datasource.stream().filter(filter).count();
-
-    setRowCount((int) rowCount);
     return datasource.stream()
         .filter(filter)
         .sorted(comparator)
