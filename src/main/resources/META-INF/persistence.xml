@@ -3,6 +3,7 @@
 
 
   <persistence-unit name="gestionnairePU" transaction-type="JTA">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
     <jta-data-source>java:app/PostgreSQLDS</jta-data-source>
 
@@ -19,6 +20,8 @@
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="none"/>
       <!--<property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>-->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+      <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
     </properties>
 
 
