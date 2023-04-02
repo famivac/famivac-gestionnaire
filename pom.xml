@@ -127,7 +127,7 @@
     <dependency>
       <artifactId>primefaces</artifactId>
       <groupId>org.primefaces</groupId>
-      <version>11.0.0</version>
+      <version>12.0.0</version>
     </dependency>
     <dependency>
       <artifactId>bootstrap</artifactId>
