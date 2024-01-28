@@ -1,8 +1,8 @@
 package fr.famivac.gestionnaire.web.sejours;
 
 import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
 /**
  * @author paoesco
@@ -11,54 +11,54 @@ import javax.inject.Named;
 @ViewScoped
 public class RechercherSejoursForm implements Serializable {
 
-    private String nomReferent;
+  private String nomReferent;
 
-    private String prenomReferent;
+  private String prenomReferent;
 
-    private String nomEnfant;
+  private String nomEnfant;
 
-    private String prenomEnfant;
+  private String prenomEnfant;
 
-    private String statutSejour;
+  private String statutSejour;
 
-    public String getNomReferent() {
-        return nomReferent;
-    }
+  public String getNomReferent() {
+    return nomReferent;
+  }
 
-    public void setNomReferent(String nomReferent) {
-        this.nomReferent = nomReferent;
-    }
+  public void setNomReferent(String nomReferent) {
+    this.nomReferent = nomReferent;
+  }
 
-    public String getPrenomReferent() {
-        return prenomReferent;
-    }
+  public String getPrenomReferent() {
+    return prenomReferent;
+  }
 
-    public void setPrenomReferent(String prenomReferent) {
-        this.prenomReferent = prenomReferent;
-    }
+  public void setPrenomReferent(String prenomReferent) {
+    this.prenomReferent = prenomReferent;
+  }
 
-    public String getNomEnfant() {
-        return nomEnfant;
-    }
+  public String getNomEnfant() {
+    return nomEnfant;
+  }
 
-    public void setNomEnfant(String nomEnfant) {
-        this.nomEnfant = nomEnfant;
-    }
+  public void setNomEnfant(String nomEnfant) {
+    this.nomEnfant = nomEnfant;
+  }
 
-    public String getPrenomEnfant() {
-        return prenomEnfant;
-    }
+  public String getPrenomEnfant() {
+    return prenomEnfant;
+  }
 
-    public void setPrenomEnfant(String prenomEnfant) {
-        this.prenomEnfant = prenomEnfant;
-    }
+  public void setPrenomEnfant(String prenomEnfant) {
+    this.prenomEnfant = prenomEnfant;
+  }
 
-    public String getStatutSejour() {
-        return statutSejour;
-    }
+  public String getStatutSejour() {
+    return statutSejour;
+  }
 
-    public void setStatutSejour(String statutSejour) {
-        this.statutSejour = statutSejour;
-    }
+  public void setStatutSejour(String statutSejour) {
+    this.statutSejour = statutSejour;
+  }
 
 }

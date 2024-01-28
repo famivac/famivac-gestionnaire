@@ -4,22 +4,29 @@ import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantDTO;
 import fr.famivac.gestionnaire.domains.familles.boundary.FamilleResult;
 import fr.famivac.gestionnaire.domains.sejours.entity.PeriodeJournee;
 import java.util.Date;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 public class AjouterSejourForm {
 
-  @NotNull private FamilleResult famille;
+  @NotNull
+  private FamilleResult famille;
 
   private EnfantDTO enfant;
 
-  @NotNull private Date dateDebut;
+  @NotNull
+  private Date dateDebut;
 
-  @NotNull private String periodeJourneeDebut;
+  @NotNull
+  private String periodeJourneeDebut;
 
-  @NotNull private Date dateFin;
+  @NotNull
+  private Date dateFin;
 
-  @NotNull private String periodeJourneeFin;
+  @NotNull
+  private String periodeJourneeFin;
 
   public AjouterSejourForm() {
     periodeJourneeFin = PeriodeJournee.APRES_MIDI.name();

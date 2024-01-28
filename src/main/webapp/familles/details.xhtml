@@ -1,195 +1,196 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="jakarta.faces.html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
       xmlns="http://www.w3.org/1999/xhtml">
 
 <h:body>
 
-  <ui:composition template="/WEB-INF/template/layout.xhtml">
+    <ui:composition template="/WEB-INF/template/layout.xhtml">
 
-    <ui:define name="metadata">
-      <f:metadata>
-        <f:viewAction action="#{familleDetailsBean.init()}"></f:viewAction>
-        <f:viewParam name="id" value="#{familleDetailsBean.id}"></f:viewParam>
-      </f:metadata>
-    </ui:define>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewAction action="#{familleDetailsBean.init()}"></f:viewAction>
+                <f:viewParam name="id" value="#{familleDetailsBean.id}"></f:viewParam>
+            </f:metadata>
+        </ui:define>
 
-    <ui:define name="title">Détails</ui:define>
+        <ui:define name="title">Détails</ui:define>
 
-    <ui:define name="content">
-      <div class="container-fluid">
-        <div class="col-md-12">
-          <div class="panel panel-primary">
-            <div class="panel-heading">Famille</div>
-            <div class="panel-body">
-              <h:form id="form" role="form" styleClass="form-horizontal">
-                <p:tabView
-                  dynamic="true"
-                  id="tabView_famille"
-                  orientation="left">
-                  <p:tab id="tab_informations" title="Informations">
-                    <ui:include src="informations.xhtml"></ui:include>
-                  </p:tab>
-                  <p:tab id="tab_informations_habitation"
-                         title="Informations habitation">
-                    <ui:include src="informationsHabitation.xhtml"></ui:include>
-                  </p:tab>
-                  <p:tab id="tab_informations_vehicule"
-                         title="Informations véhicule">
-                    <ui:include src="informationsVehicule.xhtml"></ui:include>
-                  </p:tab>
-                  <p:tab id="tab_accueil" title="Accueil">
-                    <ui:include src="accueil.xhtml"></ui:include>
-                  </p:tab>
-                  <p:tab id="tab_chambres"
-                         title="Chambres (#{familleDetailsBean.chambres.size()})">
-                    <ui:include src="chambres.xhtml"/>
-                  </p:tab>
-                  <p:tab title="Séjours (#{familleDetailsBean.sejours.size()})">
-                    <p:dataTable
-                      id="sejoursDatatable"
-                      paginator="true"
-                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-                      rowKey="#{bean.id}"
-                      rows="20"
-                      value="#{familleDetailsBean.sejours}"
-                      var="bean">
-                      <f:facet name="{Exporters}">
-                        <h:commandLink>
-                          <img src="/resources/img/excel.png" width="24"/>
-                          <p:dataExporter
-                            fileName="#{familleDetailsBean.form.membreReferent.nom}-sejours"
-                            target="sejoursDatatable"
-                            type="xlsx"/>
-                        </h:commandLink>
-                      </f:facet>
-                      <p:column headerText="Enfant">
-                        <h:outputText value="#{bean.enfantPrenom}"></h:outputText>&nbsp;
-                        <h:outputText value="#{bean.enfantNom}"></h:outputText>
-                      </p:column>
-                      <p:column headerText="Début">
-                        <h:outputText value="#{bean.dateDebut}">
-                          <f:convertDateTime pattern="dd/MM/yyyy"/>
-                        </h:outputText>
-                      </p:column>
-                      <p:column headerText="Fin">
-                        <h:outputText value="#{bean.dateFin}">
-                          <f:convertDateTime pattern="dd/MM/yyyy"/>
-                        </h:outputText>
-                      </p:column>
-                      <p:column headerText="Statut">
-                        <h:outputText rendered="#{bean.statutDuJour().name().equals('A_VENIR')}"
-                                      styleClass="label label-default"
-                                      value="A venir"/>
-                        <h:outputText rendered="#{bean.statutDuJour().name().equals('TERMINE')}"
-                                      styleClass="label label-success"
-                                      value="Terminé"/>
-                        <h:outputText rendered="#{bean.statutDuJour().name().equals('EN_COURS')}"
-                                      styleClass="label label-primary"
-                                      value="En cours"/>
-                        <h:outputText rendered="#{bean.statutDuJour().name().equals('ANNULE')}"
-                                      styleClass="label label-default"
-                                      value="Annulé"/>
-                        <h:outputText
-                          rendered="#{bean.statutDuJour().name().equals('TERMINE_PREMATUREMENT')}"
-                          styleClass="label label-warning"
-                          value="Terminé prém."/>
-                      </p:column>
-                      <p:column exportable="false" width="100">
-                        <p:button
-                          icon="pi pi-pencil"
-                          outcome="/sejours/details.xhtml">
-                          <f:param name="id" value="#{bean.id}"></f:param>
-                        </p:button>
-                      </p:column>
-                    </p:dataTable>
-                  </p:tab>
-                  <p:tab id="tab_formalites" title="Formalités">
-                    <ui:include src="formalites.xhtml"/>
-                  </p:tab>
-                  <p:tab id="tab_autre" title="Autre">
-                    <div class="form-group">
-                      <div class="col-md-8">
-                        <p:inputTextarea
-                          autoResize="false"
-                          id="form_connaissance_association"
-                          maxlength="2000"
-                          rows="5"
-                          styleClass="form-control"
-                          value="#{familleDetailsBean.form.connaissanceAssociation}"/>
-                      </div>
-                      <p:outputLabel
-                        for="form_connaissance_association"
-                        styleClass="col-sm-3 control-label"
-                        value="Comment la famille a eu connaissance de l'association ?"/>
+        <ui:define name="content">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Famille</div>
+                        <div class="panel-body">
+                            <h:form id="form" role="form" styleClass="form-horizontal">
+                                <p:tabView
+                                        dynamic="true"
+                                        id="tabView_famille"
+                                        orientation="left">
+                                    <p:tab id="tab_informations" title="Informations">
+                                        <ui:include src="informations.xhtml"></ui:include>
+                                    </p:tab>
+                                    <p:tab id="tab_informations_habitation"
+                                           title="Informations habitation">
+                                        <ui:include src="informationsHabitation.xhtml"></ui:include>
+                                    </p:tab>
+                                    <p:tab id="tab_informations_vehicule"
+                                           title="Informations véhicule">
+                                        <ui:include src="informationsVehicule.xhtml"></ui:include>
+                                    </p:tab>
+                                    <p:tab id="tab_accueil" title="Accueil">
+                                        <ui:include src="accueil.xhtml"></ui:include>
+                                    </p:tab>
+                                    <p:tab id="tab_chambres"
+                                           title="Chambres (#{familleDetailsBean.chambres.size()})">
+                                        <ui:include src="chambres.xhtml"/>
+                                    </p:tab>
+                                    <p:tab title="Séjours (#{familleDetailsBean.sejours.size()})">
+                                        <p:dataTable
+                                                id="sejoursDatatable"
+                                                paginator="true"
+                                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                                                rowKey="#{bean.id}"
+                                                rows="20"
+                                                value="#{familleDetailsBean.sejours}"
+                                                var="bean">
+                                            <f:facet name="{Exporters}">
+                                                <h:commandLink>
+                                                    <img src="/resources/img/excel.png" width="24"/>
+                                                    <p:dataExporter
+                                                            fileName="#{familleDetailsBean.form.membreReferent.nom}-sejours"
+                                                            target="sejoursDatatable"
+                                                            type="xlsx"/>
+                                                </h:commandLink>
+                                            </f:facet>
+                                            <p:column headerText="Enfant">
+                                                <h:outputText value="#{bean.enfantPrenom}"></h:outputText>&nbsp;
+                                                <h:outputText value="#{bean.enfantNom}"></h:outputText>
+                                            </p:column>
+                                            <p:column headerText="Début">
+                                                <h:outputText value="#{bean.dateDebut}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column headerText="Fin">
+                                                <h:outputText value="#{bean.dateFin}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+                                            <p:column headerText="Statut">
+                                                <h:outputText rendered="#{bean.statutDuJour().name().equals('A_VENIR')}"
+                                                              styleClass="label label-default"
+                                                              value="A venir"/>
+                                                <h:outputText rendered="#{bean.statutDuJour().name().equals('TERMINE')}"
+                                                              styleClass="label label-success"
+                                                              value="Terminé"/>
+                                                <h:outputText
+                                                        rendered="#{bean.statutDuJour().name().equals('EN_COURS')}"
+                                                        styleClass="label label-primary"
+                                                        value="En cours"/>
+                                                <h:outputText rendered="#{bean.statutDuJour().name().equals('ANNULE')}"
+                                                              styleClass="label label-default"
+                                                              value="Annulé"/>
+                                                <h:outputText
+                                                        rendered="#{bean.statutDuJour().name().equals('TERMINE_PREMATUREMENT')}"
+                                                        styleClass="label label-warning"
+                                                        value="Terminé prém."/>
+                                            </p:column>
+                                            <p:column exportable="false" width="100">
+                                                <p:button
+                                                        icon="pi pi-pencil"
+                                                        outcome="/sejours/details.xhtml">
+                                                    <f:param name="id" value="#{bean.id}"></f:param>
+                                                </p:button>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:tab>
+                                    <p:tab id="tab_formalites" title="Formalités">
+                                        <ui:include src="formalites.xhtml"/>
+                                    </p:tab>
+                                    <p:tab id="tab_autre" title="Autre">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <p:inputTextarea
+                                                        autoResize="false"
+                                                        id="form_connaissance_association"
+                                                        maxlength="2000"
+                                                        rows="5"
+                                                        styleClass="form-control"
+                                                        value="#{familleDetailsBean.form.connaissanceAssociation}"/>
+                                            </div>
+                                            <p:outputLabel
+                                                    for="form_connaissance_association"
+                                                    styleClass="col-sm-3 control-label"
+                                                    value="Comment la famille a eu connaissance de l'association ?"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <p:inputTextarea
+                                                        autoResize="false"
+                                                        id="input_famille_remarque"
+                                                        maxlength="2000"
+                                                        rows="5"
+                                                        styleClass="form-control"
+                                                        value="#{familleDetailsBean.form.remarque}"/>
+                                            </div>
+                                            <p:outputLabel
+                                                    for="input_famille_remarque"
+                                                    styleClass="col-sm-3 control-label"
+                                                    value="Remarques"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <p:calendar
+                                                        id="input_date_radiation"
+                                                        locale="fr"
+                                                        mask="99/99/9999"
+                                                        navigator="true"
+                                                        pattern="dd/MM/yyyy"
+                                                        value="#{familleDetailsBean.form.dateRadiation}"
+                                                        yearRange="c-100:c+0"/>
+                                            </div>
+                                            <p:outputLabel
+                                                    for="input_date_radiation"
+                                                    styleClass="col-sm-3 control-label"
+                                                    value="Date radiation"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <p:selectBooleanCheckbox
+                                                        id="input_candidature"
+                                                        value="#{familleDetailsBean.form.candidature}"/>
+                                            </div>
+                                            <p:outputLabel
+                                                    for="input_candidature"
+                                                    styleClass="col-sm-3 text-right"
+                                                    value="Candidature ?"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-11">
+                                                <p:commandButton
+                                                        actionListener="#{familleDetailsBean.update()}"
+                                                        process=":form:tabView_famille:tab_autre"
+                                                        styleClass="pull-right"
+                                                        update="panel_membre_referent"
+                                                        value="Sauver"/>
+                                            </div>
+                                        </div>
+                                    </p:tab>
+                                </p:tabView>
+                            </h:form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                      <div class="col-md-8">
-                        <p:inputTextarea
-                          autoResize="false"
-                          id="input_famille_remarque"
-                          maxlength="2000"
-                          rows="5"
-                          styleClass="form-control"
-                          value="#{familleDetailsBean.form.remarque}"/>
-                      </div>
-                      <p:outputLabel
-                        for="input_famille_remarque"
-                        styleClass="col-sm-3 control-label"
-                        value="Remarques"/>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-md-8">
-                        <p:calendar
-                          id="input_date_radiation"
-                          locale="fr"
-                          mask="99/99/9999"
-                          navigator="true"
-                          pattern="dd/MM/yyyy"
-                          value="#{familleDetailsBean.form.dateRadiation}"
-                          yearRange="c-100:c+0"/>
-                      </div>
-                      <p:outputLabel
-                        for="input_date_radiation"
-                        styleClass="col-sm-3 control-label"
-                        value="Date radiation"/>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-md-8">
-                        <p:selectBooleanCheckbox
-                          id="input_candidature"
-                          value="#{familleDetailsBean.form.candidature}"/>
-                      </div>
-                      <p:outputLabel
-                        for="input_candidature"
-                        styleClass="col-sm-3 text-right"
-                        value="Candidature ?"/>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-md-11">
-                        <p:commandButton
-                          actionListener="#{familleDetailsBean.update()}"
-                          process=":form:tabView_famille:tab_autre"
-                          styleClass="pull-right"
-                          update="panel_membre_referent"
-                          value="Sauver"/>
-                      </div>
-                    </div>
-                  </p:tab>
-                </p:tabView>
-              </h:form>
-            </div>
-          </div>
 
-          <ui:include src="membres.xhtml"></ui:include>
-        </div>
-      </div> <!-- .container -->
-    </ui:define>
-  </ui:composition>
+                    <ui:include src="membres.xhtml"></ui:include>
+                </div>
+            </div> <!-- .container -->
+        </ui:define>
+    </ui:composition>
 </h:body>
 
 <h:head></h:head>

@@ -1,18 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<html xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml">
 
 <f:view locale="fr">
 
     <ui:insert name="metadata"></ui:insert>
 
     <h:head>
-        <title>FAMIVAC (GEST) - <ui:insert name="title"></ui:insert></title>
+        <title>FAMIVAC (GEST) -
+            <ui:insert name="title"></ui:insert>
+        </title>
         <h:outputStylesheet library="webjars" name="bootstrap/3.4.1/css/bootstrap.min-jsf.css"/>
         <h:outputStylesheet library="webjars"
                             name="bootstrap/3.4.1/css/bootstrap-theme.min-jsf.css"/>
@@ -45,9 +47,11 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li class="#{view.viewId.startsWith('/familles') ? 'active' : ''}">
-                                <h:link outcome="/familles/liste.xhtml" value="Familles"/></li>
+                                <h:link outcome="/familles/liste.xhtml" value="Familles"/>
+                            </li>
                             <li class="#{view.viewId.startsWith('/enfants') ? 'active' : ''}">
-                                <h:link outcome="/enfants/liste.xhtml" value="Enfants"/></li>
+                                <h:link outcome="/enfants/liste.xhtml" value="Enfants"/>
+                            </li>
                             <li class="#{view.viewId.startsWith('/inscripteurs') ? 'active' : ''}">
                                 <h:link outcome="/inscripteurs/liste.xhtml" value="Inscripteurs"/>
                             </li>
@@ -57,15 +61,21 @@
                                    role="button" aria-haspopup="true" aria-expanded="false">Séjours
                                     <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><h:link outcome="/sejours/liste.xhtml" value="Liste"/></li>
-                                    <li><h:link outcome="/sejours/voyages.xhtml" value="Voyages"/>
+                                    <li>
+                                        <h:link outcome="/sejours/liste.xhtml" value="Liste"/>
                                     </li>
-                                    <li><h:link outcome="/sejours/bilan.xhtml" value="Bilan"/></li>
+                                    <li>
+                                        <h:link outcome="/sejours/voyages.xhtml" value="Voyages"/>
+                                    </li>
+                                    <li>
+                                        <h:link outcome="/sejours/bilan.xhtml" value="Bilan"/>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="#{view.viewId.startsWith('/accompagnateurs') ? 'active' : ''}">
                                 <h:link outcome="/accompagnateurs/liste.xhtml"
-                                        value="Accompagnateurs"/></li>
+                                        value="Accompagnateurs"/>
+                            </li>
                             <li class="#{view.viewId.startsWith('/parametres') ? 'active' : ''}">
                                 <h:link rendered="#{request.isUserInRole('ROLE_ADMIN')}"
                                         outcome="/parametres/communes.xhtml" value="Paramètres"/>
@@ -73,7 +83,8 @@
                             <li class="#{view.viewId.startsWith('/monitoring') ? 'active' : ''}">
                                 <h:outputLink value="#{request.contextPath}/monitoring"
                                               target="_blank"
-                                              rendered="#{request.isUserInRole('ROLE_MONITORING')}">Monitoring</h:outputLink>
+                                              rendered="#{request.isUserInRole('ROLE_MONITORING')}">Monitoring
+                                </h:outputLink>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">

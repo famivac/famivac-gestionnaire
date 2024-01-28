@@ -10,15 +10,19 @@ import lombok.Getter;
 @AllArgsConstructor
 public class EnfantDTO {
 
-  private Long id;
+    private Long id;
 
-  private String nomEnfant;
+    private String nomEnfant;
 
-  private String prenomEnfant;
+    private String prenomEnfant;
 
-  public EnfantDTO(Enfant bean) {
-    id = bean.getId();
-    nomEnfant = bean.getNom();
-    prenomEnfant = bean.getPrenom();
-  }
+    public EnfantDTO() {
+
+    }
+
+    public EnfantDTO(Enfant bean) {
+        id = bean.getId();
+        nomEnfant = bean.getNom();
+        prenomEnfant = bean.getPrenom();
+    }
 }

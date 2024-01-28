@@ -3,9 +3,9 @@ package fr.famivac.gestionnaire.web.accompagnateurs;
 import fr.famivac.gestionnaire.domains.sejours.control.AccompagnateurService;
 import fr.famivac.gestionnaire.domains.sejours.entity.AccompagnateurRepository;
 import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * Backing bean des accompagnateurs.
@@ -16,35 +16,35 @@ import javax.inject.Named;
 @ViewScoped
 public class AccompagnateursListeBean implements Serializable {
 
-    /**
-     * Liste des accompagnateurs.
-     */
-    private LazyAccompagnateurDataModel lazyModel;
+  /**
+   * Liste des accompagnateurs.
+   */
+  private LazyAccompagnateurDataModel lazyModel;
 
-    @Inject
-    private AccompagnateurRepository accompagnateurRepository;
-    
-    @Inject
-    private AccompagnateurService accompagnateurService;
+  @Inject
+  private AccompagnateurRepository accompagnateurRepository;
 
-    /**
-     * Initialisation du bean.
-     */
-    public void init() {
-        rechercher();
-    }
+  @Inject
+  private AccompagnateurService accompagnateurService;
 
-    public void rechercher() {
-        lazyModel = new LazyAccompagnateurDataModel(accompagnateurRepository.get());
-    }
+  /**
+   * Initialisation du bean.
+   */
+  public void init() {
+    rechercher();
+  }
 
-    public void supprimer(Long id) {
-        accompagnateurService.delete(id);
-        init();
-    }
+  public void rechercher() {
+    lazyModel = new LazyAccompagnateurDataModel(accompagnateurRepository.get());
+  }
 
-    public LazyAccompagnateurDataModel getLazyModel() {
-        return lazyModel;
-    }
+  public void supprimer(Long id) {
+    accompagnateurService.delete(id);
+    init();
+  }
+
+  public LazyAccompagnateurDataModel getLazyModel() {
+    return lazyModel;
+  }
 
 }

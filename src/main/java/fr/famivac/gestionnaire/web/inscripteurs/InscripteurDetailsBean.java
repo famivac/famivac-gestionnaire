@@ -6,27 +6,33 @@ import fr.famivac.gestionnaire.domains.enfants.entity.TypeInscripteur;
 import fr.famivac.gestionnaire.domains.parametres.CommuneService;
 import fr.famivac.gestionnaire.web.communes.CompleteCommune;
 import java.io.Serializable;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Named
 @ViewScoped
 public class InscripteurDetailsBean implements Serializable, CompleteCommune {
 
-  /** */
+  /**
+   *
+   */
   private static final long serialVersionUID = -2554779234643713339L;
 
   private Long id;
 
   private Inscripteur form;
 
-  @Inject private CommuneService communeService;
+  @Inject
+  private CommuneService communeService;
 
-  @Inject private InscripteurService inscripteurService;
+  @Inject
+  private InscripteurService inscripteurService;
 
   public void init() {
     form = inscripteurService.retrieve(id);

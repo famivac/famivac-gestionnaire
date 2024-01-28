@@ -1,57 +1,58 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns="http://www.w3.org/1999/xhtml">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition template="/WEB-INF/template/layout.xhtml">
+    <ui:composition template="/WEB-INF/template/layout.xhtml">
 
-            <ui:define name="content">
+        <ui:define name="content">
 
-                <div class="container">
-                    <div class="col-md-3">
-                        <div class="list-group">
-                            <h:link 
-                                outcome="/parametres/communes.xhtml" 
+            <div class="container">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <h:link
+                                outcome="/parametres/communes.xhtml"
                                 styleClass="list-group-item #{view.viewId == '/parametres/communes.xhtml' ? 'active' : ''}"
                                 value="Communes"/>
-                            <h:link 
-                                outcome="/parametres/forfaitjournalier.xhtml" 
+                        <h:link
+                                outcome="/parametres/forfaitjournalier.xhtml"
                                 styleClass="list-group-item #{view.viewId == '/parametres/forfaitjournalier.xhtml' ? 'active' : ''}"
                                 value="Forfait Journalier"/>
-                            <h:link 
-                                outcome="/parametres/fraisdossier.xhtml" 
+                        <h:link
+                                outcome="/parametres/fraisdossier.xhtml"
                                 styleClass="list-group-item #{view.viewId == '/parametres/fraisdossier.xhtml' ? 'active' : ''}"
                                 value="Frais Dossier"/>
-                            <h:link 
-                                outcome="/parametres/fraispensionfamillejournalier.xhtml" 
+                        <h:link
+                                outcome="/parametres/fraispensionfamillejournalier.xhtml"
                                 styleClass="list-group-item #{view.viewId == '/parametres/fraispensionfamillejournalier.xhtml' ? 'active' : ''}"
                                 value="Frais Pension Famille Journalier"/>
-                            <h:link 
-                                outcome="/parametres/fraisvoyage.xhtml" 
+                        <h:link
+                                outcome="/parametres/fraisvoyage.xhtml"
                                 styleClass="list-group-item #{view.viewId == '/parametres/fraisvoyage.xhtml' ? 'active' : ''}"
                                 value="Frais Voyage"/>
-                            <h:link 
-                                outcome="/parametres/utilisateurs.xhtml" 
+                        <h:link
+                                outcome="/parametres/utilisateurs.xhtml"
                                 styleClass="list-group-item #{view.viewId == '/parametres/utilisateurs.xhtml' or view.viewId == '/parametres/utilisateur/details.xhtml' ? 'active' : ''}"
                                 value="Utilisateurs"/>
-                            <h:link 
-                                outcome="/parametres/emails.xhtml" 
+                        <h:link
+                                outcome="/parametres/emails.xhtml"
                                 styleClass="list-group-item #{view.viewId == '/parametres/emails.xhtml' ? 'active' : ''}"
                                 value="E-mails"/>
-                        </div>
                     </div>
+                </div>
 
-                    <ui:insert name="parametres-contenu"></ui:insert>
+                <ui:insert name="parametres-contenu"></ui:insert>
 
-                </div> <!-- .container -->
+            </div> <!-- .container -->
 
-            </ui:define>
-        </ui:composition>
-    </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
 

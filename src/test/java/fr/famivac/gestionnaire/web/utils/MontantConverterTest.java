@@ -1,14 +1,12 @@
 package fr.famivac.gestionnaire.web.utils;
 
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 
 /**
- *
  * @author paoesco
  */
 public class MontantConverterTest {
@@ -25,7 +23,7 @@ public class MontantConverterTest {
     // GIVEN
     String montant = "10.12";
     // WHEN
-    BigDecimal result = (BigDecimal) this.converter.getAsObject(null, null, montant);
+    BigDecimal result = this.converter.getAsObject(null, null, montant);
     // THEN
     Assertions.assertEquals(10.12, result.doubleValue(), 0);
   }

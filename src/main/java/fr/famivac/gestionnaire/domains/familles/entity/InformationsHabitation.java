@@ -1,16 +1,16 @@
 package fr.famivac.gestionnaire.domains.familles.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,9 @@ import lombok.Setter;
 @Setter
 public class InformationsHabitation implements Serializable {
 
-  @Id @GeneratedValue private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "FAMILLE_ID", nullable = false)
@@ -58,7 +60,8 @@ public class InformationsHabitation implements Serializable {
   @Column(name = "POINT_VIGILANCE", length = 1000)
   private String pointVigilance;
 
-  protected InformationsHabitation() {}
+  protected InformationsHabitation() {
+  }
 
   public InformationsHabitation(Famille famille) {
     this.famille = famille;

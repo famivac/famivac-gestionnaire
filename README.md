@@ -4,14 +4,15 @@ Famivac - Gestionnaire
 # Tech Stack
 
 - Java 11
-- Jakarta EE 8 (https://jakarta.ee/release/8/)
-- Wildfly 24 (https://docs.wildfly.org/23/Bootable_Guide.html)
+- Jakarta EE 9.1 https://jakarta.ee/release/9/
+- Payara 6 https://www.payara.fish/products/payara-platform-community/
 
 # Local Development
 
 - Start docker-compose: `docker-compose up`
+- Run project: `package payara-micro:bundle payara-micro:start`
 
-Startup line
+# Startup line
 
 ```shell
 java -Djavamelody.datasources=java:app/PostgreSQLDS -jar target/gestionnaire-2.0.0-microbundle.jar --port 8080 --nocluster

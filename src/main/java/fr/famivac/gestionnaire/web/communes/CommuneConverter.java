@@ -3,13 +3,13 @@ package fr.famivac.gestionnaire.web.communes;
 import fr.famivac.gestionnaire.commons.entity.Commune;
 import fr.famivac.gestionnaire.domains.parametres.CommuneService;
 import java.util.Objects;
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.convert.FacesConverter;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 @ApplicationScoped

@@ -4,18 +4,22 @@ import fr.famivac.gestionnaire.commons.entity.Adresse;
 import fr.famivac.gestionnaire.commons.entity.Coordonnees;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Entity
 public class ResponsableLegal implements Serializable {
 
-  @Id @GeneratedValue private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
   @Enumerated(EnumType.STRING)
   private TypeInscripteur type;
@@ -26,11 +30,13 @@ public class ResponsableLegal implements Serializable {
 
   private String organisme;
 
-  @Embedded private Adresse adresse;
+  @Embedded
+  private Adresse adresse;
 
   private String lienDeParente;
 
-  @Embedded private Coordonnees coordonnees;
+  @Embedded
+  private Coordonnees coordonnees;
 
   public ResponsableLegal() {
     adresse = new Adresse();

@@ -4,19 +4,21 @@ import fr.famivac.gestionnaire.commons.entity.Commune;
 import fr.famivac.gestionnaire.commons.entity.Sexe;
 import fr.famivac.gestionnaire.commons.events.UpdateFamilleEvent;
 import fr.famivac.gestionnaire.domains.familles.entity.MembreFamille;
-import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.interceptor.Interceptors;
-import javax.persistence.EntityManager;
+import jakarta.ejb.Stateless;
+import jakarta.enterprise.event.Event;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
+import jakarta.persistence.EntityManager;
 import net.bull.javamelody.MonitoringInterceptor;
 
 @Stateless
 @Interceptors({MonitoringInterceptor.class})
 public class MembreService {
 
-  @Inject Event<UpdateFamilleEvent> updateFamilleEvent;
-  @Inject private EntityManager entityManager;
+  @Inject
+  Event<UpdateFamilleEvent> updateFamilleEvent;
+  @Inject
+  private EntityManager entityManager;
 
   public MembreDTO retrieve(Long id) {
     MembreFamille entity = entityManager.find(MembreFamille.class, id);

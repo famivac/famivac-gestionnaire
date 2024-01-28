@@ -7,13 +7,15 @@ import fr.famivac.gestionnaire.domains.enfants.entity.TypeInscripteur;
 import fr.famivac.gestionnaire.domains.parametres.CommuneService;
 import fr.famivac.gestionnaire.web.communes.CompleteCommune;
 import java.io.Serializable;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Named
 @ViewScoped
 public class EnfantDetailsBean implements Serializable, CompleteCommune {
@@ -26,9 +28,11 @@ public class EnfantDetailsBean implements Serializable, CompleteCommune {
 
   private FamilleAccueil formFamilleAccueil;
 
-  @Inject private CommuneService communeService;
+  @Inject
+  private CommuneService communeService;
 
-  @Inject private EnfantService enfantService;
+  @Inject
+  private EnfantService enfantService;
 
   public void init() {
     form = enfantService.search(id);

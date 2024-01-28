@@ -6,16 +6,16 @@ import fr.famivac.gestionnaire.commons.entity.Sexe;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
 
 /**
  * Personnes composants la famille.
@@ -25,7 +25,9 @@ import javax.persistence.Temporal;
 @Entity
 public class MembreFamille implements Serializable {
 
-  @Id @GeneratedValue private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
   @Column(nullable = false)
   private String nom;
@@ -40,19 +42,22 @@ public class MembreFamille implements Serializable {
   private Sexe sexe;
 
   @Column
-  @Temporal(javax.persistence.TemporalType.DATE)
+  @Temporal(jakarta.persistence.TemporalType.DATE)
   private Date dateNaissance;
 
   @Column(nullable = false)
   private Boolean referent;
 
-  @ManyToOne @JoinColumn private Commune communeDeNaissance;
+  @ManyToOne
+  @JoinColumn
+  private Commune communeDeNaissance;
 
   private String profession;
 
   private String lienDeParente;
 
-  @Embedded private Coordonnees coordonnees;
+  @Embedded
+  private Coordonnees coordonnees;
 
   protected MembreFamille() {
     coordonnees = new Coordonnees();

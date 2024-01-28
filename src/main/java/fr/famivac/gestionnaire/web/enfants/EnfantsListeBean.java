@@ -2,9 +2,9 @@ package fr.famivac.gestionnaire.web.enfants;
 
 import fr.famivac.gestionnaire.domains.enfants.boundary.EnfantService;
 import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * Backing bean des enfants.
@@ -15,14 +15,20 @@ import javax.inject.Named;
 @ViewScoped
 public class EnfantsListeBean implements Serializable {
 
-  /** Liste des enfants. */
+  /**
+   * Liste des enfants.
+   */
   private LazyEnfantDataModel lazyModel;
 
-  @Inject private EnfantService enfantService;
+  @Inject
+  private EnfantService enfantService;
 
-  @Inject private RechercherEnfantsForm rechercherForm;
+  @Inject
+  private RechercherEnfantsForm rechercherForm;
 
-  /** Initialisation du bean. */
+  /**
+   * Initialisation du bean.
+   */
   public void init() {
     rechercher();
   }

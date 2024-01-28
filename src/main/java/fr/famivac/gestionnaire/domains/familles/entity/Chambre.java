@@ -1,24 +1,29 @@
 package fr.famivac.gestionnaire.domains.familles.entity;
 
 import fr.famivac.gestionnaire.commons.entity.BaseEntity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-/** @author Paolo */
+/**
+ * @author Paolo
+ */
 @Entity
 @Getter
 @Setter
 public class Chambre extends BaseEntity {
 
-  @Id @GeneratedValue private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
   private Integer nombreLits;
 
-  @ManyToOne private Famille famille;
+  @ManyToOne
+  private Famille famille;
 
   protected Chambre() {
     nombreLits = 0;
