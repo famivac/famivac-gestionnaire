@@ -15,20 +15,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.interceptor.Interceptors;
-import javax.persistence.EntityGraph;
-import javax.persistence.EntityManager;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
+import jakarta.persistence.EntityGraph;
+import jakarta.persistence.EntityManager;
 import net.bull.javamelody.MonitoringInterceptor;
 
 @Stateless
 @Interceptors({MonitoringInterceptor.class})
 public class FamilleService {
 
-  @Inject private EntityManager entityManager;
+  @Inject
+  private EntityManager entityManager;
 
-  @Inject private FamilleRepository repository;
+  @Inject
+  private FamilleRepository repository;
 
   public Long create(CreateFamillePayload payload) {
     Commune communeFamille = null;
@@ -68,7 +70,7 @@ public class FamilleService {
     EntityGraph entityGraph = entityManager.createEntityGraph(Famille.class);
     entityGraph.addAttributeNodes("chambres", "membres");
     Map<String, Object> properties = new HashMap<>();
-    properties.put("javax.persistence.fetchgraph", entityGraph);
+    properties.put("jakarta.persistence.fetchgraph", entityGraph);
     Famille famille = entityManager.find(Famille.class, id, properties);
 
     // Migration

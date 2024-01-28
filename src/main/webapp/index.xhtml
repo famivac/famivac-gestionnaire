@@ -1,124 +1,125 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns="http://www.w3.org/1999/xhtml">
 
-    <h:head></h:head>
+<h:head></h:head>
 
-    <h:body>
+<h:body>
 
-        <ui:composition template="/WEB-INF/template/layout.xhtml">
+    <ui:composition template="/WEB-INF/template/layout.xhtml">
 
-            <ui:define name="metadata">
-                <f:metadata>
-                    <f:viewAction action="#{homePageBean.init()}"></f:viewAction>
-                </f:metadata>
-            </ui:define>
+        <ui:define name="metadata">
+            <f:metadata>
+                <f:viewAction action="#{homePageBean.init()}"></f:viewAction>
+            </f:metadata>
+        </ui:define>
 
-            <ui:define name="title">Accueil</ui:define>
+        <ui:define name="title">Accueil</ui:define>
 
-            <ui:define name="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-10">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <i class="fa fa-home fa-5x"></i>
-                                            </div>
-                                            <div class="col-xs-9 text-right">
-                                                <div class="huge">#{homePageBean.nombreFamilles}</div>
-                                                <div>Familles Actives</div>
-                                            </div>
+        <ui:define name="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-home fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">#{homePageBean.nombreFamilles}</div>
+                                            <div>Familles Actives</div>
                                         </div>
                                     </div>
-                                    <h:link outcome="/familles/liste.xhtml">
-                                        <div class="panel-footer">
-                                            <span class="pull-left">Voir</span>
-                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </h:link>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="panel panel-green">
-                                    <div class="panel-heading">
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <i class="fa fa-child fa-5x"></i>
-                                            </div>
-                                            <div class="col-xs-9 text-right">
-                                                <div class="huge">#{homePageBean.nombreEnfants}</div>
-                                                <div>Enfants Inscrits</div>
-                                            </div>
-                                        </div>
+                                <h:link outcome="/familles/liste.xhtml">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Voir</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <h:link outcome="/enfants/liste.xhtml">
-                                        <div class="panel-footer">
-                                            <span class="pull-left">Voir</span>
-                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </h:link>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="panel panel-yellow">
-                                    <div class="panel-heading">
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <i class="fa fa-male fa-5x"></i>
-                                            </div>
-                                            <div class="col-xs-9 text-right">
-                                                <div class="huge">#{homePageBean.nombreInscripteurs}</div>
-                                                <div>Inscripteurs Enregistrés</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h:link outcome="/inscripteurs/liste.xhtml">
-                                        <div class="panel-footer">
-                                            <span class="pull-left">Voir</span>
-                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </h:link>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="panel panel-red">
-                                    <div class="panel-heading">
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <i class="fa fa-bed fa-5x"></i>
-                                            </div>
-                                            <div class="col-xs-9 text-right">
-                                                <div class="huge">#{homePageBean.nombreSejoursEnCours}</div>
-                                                <div>Séjours en cours</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h:link outcome="/sejours/liste.xhtml">
-                                        <div class="panel-footer">
-                                            <span class="pull-left">Voir</span>
-                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </h:link>
-                                </div>
+                                </h:link>
                             </div>
                         </div>
-                        <!-- /.col-md-offset-1 col-md-10 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-child fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">#{homePageBean.nombreEnfants}</div>
+                                            <div>Enfants Inscrits</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h:link outcome="/enfants/liste.xhtml">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Voir</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </h:link>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-yellow">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-male fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">#{homePageBean.nombreInscripteurs}</div>
+                                            <div>Inscripteurs Enregistrés</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h:link outcome="/inscripteurs/liste.xhtml">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Voir</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </h:link>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-bed fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">#{homePageBean.nombreSejoursEnCours}</div>
+                                            <div>Séjours en cours</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h:link outcome="/sejours/liste.xhtml">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Voir</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </h:link>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.row -->
+                    <!-- /.col-md-offset-1 col-md-10 -->
                 </div>
-                <!-- /.container-fluid -->
-            </ui:define>
-        </ui:composition>
-    </h:body>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>
 

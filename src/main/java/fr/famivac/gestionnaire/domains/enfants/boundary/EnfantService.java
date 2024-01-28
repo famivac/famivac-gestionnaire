@@ -6,21 +6,26 @@ import fr.famivac.gestionnaire.domains.enfants.entity.EnfantRepository;
 import fr.famivac.gestionnaire.domains.enfants.entity.ResponsableLegal;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.interceptor.Interceptors;
-import javax.persistence.EntityManager;
+import jakarta.ejb.Stateless;
+import jakarta.enterprise.event.Event;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
+import jakarta.persistence.EntityManager;
 import net.bull.javamelody.MonitoringInterceptor;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Stateless
 @Interceptors({MonitoringInterceptor.class})
 public class EnfantService {
 
-  @Inject Event<UpdateEnfantEvent> updateEnfantEvent;
-  @Inject private EntityManager entityManager;
-  @Inject private EnfantRepository enfantRepository;
+  @Inject
+  Event<UpdateEnfantEvent> updateEnfantEvent;
+  @Inject
+  private EntityManager entityManager;
+  @Inject
+  private EnfantRepository enfantRepository;
 
   public Long create(Enfant enfant) {
     if (enfant.getInscripteurEstResponsableLegal()) {

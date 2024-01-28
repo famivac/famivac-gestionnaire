@@ -6,11 +6,11 @@ import fr.famivac.gestionnaire.web.security.SessionBean;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * @author paoesco
@@ -19,60 +19,64 @@ import javax.inject.Named;
 @RequestScoped
 public class ChangerMotDePasseBean {
 
-    private String actualPassword;
+  private String actualPassword;
 
-    private String newPassword;
+  private String newPassword;
 
-    private String confirmNewPassword;
-    
-    @Inject
-    private SessionBean sessionBean;
+  private String confirmNewPassword;
 
-    @Inject
-    private UtilisateurService utilisateurService;
+  @Inject
+  private SessionBean sessionBean;
 
-    public void changer() {
-        if (!newPassword.equals(confirmNewPassword)) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Les mots de passe ne correspond pas", null);
-            FacesContext.getCurrentInstance().addMessage(null, message);
-            return;
-        }
-        try {
-            utilisateurService.changePassword(sessionBean.getConnectedUser().getLogin(), actualPassword, newPassword);
-            actualPassword = "";
-            newPassword = "";
-            confirmNewPassword = "";
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Votre mot de passe a été changé", null);
-            FacesContext.getCurrentInstance().addMessage(null, message);
-        } catch (WrongCredentialsException ex) {
-            Logger.getLogger(ChangerMotDePasseBean.class.getName()).log(Level.FINE, null, ex);
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Le mot de passe actuel ne correspond pas", null);
-            FacesContext.getCurrentInstance().addMessage(null, message);
-        }
+  @Inject
+  private UtilisateurService utilisateurService;
+
+  public void changer() {
+    if (!newPassword.equals(confirmNewPassword)) {
+      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN,
+          "Les mots de passe ne correspond pas", null);
+      FacesContext.getCurrentInstance().addMessage(null, message);
+      return;
     }
-
-    public String getActualPassword() {
-        return actualPassword;
+    try {
+      utilisateurService.changePassword(sessionBean.getConnectedUser().getLogin(), actualPassword,
+          newPassword);
+      actualPassword = "";
+      newPassword = "";
+      confirmNewPassword = "";
+      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+          "Votre mot de passe a été changé", null);
+      FacesContext.getCurrentInstance().addMessage(null, message);
+    } catch (WrongCredentialsException ex) {
+      Logger.getLogger(ChangerMotDePasseBean.class.getName()).log(Level.FINE, null, ex);
+      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN,
+          "Le mot de passe actuel ne correspond pas", null);
+      FacesContext.getCurrentInstance().addMessage(null, message);
     }
+  }
 
-    public void setActualPassword(String actualPassword) {
-        this.actualPassword = actualPassword;
-    }
+  public String getActualPassword() {
+    return actualPassword;
+  }
 
-    public String getNewPassword() {
-        return newPassword;
-    }
+  public void setActualPassword(String actualPassword) {
+    this.actualPassword = actualPassword;
+  }
 
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
+  public String getNewPassword() {
+    return newPassword;
+  }
 
-    public String getConfirmNewPassword() {
-        return confirmNewPassword;
-    }
+  public void setNewPassword(String newPassword) {
+    this.newPassword = newPassword;
+  }
 
-    public void setConfirmNewPassword(String confirmNewPassword) {
-        this.confirmNewPassword = confirmNewPassword;
-    }
+  public String getConfirmNewPassword() {
+    return confirmNewPassword;
+  }
+
+  public void setConfirmNewPassword(String confirmNewPassword) {
+    this.confirmNewPassword = confirmNewPassword;
+  }
 
 }

@@ -3,29 +3,31 @@ package fr.famivac.gestionnaire.domains.sejours.entity;
 import fr.famivac.gestionnaire.commons.entity.BaseEntity;
 import fr.famivac.gestionnaire.commons.utils.Email;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Entity
 @Table(name = "ACCOMPAGNATEUR")
 @NamedQueries({
-  @NamedQuery(
-      name = Accompagnateur.QUERY_GET_ALL,
-      query =
-          "select acc from Accompagnateur acc where acc.deletedAt is null order by acc.nom, acc.prenom"),
-  @NamedQuery(
-      name = Accompagnateur.QUERY_RECHERCHER,
-      query =
-          "select acc from Accompagnateur acc where acc.deletedAt is null and lower(acc.nom) like :nom or lower(acc.prenom) like :prenom order by acc.nom, acc.prenom")
+    @NamedQuery(
+        name = Accompagnateur.QUERY_GET_ALL,
+        query =
+            "select acc from Accompagnateur acc where acc.deletedAt is null order by acc.nom, acc.prenom"),
+    @NamedQuery(
+        name = Accompagnateur.QUERY_RECHERCHER,
+        query =
+            "select acc from Accompagnateur acc where acc.deletedAt is null and lower(acc.nom) like :nom or lower(acc.prenom) like :prenom order by acc.nom, acc.prenom")
 })
 @Getter
 @Setter

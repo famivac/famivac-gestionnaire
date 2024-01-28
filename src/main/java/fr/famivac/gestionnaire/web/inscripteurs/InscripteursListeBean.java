@@ -2,9 +2,9 @@ package fr.famivac.gestionnaire.web.inscripteurs;
 
 import fr.famivac.gestionnaire.domains.enfants.boundary.InscripteurService;
 import java.io.Serializable;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * Backing bean des familles.
@@ -15,14 +15,20 @@ import javax.inject.Named;
 @ViewScoped
 public class InscripteursListeBean implements Serializable {
 
-  /** Liste. */
+  /**
+   * Liste.
+   */
   private LazyInscripteurDataModel lazyModel;
 
-  @Inject private InscripteurService inscripteurService;
+  @Inject
+  private InscripteurService inscripteurService;
 
-  @Inject private RechercherInscripteursForm rechercheForm;
+  @Inject
+  private RechercherInscripteursForm rechercheForm;
 
-  /** Initialisation du bean. */
+  /**
+   * Initialisation du bean.
+   */
   public void init() {
     rechercher();
   }

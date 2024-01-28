@@ -5,20 +5,24 @@ import fr.famivac.gestionnaire.domains.enfants.entity.Inscripteur;
 import fr.famivac.gestionnaire.domains.enfants.entity.InscripteurRepository;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.interceptor.Interceptors;
-import javax.persistence.EntityManager;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
+import jakarta.persistence.EntityManager;
 import net.bull.javamelody.MonitoringInterceptor;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Stateless
 @Interceptors({MonitoringInterceptor.class})
 public class InscripteurService {
 
-  @Inject private EntityManager entityManager;
+  @Inject
+  private EntityManager entityManager;
 
-  @Inject private InscripteurRepository inscripteurRepository;
+  @Inject
+  private InscripteurRepository inscripteurRepository;
 
   public List<RetrieveInscripteursResponseDTO> retrieve() {
     return entityManager

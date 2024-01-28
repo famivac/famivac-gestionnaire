@@ -2,9 +2,11 @@ package fr.famivac.gestionnaire.commons.entity;
 
 import fr.famivac.gestionnaire.commons.utils.Email;
 import java.io.Serializable;
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Embeddable
 public class Coordonnees implements Serializable {
 
@@ -12,7 +14,8 @@ public class Coordonnees implements Serializable {
 
   private String telephone2;
 
-  @Email private String email;
+  @Email
+  private String email;
 
   private String fax;
 

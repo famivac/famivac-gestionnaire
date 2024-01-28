@@ -8,11 +8,13 @@ import fr.famivac.gestionnaire.domains.parametres.CommuneService;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
-/** @author paoesco */
+/**
+ * @author paoesco
+ */
 @Named
 @ViewScoped
 public class AjouterInscripteurBean implements Serializable {
@@ -21,9 +23,11 @@ public class AjouterInscripteurBean implements Serializable {
 
   private Inscripteur form;
 
-  @Inject private CommuneService communeService;
+  @Inject
+  private CommuneService communeService;
 
-  @Inject private InscripteurService inscripteurService;
+  @Inject
+  private InscripteurService inscripteurService;
 
   public void init() {
     form = new Inscripteur();
