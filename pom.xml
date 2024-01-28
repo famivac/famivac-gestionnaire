@@ -47,6 +47,10 @@
                             <key>-Djavamelody.datasources</key>
                             <value>java:app/PostgreSQLDS</value>
                         </option>
+                        <option>
+                            <key>-Dhazelcast.jcache.provider.type</key>
+                            <value>member</value>
+                        </option>
                     </javaCommandLineOptions>
                     <payaraVersion>6.2022.1</payaraVersion>
                     <useUberJar>true</useUberJar>
