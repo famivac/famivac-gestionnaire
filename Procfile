@@ -1,1 +1,1 @@
-web: java -Djavamelody.storage-directory=/storage/javamelody -Djavamelody.datasources=java:app/PostgreSQLDS -D-Dhazelcast.jcache.provider.type=member -jar target/gestionnaire-2.0.0-microbundle.jar --port $PORT --nocluster
+web: java -Djavamelody.storage-directory=/storage/javamelody -Djavamelody.datasources=java:app/PostgreSQLDS -Dhazelcast.jcache.provider.type=member -jar target/gestionnaire-2.0.0-microbundle.jar --port $PORT --nocluster
