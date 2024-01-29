@@ -185,7 +185,7 @@
         <dependency>
             <artifactId>poi-ooxml</artifactId>
             <groupId>org.apache.poi</groupId>
-            <version>5.2.3</version>
+            <version>5.2.5</version>
         </dependency>
         <dependency>
             <artifactId>itext</artifactId>
