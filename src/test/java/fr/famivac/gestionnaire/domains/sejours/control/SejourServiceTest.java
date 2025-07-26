@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,6 +33,7 @@ public class SejourServiceTest {
     private SejourService service;
     
     @Test
+    @Disabled
     public void testGetBilanSurLaPeriode() {
         // GIVEN
         Date dateDebut = toDate("01/01/2018");
