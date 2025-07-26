@@ -3,14 +3,14 @@ Famivac - Gestionnaire
 
 # Tech Stack
 
-- Java 11
-- Jakarta EE 9.1 https://jakarta.ee/release/9/
+- Java 21
+- Jakarta EE 10 https://jakarta.ee/release/9/
 - Payara 6 https://www.payara.fish/products/payara-platform-community/
 
 # Local Development
 
 - Start docker-compose: `docker-compose up`
-- Run project: `package payara-micro:bundle payara-micro:start`
+- Run project: `mvn payara-micro:bundle payara-micro:start`
 
 # Startup line
 
